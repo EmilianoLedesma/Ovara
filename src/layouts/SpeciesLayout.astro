@@ -32,7 +32,7 @@ const { especie } = Astro.props;
       <p>{especie.descripcionCorta}</p>
       <div class="hero-actions">
         <a href="#anatomia" class="btn-primary">Comenzar</a>
-        <a href={`/comparativas?a=${especie.slug}`} class="btn-ghost-sp">Comparar especie</a>
+      <a href={`/especies/comparativas?a=${especie.slug}`} class="btn-ghost-sp">Comparar especie</a>
       </div>
     </div>
   </div>

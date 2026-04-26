@@ -1,0 +1,31 @@
+---
+import { especies } from '../../data/especies';
+// Accept ?specie=<slug> or ?a=<slug>
+let slugFromQuery = 'bovinos';
+if (typeof window !== 'undefined') {
+  const url = new URL(window.location.href);
+  slugFromQuery = url.searchParams.get('specie') || url.searchParams.get('a') || 'bovinos';
+}
+const especie = especies.find(e => e.slug === slugFromQuery) ?? especies[0];
+---
+
+<section class="content-section">
+  <div class="section-label">08</div>
+  <h2 class="section-title">Glosario — {especie?.nombre}</h2>
+  <div class="glosario-list reveal">
+    <div class="glosario-item"><div class="glosario-term">Carúncula</div><p class="glosario-def">Protuberancia endometrial de origen materno que forma parte del placentoma junto con el cotiledón fetal. En ovinos y bovinos se asocia a la placenta.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Cotiledón</div><p class="glosario-def">Porción fetal del placentoma. Junto con la carúncula forma la unidad funcional de intercambio materno-fetal.</p></div>
+    <div class="glosario-item"><div class="glosario-term">IFN-τ</div><p class="glosario-def">Interferón tau, proteína embrionaria que ayuda a mantener la gestación bloqueando la luteólisis.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Onda folicular</div><p class="glosario-def">Fases de reclutamiento y selección folicular durante el ciclo estral.</p></div>
+  </div>
+</section>
+
+<style>
+.content-section { margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--oat-light); }
+.glosario-list { display: flex; flex-direction: column; }
+.glosario-item { padding: 20px 0; border-bottom: 1px solid var(--oat-light); display: flex; gap: 32px; align-items: baseline; }
+.glosario-item:last-child { border-bottom: none; }
+.glosario-term { font-size: 17px; font-weight: 700; color: var(--lavender); min-width: 200px; flex-shrink: 0; }
+.glosario-def  { font-size: 14px; line-height: 1.7; color: var(--ink-mid); }
+@media (max-width: 768px) { .glosario-item { flex-direction: column; gap: 8px; } .glosario-term { min-width: unset; } }
+</style>

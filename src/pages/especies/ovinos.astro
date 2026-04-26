@@ -1,0 +1,121 @@
+---
+import SpeciesLayout from '../../layouts/SpeciesLayout.astro';
+import { getEspecie } from '../../data/especies';
+
+// Pick the current species from the URL if the page is loaded with a ?specie=slug or ?a=slug query param
+let slugFromQuery = 'ovinos';
+if (typeof window !== 'undefined') {
+  const url = new URL(window.location.href);
+  slugFromQuery = url.searchParams.get('specie') ?? url.searchParams.get('a') ?? 'ovinos';
+}
+const especie = getEspecie(slugFromQuery) ?? getEspecie('ovinos');
+---
+
+<SpeciesLayout especie={especie}>
+
+<!-- 1. ANATOMÍA -->
+<section id="anatomia" class="content-section">
+  <div class="section-label">01</div>
+  <h2 class="section-title">Anatomía del aparato reproductivo</h2>
+  <p class="section-intro">El aparato reproductivo ovino presenta características adaptadas a la reproducción estacional y al manejo de rebaños. En ovejas y machos, la anatomía soporta ciclos reproductivos compatibles con la industria ovina.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender">
+      <div class="info-card-label">Hembra</div>
+      <h3>Aparato reproductor femenino</h3>
+      <ul>
+        <li><strong>Ovarios:</strong> globulares, responsables de ovulación y hormona</li>
+        <li><strong>Oviducto:</strong> canal de transporte del ovocito hacia el útero</li>
+        <li><strong>Útero:</strong> bicorne, mixto entre cuernos y cuerpo</li>
+        <li><strong>Cérvix:</strong> segmento cervical con estructuras protectoras</li>
+        <li><strong>Vagina:</strong> canal de salida sexual y parto</li>
+      </ul>
+    </div>
+    <div class="info-card accent-mint">
+      <div class="info-card-label">Macho</div>
+      <h3>Aparato reproductor masculino</h3>
+      <ul>
+        <li><strong>Testículos:</strong> producción de espermatozoides y testosterona</li>
+        <li><strong>Epidídimo:</strong> maduración y almacenamiento de espermatozoides</li>
+        <li><strong>Conducto deferente:</strong> transporte del semen</li>
+        <li><strong>Pene:</strong> morfología característica de la especie</li>
+      </ul>
+    </div>
+    <div class="info-card span-full reveal">
+      <div class="info-card-label">Placenta</div>
+      <h3>Placenta</h3>
+      <p>La placenta ovina es de tipo epiteliocorial y forma placentomas distribuidos a lo largo de las carúnculas, permitiendo el intercambio materno-fetal durante la gestación.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- 2. FISIOLOGÍA -->
+<section id="fisiologia" class="content-section">
+  <div class="section-label">02</div>
+  <h2 class="section-title">Fisiología reproductiva</h2>
+  <p class="section-intro">Las ovejas presentan ciclos estacionales en muchas razas y una fisiología que se adapta a la reproducción durante la temporada adecuada.</p>
+  <div class="info-grid reveal">
+    <div class="info-card">
+      <div class="info-card-label">Pubertad</div>
+      <h3>Inicio de la vida reproductiva</h3>
+      <p>La pubertad suele ocurrir entre los 5 y 12 meses, dependiendo de la raza y el manejo nutricional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CICLO ESTRAL -->
+<section id="ciclo-estral" class="content-section">
+  <div class="section-label">03</div>
+  <h2 class="section-title">Ciclo estral ovino</h2>
+  <p class="section-intro">El ciclo estral de las ovejas varía con la especie y la raza; en muchos casos es estacional con picos en determinadas épocas del año.</p>
+  <div class="timeline reveal"></div>
+</section>
+
+<!-- 7. COMPARATIVA (mínima) -->
+<section id="comparativa" class="content-section">
+  <div class="section-label">07</div>
+  <h2 class="section-title">Comparativa ovinos vs otras especies</h2>
+  <p class="section-intro">Resumen rápido de diferencias clave entre ovinos y las demás especies cubiertas en la página.</p>
+  <div class="compare-table-wrap reveal">
+    <table class="compare-table">
+      <thead>
+        <tr><th>Parámetro</th><th>Ovinos</th><th>Otras</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Gestación</td><td>148 días</td><td>ver especies</td></tr>
+        <tr><td>Ciclo estral</td><td>17 días</td><td>ver especies</td></tr>
+        <tr><td>Duración del celo</td><td>24–36 h</td><td>varía</td></tr>
+        <tr><td>Ovulación</td><td>Espontánea</td><td>ver especie</td></tr>
+        <tr><td>Placenta</td><td>Epiteliocorial</td><td>ver especie</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 8. GLOSARIO -->
+<section id="glosario-local" class="content-section">
+  <div class="section-label">08</div>
+  <h2 class="section-title">Glosario — Ovinos</h2>
+  <div class="glosario-list reveal">
+    <div class="glosario-item"><div class="glosario-term">Carúncula</div><p class="glosario-def">Protuberancia endometrial materna que forma parte del placentoma junto con el cotiledón fetal.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Cotiledón</div><p class="glosario-def">Porción fetal del placentoma ovino; parte del intercambio materno-fetal.</p></div>
+    <div class="glosario-item"><div class="glosario-term">IFN-τ</div><p class="glosario-def">Interferón tau, proteína embrionaria que ayuda a mantener la gestación bloqueando luteólisis.</p></div>
+  </div>
+</section>
+
+</SpeciesLayout>
+
+<style>
+.content-section { margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--oat-light); }
+.content-section:last-child { border-bottom: none; }
+.glosario-list { display: flex; flex-direction: column; }
+.glosario-item { padding: 20px 0; border-bottom: 1px solid var(--oat-light); display: flex; gap: 32px; align-items: baseline; }
+.glosario-item:last-child { border-bottom: none; }
+.glosario-term { font-size: 17px; font-weight: 700; color: var(--lavender); min-width: 200px; flex-shrink: 0; }
+.glosario-def  { font-size: 14px; line-height: 1.7; color: var(--ink-mid); }
+@media (max-width: 768px) {
+  .glosario-item { flex-direction: column; gap: 8px; }
+  .glosario-term { min-width: unset; }
+}
+</style>

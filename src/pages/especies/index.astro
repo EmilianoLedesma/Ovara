@@ -1,0 +1,50 @@
+---
+import { especies } from '../../data/especies';
+---
+
+<section class="content-section">
+  <div class="section-label">Especies</div>
+  <h2 class="section-title">Especies reproductivas domésticas</h2>
+  <p class="section-intro">Explora las seis especies cubiertas en este recurso educativo. Haz clic en una especie para ver su página detallada.</p>
+
+  <div class="especies-grid">
+    {especies.filter(e => e?.slug && e?.nombre).map(e => {
+      const colorForSlug = (slug) => {
+        switch (slug) {
+          case 'bovinos': return '#4a2d8a';
+          case 'porcinos': return '#02633a';
+          case 'equinos': return '#7c5cbf';
+          case 'caninos': return '#b89fe0';
+          case 'felinos': return '#84e7b5';
+          case 'ovinos': return '#e9d68e';
+          default: return '#ddd';
+        }
+      };
+      return (
+        <a class="especie-card" href={`/especies/${e.slug}`} key={e.slug} title={e.nombre}>
+          <div class="especie-color" style={`background: ${colorForSlug(e.slug)}`}></div>
+          <div class="especie-content">
+            <div class="especie-name">{e.nombre}</div>
+            <div class="especie-scientific">{e.nombreCientifico}</div>
+            <div class="especie-desc">{e.descripcionCorta}</div>
+          </div>
+        </a>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+.especies-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-top: 12px;
+}
+.especie-card {
+  display: flex; flex-direction: column; border: 1px solid var(--oat-light); border-radius: 8px; text-decoration: none; color: var(--ink);
+  background: white; overflow: hidden; min-height: 180px;
+}
+.especie-color { height: 6px; width: 100%; }
+.especie-content { padding: 12px; }
+.especie-name { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+.especie-scientific { font-family: var(--mono); font-size: 12px; color: var(--ink-muted); margin-bottom: 6px; }
+.especie-desc { font-size: 13px; color: var(--ink); }
+</style>

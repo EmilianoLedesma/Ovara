@@ -1,0 +1,188 @@
+---
+import { especies } from '../../data/especies';
+import Base from '../../layouts/Base.astro';
+// Accept ?specie=<slug> or ?a=<slug>
+let slugFromQuery = 'bovinos';
+if (typeof window !== 'undefined') {
+  const url = new URL(window.location.href);
+  slugFromQuery = url.searchParams.get('specie') || url.searchParams.get('a') || 'bovinos';
+}
+const especieSel = especies.find(e => e.slug === slugFromQuery) ?? especies[0];
+
+const others = especies.filter(e => e.slug !== slugFromQuery);
+
+function getValue(es: typeof especies[number], etiqueta: string){
+  const v = es.stats.find(s => (s.etiqueta ?? '').toLowerCase().includes(etiqueta.toLowerCase()));
+  return v?.valor ?? '';
+}
+// Only render if we have a valid especie
+const gestacionOv = getValue(especieSel, 'gestación');
+const cicloOv = getValue(especieSel, 'ciclo');
+const celoOv = getValue(especieSel, 'duración del celo');
+const ovulacionOv = 'Espontánea';
+const placentaOv = 'Siepiteliocorial';
+---
+
+<Base title={`Comparativa`} description={`Tabla comparativa entre especies`} activeNav="comparativas">
+<section class="content-section">
+  <div class="section-label">07</div>
+  <h2 class="section-title">Comparativa - {especieSel?.nombre}</h2>
+  <p class="section-intro">Tabla resumida de los rasgos reproductivos relevantes frente a las demás especies cubiertas.</p>
+  <div class="species-filter" aria-label="Filtrar especies">
+    <div class="chips-grid">
+      {especies.filter(e => e?.slug && e?.nombre).map(e => (
+        <label class="chip" key={e.slug}>
+          <input class="chip-input" type="checkbox" value={e.slug} />
+          <span class="chip-label">{e.nombre}</span>
+        </label>
+      ))}
+    </div>
+    <button id="clear-filter" class="btn-clear" type="button" aria-label="Limpiar selección" style="margin-left:8px;">Limpiar</button>
+  </div>
+  <style>
+    .chips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+      margin: 8px 0 14px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(30, 60, 100, 0.08);
+      border: 1px solid rgba(30, 60, 100, 0.25);
+      cursor: pointer;
+      user-select: none;
+    }
+    .chip-input { display: none; }
+    .chip-label { font-size: 14px; color: #1f2937; }
+    .chip input:checked + .chip-label {
+      background: #1e3a8a;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+  </style>
+  <script>
+    (function(){
+      if (typeof window === 'undefined') return;
+      const url = new URL(window.location.href);
+      const param = url.searchParams.get('selected');
+      const allSlugs = [
+        {slug: 'bovinos'},
+        ...(() => {
+          // Import additional slugs from server-side especies data if available
+          // Fallback to empty array if not accessible on client
+          try { return (typeof especies !== 'undefined' && especies.map(e => ({slug: e.slug}))) || []; } catch(e){ return []; }
+        })()
+      ];
+      // Initialize checkboxes
+      const checks = Array.from(document.querySelectorAll('.chip-input'));
+      let selected = [];
+      if (param) {
+        selected = param.split(',').map(s => s.trim()).filter(Boolean);
+      }
+      if (selected.length === 0) {
+        // Default to all species visible (checkboxes checked)
+        checks.forEach(c => (c.checked = true));
+      } else {
+        checks.forEach(c => {
+          c.checked = selected.includes(c.value);
+        });
+      }
+      // Update URL on change
+      checks.forEach(ch => ch.addEventListener('change', () => {
+        const chosen = Array.from(document.querySelectorAll('.chip-input:checked')).map(i => i.value);
+        const base = window.location.pathname;
+        const newQuery = chosen.length ? '?selected=' + chosen.join(',') : '';
+        const newURL = base + (newQuery ? newQuery : '');
+        window.history.pushState({}, '', newURL);
+        location.reload();
+      }));
+      // Clear button behavior
+      const clearBtn = document.getElementById('clear-filter');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          const url = new URL(window.location.href);
+          url.searchParams.delete('selected');
+          window.history.pushState({}, '', url.toString());
+          location.reload();
+        });
+      }
+    })();
+  </script>
+  {/** Dynamic table across species handled in frontmatter as 'others' **/}
+  <div class="compare-table-wrap reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Parámetro</th>
+          <th class="col-spec" data-slug={especieSel?.slug ?? slugFromQuery}>{especieSel?.nombre}</th>
+          {others.map(o => (<th class="col-spec" data-slug={o.slug} key={o.slug}>{o.nombre}</th>))}
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          {l:'Gestación', key:'gestación'},
+          {l:'Ciclo estral', key:'ciclo estral'},
+          {l:'Duración del celo', key:'duración del celo'},
+          {l:'Ovulación', key:'ovulación'},
+          {l:'Placenta', key:'placenta'}
+        ].map(row => {
+          const getVal = (es) => {
+            const v = es.stats.find(s => (s.etiqueta ?? '').toLowerCase().includes(row.key.toLowerCase()));
+            return v?.valor ?? '';
+          };
+          return (
+            <tr key={row.key}>
+              <td>{row.l}</td>
+              <td class="col-spec" data-slug={especieSel?.slug}>{getVal(especieSel)}</td>
+              {others.map(o => (
+                <td class="col-spec" data-slug={o.slug} key={o.slug}>{getVal(o)}</td>
+              ))}
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+  </section>
+</Base>
+
+<style>
+.content-section { margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--oat-light); }
+.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table th, .compare-table td { border: 1px solid var(--oat-light); padding: 8px 12px; text-align: left; }
+.section-intro { margin-bottom: 16px; }
+@media (max-width: 768px) { .compare-table { font-size: 14px; } }
+</style>
+
+<script>
+  (function(){
+    if (typeof window === 'undefined') return;
+    const url = new URL(window.location.href);
+    const param = url.searchParams.get('selected');
+    let slugs;
+    if (param) {
+      slugs = param.split(',').map(s => s.trim()).filter(Boolean);
+    } else {
+      slugs = especies.map(e => e.slug);
+    }
+    const headerCells = Array.from(document.querySelectorAll('table.compare-table thead th.col-spec'));
+    const allowed = new Set(slugs);
+    headerCells.forEach((th, idx) => {
+      const slug = th.getAttribute('data-slug');
+      if (!slug) return;
+      if (!allowed.has(slug)) {
+        const colIndex = idx + 1; // account for param column at index 0
+        th.style.display = 'none';
+        document.querySelectorAll('table.compare-table tbody tr').forEach(tr => {
+          const cells = Array.from(tr.querySelectorAll('td'));
+          if (cells[colIndex]) cells[colIndex].style.display = 'none';
+        });
+      }
+    });
+  })();
+</script>
