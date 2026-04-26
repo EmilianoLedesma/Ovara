@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bovinos — Reproducción | Ovara</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:         #faf8fc;
+  --cream-alt:     #f3eefa;
+  --lavender:      #7c5cbf;
+  --lavender-mid:  #b89fe0;
+  --lavender-deep: #4a2d8a;
+  --mint:          #3aab7b;
+  --mint-light:    #84e7b5;
+  --mint-deep:     #02633a;
+  --ink:           #000000;
+  --ink-muted:     #9f9b93;
+  --ink-mid:       #55534e;
+  --oat:           #dad4c8;
+  --oat-light:     #eee9df;
+  --white:         #ffffff;
+  --shadow: rgba(0,0,0,0.10) 0px 1px 1px,
+            rgba(0,0,0,0.04) 0px -1px 1px inset,
+            rgba(0,0,0,0.05) 0px -0.5px 1px;
+  --shadow-lg: rgba(0,0,0,0.12) 0px 4px 24px,
+               rgba(0,0,0,0.06) 0px 1px 4px;
+  --ease-apple:  cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --font: 'Space Grotesk', Arial, sans-serif;
+  --mono: 'Space Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── REVEAL ANIMATION ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── NAV ─── */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px; height: 60px;
+  background: rgba(250,248,252,0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(218,212,200,0.7);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-mark {
+  width:28px; height:28px; border-radius:8px;
+  background: linear-gradient(140deg, var(--lavender), var(--mint));
+  box-shadow: var(--shadow);
+}
+.logo-name { font-size:17px; font-weight:700; color:var(--ink); letter-spacing:-0.5px; }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a {
+  font-size:15px; font-weight:500; color:var(--ink-mid); text-decoration:none;
+  transition: color 0.2s var(--ease-apple);
+}
+.nav-links a:hover { color:var(--ink); }
+.nav-links a.active { color: var(--lavender); font-weight:600; }
+.nav-cta {
+  padding:8px 20px; border-radius:1584px;
+  background:var(--ink); color:var(--white);
+  font-size:14px; font-weight:600; text-decoration:none;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity:0.82; }
+
+/* ─── BREADCRUMB ─── */
+.breadcrumb {
+  padding: 16px 72px;
+  display:flex; align-items:center; gap:8px;
+  border-bottom: 1px solid var(--oat-light);
+  font-size: 13px; color: var(--ink-muted);
+  font-family: var(--mono);
+}
+.breadcrumb a { color: var(--ink-muted); text-decoration:none; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--ink-mid); }
+
+/* ─── HERO ESPECIE ─── */
+.species-hero {
+  position: relative;
+  padding: 72px 72px 60px;
+  background: linear-gradient(160deg, #1a0b3b 0%, #2d1060 40%, #1a3d2e 100%);
+  overflow: hidden;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+}
+.species-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(124,92,191,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(58,171,123,0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+/* Decorative orb */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  animation: floatOrb 8s ease-in-out infinite;
+}
+.orb-1 {
+  width:320px; height:320px;
+  background: rgba(124,92,191,0.2);
+  top: -60px; right: 15%;
+  animation-delay: 0s;
+}
+.orb-2 {
+  width:200px; height:200px;
+  background: rgba(58,171,123,0.18);
+  bottom: -40px; right: 35%;
+  animation-delay: -3s;
+}
+@keyframes floatOrb {
+  0%,100% { transform: translateY(0px) scale(1); }
+  50%      { transform: translateY(-20px) scale(1.04); }
+}
+
+.species-hero-content {
+  position: relative; z-index: 2;
+  max-width: 640px;
+}
+.species-label {
+  font-family: var(--mono);
+  font-size: 11px; font-weight:700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lavender-mid);
+  margin-bottom: 20px;
+}
+.species-hero h1 {
+  font-size: 68px; font-weight: 700;
+  line-height: 1.0; letter-spacing: -2.8px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+.species-hero h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--lavender-mid), var(--mint-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.species-scientific {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.5px;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+.species-hero p {
+  font-size: 18px; font-weight: 400;
+  line-height: 1.65; letter-spacing: -0.2px;
+  color: rgba(255,255,255,0.72);
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+.hero-actions { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.btn-primary {
+  padding: 12px 28px; border-radius: 1584px;
+  background: var(--white); color: var(--ink);
+  font-size:15px; font-weight:600; text-decoration:none;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+  box-shadow: var(--shadow);
+  display:inline-block;
+}
+.btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: var(--shadow-lg); }
+.btn-ghost {
+  padding: 12px 28px; border-radius: 1584px;
+  border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.85);
+  font-size:15px; font-weight:500; text-decoration:none;
+  transition: border-color 0.2s, color 0.2s;
+  display:inline-block;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.6); color:#fff; }
+
+/* Image decorativa lado derecho del hero */
+.species-hero-visual {
+  position: absolute;
+  right: 72px; top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 320px; height: 320px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+  display:flex; align-items:center; justify-content:center;
+  overflow: hidden;
+}
+.species-hero-visual svg { opacity:0.15; }
+.species-image-placeholder {
+  width:100%; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:12px;
+}
+.species-image-placeholder .img-label {
+  font-family: var(--mono); font-size:10px; letter-spacing:2px;
+  color:rgba(255,255,255,0.3); text-transform:uppercase;
+}
+.img-frame {
+  width:220px; height:160px; border-radius:12px;
+  border: 1px dashed rgba(255,255,255,0.2);
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,0.2); font-size:12px; font-family:var(--mono);
+  flex-direction:column; gap:6px;
+}
+.img-frame svg { width:32px; height:32px; opacity:0.4; }
+
+/* ─── STATS STRIP ─── */
+.stats-strip {
+  border-bottom: 1px solid var(--oat);
+  background: var(--white);
+  padding: 0 72px;
+  display: flex;
+}
+.stat-item {
+  flex:1; padding: 28px 0;
+  border-right: 1px solid var(--oat-light);
+  display:flex; flex-direction:column; gap:4px;
+}
+.stat-item:last-child { border-right:none; }
+.stat-value {
+  font-size: 28px; font-weight:700; letter-spacing:-1px; color:var(--ink);
+}
+.stat-label {
+  font-size:12px; font-weight:500; color:var(--ink-muted);
+  font-family:var(--mono); letter-spacing:0.5px;
+  text-transform:uppercase;
+}
+.stat-note {
+  font-size:11px; color:var(--ink-muted); margin-top:2px;
+}
+
+/* ─── LAYOUT CONTENIDO ─── */
+.page-layout {
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 72px;
+  gap: 48px;
+}
+
+/* ─── TOC SIDEBAR ─── */
+.toc-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+  padding: 32px 0;
+}
+.toc-title {
+  font-family:var(--mono); font-size:10px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--ink-muted); margin-bottom:16px;
+}
+.toc-list { list-style:none; display:flex; flex-direction:column; gap:2px; }
+.toc-list li a {
+  font-size:14px; font-weight:500; color:var(--ink-muted); text-decoration:none;
+  padding: 6px 12px; border-radius:8px; display:block;
+  border-left: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.toc-list li a:hover { color:var(--ink); background:var(--oat-light); }
+.toc-list li a.active {
+  color:var(--lavender); border-left-color: var(--lavender);
+  background: rgba(124,92,191,0.06); font-weight:600;
+}
+.toc-divider { height:1px; background:var(--oat-light); margin: 12px 12px; }
+
+/* ─── MAIN CONTENT ─── */
+.content-main {
+  flex:1; min-width:0;
+  padding: 48px 0 96px;
+}
+
+/* ─── SECTION ─── */
+.content-section {
+  margin-bottom: 72px;
+  padding-bottom: 72px;
+  border-bottom: 1px solid var(--oat-light);
+}
+.content-section:last-child { border-bottom:none; }
+
+.section-label {
+  font-family:var(--mono); font-size:10px; font-weight:700;
+  letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--lavender); margin-bottom:12px;
+}
+.section-title {
+  font-size:36px; font-weight:700; letter-spacing:-1.2px;
+  line-height:1.1; color:var(--ink);
+  margin-bottom:16px;
+}
+.section-intro {
+  font-size:17px; line-height:1.7; color:var(--ink-mid);
+  max-width:680px; margin-bottom:36px;
+  letter-spacing:-0.2px;
+}
+
+/* ─── INFO CARDS (anatomía) ─── */
+.info-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:16px;
+  margin-bottom:32px;
+}
+.info-card {
+  background:var(--white);
+  border: 1px solid var(--oat);
+  border-radius:16px;
+  padding:24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
+}
+.info-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); }
+.info-card-label {
+  font-family:var(--mono); font-size:10px; letter-spacing:2px;
+  text-transform:uppercase; color:var(--ink-muted); margin-bottom:8px;
+}
+.info-card h3 { font-size:17px; font-weight:700; letter-spacing:-0.4px; margin-bottom:10px; }
+.info-card p { font-size:14px; line-height:1.65; color:var(--ink-mid); }
+.info-card ul {
+  list-style:none; display:flex; flex-direction:column; gap:6px; margin-top:10px;
+}
+.info-card ul li {
+  font-size:14px; color:var(--ink-mid); line-height:1.5;
+  padding-left:14px; position:relative;
+}
+.info-card ul li::before {
+  content:''; position:absolute; left:0; top:8px;
+  width:5px; height:5px; border-radius:50%;
+  background:var(--lavender-mid);
+}
+
+.info-card.accent-lavender { border-color:var(--lavender-mid); background:rgba(124,92,191,0.04); }
+.info-card.accent-mint { border-color:var(--mint-light); background:rgba(58,171,123,0.04); }
+.info-card.span-full { grid-column:1/-1; }
+
+/* ─── DIAGRAMA PLACEHOLDER ─── */
+.diagram-block {
+  background:var(--white); border:1px solid var(--oat);
+  border-radius:20px; padding:48px;
+  box-shadow:var(--shadow);
+  display:flex; flex-direction:column; align-items:center; gap:16px;
+  margin-bottom:32px;
+}
+.diagram-area {
+  width:100%; height:280px;
+  border: 1.5px dashed var(--oat);
+  border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:10px;
+  color:var(--ink-muted); font-family:var(--mono); font-size:12px;
+}
+.diagram-area svg { width:40px; height:40px; opacity:0.3; }
+.diagram-caption {
+  font-size:13px; color:var(--ink-muted); text-align:center; letter-spacing:0.2px;
+}
+
+/* ─── TIMELINE ─── */
+.timeline {
+  position:relative; margin-bottom:32px;
+  padding-left:32px;
+}
+.timeline::before {
+  content:''; position:absolute; left:10px; top:0; bottom:0;
+  width:2px; background:linear-gradient(to bottom, var(--lavender), var(--mint));
+  border-radius:2px;
+}
+.timeline-item {
+  position:relative; margin-bottom:28px;
+}
+.timeline-item:last-child { margin-bottom:0; }
+.timeline-dot {
+  position:absolute; left:-28px; top:4px;
+  width:16px; height:16px; border-radius:50%;
+  background:var(--cream); border:2.5px solid var(--lavender);
+  transition:transform 0.25s var(--ease-spring), border-color 0.2s;
+}
+.timeline-item:hover .timeline-dot {
+  transform:scale(1.3);
+  border-color: var(--mint);
+}
+.timeline-card {
+  background:var(--white); border:1px solid var(--oat);
+  border-radius:14px; padding:20px 24px;
+  box-shadow:var(--shadow);
+  transition: transform 0.25s var(--ease-spring);
+}
+.timeline-item:hover .timeline-card { transform:translateX(4px); }
+.timeline-day {
+  font-family:var(--mono); font-size:10px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--lavender); margin-bottom:6px;
+}
+.timeline-card h4 { font-size:16px; font-weight:700; letter-spacing:-0.3px; margin-bottom:6px; }
+.timeline-card p { font-size:14px; line-height:1.6; color:var(--ink-mid); }
+.timeline-card .hormones {
+  display:flex; gap:6px; flex-wrap:wrap; margin-top:10px;
+}
+.hormone-pill {
+  font-family:var(--mono); font-size:10px; font-weight:700;
+  padding:3px 10px; border-radius:1584px;
+  background:rgba(124,92,191,0.1);
+  color:var(--lavender); letter-spacing:0.5px;
+}
+.hormone-pill.mint { background:rgba(58,171,123,0.1); color:var(--mint-deep); }
+
+/* ─── COMPARATIVA RÁPIDA ─── */
+.compare-table {
+  width:100%; border-collapse:collapse; margin-bottom:16px;
+  background:var(--white); border-radius:16px; overflow:hidden;
+  box-shadow:var(--shadow);
+  border: 1px solid var(--oat);
+}
+.compare-table th {
+  padding:14px 20px; text-align:left;
+  font-size:12px; font-weight:700; font-family:var(--mono);
+  letter-spacing:1.5px; text-transform:uppercase;
+  background:var(--oat-light); color:var(--ink-mid);
+  border-bottom: 1px solid var(--oat);
+}
+.compare-table td {
+  padding:14px 20px; font-size:14px; color:var(--ink-mid);
+  border-bottom:1px solid var(--oat-light); vertical-align:middle;
+}
+.compare-table tr:last-child td { border-bottom:none; }
+.compare-table tr:hover td { background:rgba(250,248,252,0.8); }
+.compare-table td strong { color:var(--ink); font-weight:600; }
+.compare-table td:first-child { font-weight:600; color:var(--ink); }
+.cell-highlight {
+  display:inline-flex; align-items:center; gap:4px;
+  padding:2px 10px; border-radius:1584px;
+  font-size:12px; font-weight:600; font-family:var(--mono);
+  background:rgba(124,92,191,0.1); color:var(--lavender);
+}
+.cell-highlight.alt { background:rgba(58,171,123,0.1); color:var(--mint-deep); }
+
+/* ─── GLOSARIO ─── */
+.glossary-grid {
+  display:flex; flex-direction:column; gap:0;
+  border: 1px solid var(--oat); border-radius:16px; overflow:hidden;
+  background:var(--white); box-shadow:var(--shadow);
+}
+.glossary-item {
+  display:flex; gap:0;
+  border-bottom:1px solid var(--oat-light);
+  transition: background 0.15s;
+}
+.glossary-item:last-child { border-bottom:none; }
+.glossary-item:hover { background:rgba(124,92,191,0.03); }
+.glossary-term {
+  min-width:200px; flex-shrink:0;
+  padding:18px 24px;
+  border-right:1px solid var(--oat-light);
+  font-weight:700; font-size:15px; letter-spacing:-0.3px;
+  display:flex; align-items:flex-start;
+}
+.glossary-def {
+  padding:18px 24px; flex:1;
+  font-size:14px; line-height:1.65; color:var(--ink-mid);
+}
+.glossary-sci {
+  font-family:var(--mono); font-size:11px; color:var(--ink-muted);
+  display:block; margin-top:3px; font-style:italic;
+}
+
+/* ─── QUIZ ─── */
+.quiz-block {
+  background: linear-gradient(135deg, var(--lavender-deep), #1a3d2e);
+  border-radius:20px; padding:40px;
+  color:#fff; margin-bottom:0;
+}
+.quiz-block .section-label { color:var(--lavender-mid); }
+.quiz-block .section-title { color:#fff; margin-bottom:8px; }
+.quiz-progress {
+  display:flex; align-items:center; gap:12px; margin-bottom:28px;
+}
+.progress-bar-wrap {
+  flex:1; height:4px; background:rgba(255,255,255,0.15);
+  border-radius:2px; overflow:hidden;
+}
+.progress-bar-fill {
+  height:100%; width:20%;
+  background: linear-gradient(90deg, var(--lavender-mid), var(--mint-light));
+  border-radius:2px;
+  transition:width 0.5s var(--ease-out);
+}
+.progress-label { font-family:var(--mono); font-size:11px; color:rgba(255,255,255,0.45); }
+.quiz-question {
+  font-size:20px; font-weight:700; letter-spacing:-0.5px;
+  line-height:1.35; margin-bottom:24px;
+}
+.quiz-options { display:flex; flex-direction:column; gap:10px; }
+.quiz-option {
+  padding:14px 20px; border-radius:12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.06);
+  font-size:15px; font-weight:500;
+  cursor:pointer; color:rgba(255,255,255,0.85);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s var(--ease-spring);
+  display:flex; align-items:center; gap:12px;
+}
+.quiz-option:hover {
+  background:rgba(255,255,255,0.12);
+  border-color:rgba(255,255,255,0.35);
+  transform:translateX(4px);
+}
+.quiz-option.correct {
+  background:rgba(58,171,123,0.25);
+  border-color:var(--mint-light);
+  color:#fff;
+}
+.quiz-option.wrong {
+  background:rgba(252,121,129,0.2);
+  border-color:rgba(252,121,129,0.5);
+}
+.opt-letter {
+  width:26px; height:26px; border-radius:50%;
+  background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:11px; font-weight:700; flex-shrink:0;
+}
+
+/* ─── RECURSOS / VIDEOS ─── */
+.recursos-grid {
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;
+}
+.recurso-card {
+  background:var(--white); border:1px solid var(--oat);
+  border-radius:14px; overflow:hidden; box-shadow:var(--shadow);
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
+  cursor:pointer;
+}
+.recurso-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+.recurso-thumb {
+  width:100%; aspect-ratio:16/9;
+  background:linear-gradient(135deg, var(--lavender-deep), var(--mint-deep));
+  display:flex; align-items:center; justify-content:center; position:relative;
+}
+.recurso-thumb.type-video { background:linear-gradient(135deg, #1a0b3b, #2d1060); }
+.recurso-thumb.type-diagram { background:linear-gradient(135deg, #02492a, #02633a); }
+.recurso-thumb.type-article { background:linear-gradient(135deg, #2d1060, #4a2d8a); }
+.play-btn {
+  width:44px; height:44px; border-radius:50%;
+  background:rgba(255,255,255,0.2); backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.3);
+  display:flex; align-items:center; justify-content:center;
+}
+.play-btn svg { width:16px; height:16px; fill:white; margin-left:2px; }
+.recurso-type-badge {
+  position:absolute; top:10px; left:10px;
+  font-family:var(--mono); font-size:9px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:3px 8px; border-radius:1584px;
+  background:rgba(0,0,0,0.5); color:rgba(255,255,255,0.8);
+  backdrop-filter:blur(4px);
+}
+.recurso-body { padding:14px 16px; }
+.recurso-body h4 { font-size:14px; font-weight:700; letter-spacing:-0.3px; margin-bottom:4px; }
+.recurso-body p { font-size:12px; color:var(--ink-muted); line-height:1.5; }
+.recurso-meta {
+  display:flex; align-items:center; justify-content:space-between; margin-top:8px;
+}
+.recurso-duration { font-family:var(--mono); font-size:10px; color:var(--ink-muted); }
+.recurso-source { font-size:10px; color:var(--ink-muted); }
+
+/* ─── NAVEGACIÓN ESPECIES ─── */
+.species-nav {
+  background:var(--white); border-top:1px solid var(--oat);
+  padding:32px 72px;
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+}
+.species-nav-link {
+  display:flex; align-items:center; gap:14px; text-decoration:none;
+  padding:16px 20px; border-radius:14px; border:1px solid var(--oat);
+  transition: border-color 0.2s, transform 0.2s var(--ease-spring), box-shadow 0.2s;
+  min-width:200px;
+}
+.species-nav-link:hover { border-color:var(--lavender-mid); transform:translateY(-1px); box-shadow:var(--shadow); }
+.species-nav-link.next { flex-direction:row-reverse; text-align:right; }
+.snl-label { font-family:var(--mono); font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-muted); }
+.snl-name { font-size:16px; font-weight:700; letter-spacing:-0.4px; color:var(--ink); }
+.snl-icon {
+  width:36px; height:36px; border-radius:10px; flex-shrink:0;
+  background:linear-gradient(135deg, var(--lavender-mid), var(--mint-light));
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background:var(--ink); color:rgba(255,255,255,0.4);
+  padding:32px 72px;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:13px;
+}
+footer a { color:rgba(255,255,255,0.4); text-decoration:none; }
+footer a:hover { color:rgba(255,255,255,0.8); }
+
+/* ─── FULL-DIAGRAM SECTION ─── */
+.anatomy-visual {
+  background: var(--white);
+  border:1px solid var(--oat);
+  border-radius:20px; padding:40px;
+  box-shadow:var(--shadow);
+  margin-bottom:32px;
+  position:relative; overflow:hidden;
+}
+.anatomy-visual::before {
+  content:'';
+  position:absolute; top:0; right:0;
+  width:300px; height:300px;
+  background:radial-gradient(circle, rgba(124,92,191,0.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+.anatomy-two-col { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+.anatomy-img-box {
+  aspect-ratio:1/1; border-radius:14px;
+  background: linear-gradient(135deg, rgba(124,92,191,0.08), rgba(58,171,123,0.06));
+  border: 1.5px dashed var(--oat);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  color:var(--ink-muted); font-family:var(--mono); font-size:11px; letter-spacing:1px;
+}
+.anatomy-img-box svg { width:48px; height:48px; opacity:0.2; }
+.anatomy-text h3 { font-size:22px; font-weight:700; letter-spacing:-0.6px; margin-bottom:12px; }
+.anatomy-text p { font-size:15px; line-height:1.7; color:var(--ink-mid); margin-bottom:16px; }
+.anatomy-parts { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.anatomy-parts li {
+  display:flex; gap:12px; align-items:flex-start;
+  font-size:14px; color:var(--ink-mid); line-height:1.5;
+}
+.part-dot {
+  width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px;
+}
+.part-dot.lavender { background:var(--lavender); }
+.part-dot.mint { background:var(--mint); }
+.part-dot.gold { background:#d08a11; }
+.part-name { font-weight:700; color:var(--ink); }
+
+/* ─── HORMONES BAND ─── */
+.hormones-band {
+  background: linear-gradient(135deg, #1a0b3b, #02492a);
+  border-radius:20px; padding:36px;
+  margin-bottom:32px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+}
+.hormone-card {
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px; padding:20px;
+  backdrop-filter:blur(4px);
+  transition: background 0.2s, transform 0.2s var(--ease-spring);
+}
+.hormone-card:hover { background:rgba(255,255,255,0.14); transform:translateY(-2px); }
+.hormone-name {
+  font-family:var(--mono); font-size:10px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--lavender-mid); margin-bottom:8px;
+}
+.hormone-full { font-size:15px; font-weight:700; color:#fff; margin-bottom:6px; letter-spacing:-0.3px; }
+.hormone-desc { font-size:12px; line-height:1.55; color:rgba(255,255,255,0.55); }
+.hormone-peak {
+  margin-top:10px; font-family:var(--mono); font-size:10px;
+  color:var(--mint-light); letter-spacing:0.5px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark"></div>
+    <span class="logo-name">Ovara</span>
+  </a>
+  <div class="nav-links">
+    <a href="#">Especies</a>
+    <a href="#" class="active">Bovinos</a>
+    <a href="#">Glosario</a>
+    <a href="#">Comparativas</a>
+    <a href="#" class="nav-cta">Quizzes</a>
+  </div>
+</nav>
+
+<!-- ─── BREADCRUMB ─── -->
+<div class="breadcrumb">
+  <a href="#">Inicio</a>
+  <span>/</span>
+  <a href="#">Especies</a>
+  <span>/</span>
+  <span style="color:var(--ink);">Bovinos</span>
+</div>
+
+<!-- ─── HERO ESPECIE ─── -->
+<section class="species-hero">
+  <div class="species-hero-bg"></div>
+  <div class="orb-1 hero-orb"></div>
+  <div class="orb-2 hero-orb"></div>
+
+  <div class="species-hero-content">
+    <div class="species-label">Especie / Reproducción</div>
+    <h1>Reproducción<br>en <em>Bovinos</em></h1>
+    <div class="species-scientific">Bos taurus &amp; Bos indicus</div>
+    <p>Estudio integral del sistema reproductivo bovino: desde la fisiología del ciclo estral hasta las biotecnologías reproductivas modernas utilizadas en ganadería de alto rendimiento.</p>
+    <div class="hero-actions">
+      <a href="#anatomia" class="btn-primary">Comenzar lectura</a>
+      <a href="#quiz" class="btn-ghost">Ir al Quiz</a>
+    </div>
+  </div>
+
+  <div class="species-hero-visual">
+    <div class="species-image-placeholder">
+      <div class="img-frame">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="3"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="m21 15-5-5L5 21"/>
+        </svg>
+        Fotografía bovino
+      </div>
+      <span class="img-label">Imagen de alta resolución</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS STRIP ─── -->
+<div class="stats-strip">
+  <div class="stat-item" style="padding-left:0">
+    <span class="stat-value">21 días</span>
+    <span class="stat-label">Ciclo estral</span>
+    <span class="stat-note">Rango: 18–24 días</span>
+  </div>
+  <div class="stat-item" style="padding-left:32px">
+    <span class="stat-value">283 días</span>
+    <span class="stat-label">Gestación</span>
+    <span class="stat-note">Aprox. 9.5 meses</span>
+  </div>
+  <div class="stat-item" style="padding-left:32px">
+    <span class="stat-value">12–14 h</span>
+    <span class="stat-label">Duración del estro</span>
+    <span class="stat-note">Varías por raza y edad</span>
+  </div>
+  <div class="stat-item" style="padding-left:32px">
+    <span class="stat-value">1 cría</span>
+    <span class="stat-label">Camada promedio</span>
+    <span class="stat-note">Gemelar: ~1-2% casos</span>
+  </div>
+  <div class="stat-item" style="padding-left:32px">
+    <span class="stat-value">14–24 m</span>
+    <span class="stat-label">Pubertad</span>
+    <span class="stat-note">Según raza y manejo</span>
+  </div>
+</div>
+
+<!-- ─── PAGE LAYOUT ─── -->
+<div style="border-bottom:1px solid var(--oat);">
+<div class="page-layout">
+
+  <!-- TOC -->
+  <aside class="toc-sidebar">
+    <div class="toc-title">Contenido</div>
+    <ul class="toc-list">
+      <li><a href="#anatomia" class="active">Anatomía reproductiva</a></li>
+      <li><a href="#hembra">Fisiología de la hembra</a></li>
+      <li><a href="#ciclo">Ciclo estral</a></li>
+      <li><a href="#hormonas">Regulación hormonal</a></li>
+      <li><a href="#macho">Reproducción del macho</a></li>
+      <li><a href="#fertilizacion">Fertilización y gestación</a></li>
+      <li><a href="#biotec">Biotecnologías</a></li>
+      <div class="toc-divider"></div>
+      <li><a href="#comparativa">Comparativa entre razas</a></li>
+      <li><a href="#glosario">Glosario bovino</a></li>
+      <li><a href="#recursos">Recursos</a></li>
+      <div class="toc-divider"></div>
+      <li><a href="#quiz">Quiz de evaluación</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="content-main">
+
+    <!-- ─── 1. ANATOMÍA ─── -->
+    <section class="content-section" id="anatomia">
+      <div class="section-label reveal">Sección 01</div>
+      <h2 class="section-title reveal reveal-delay-1">Anatomía del aparato reproductivo</h2>
+      <p class="section-intro reveal reveal-delay-2">El sistema reproductivo bovino presenta adaptaciones únicas que permiten una gestación prolongada y una eficiencia reproductiva optimizada para la producción intensiva.</p>
+
+      <!-- Hembra -->
+      <div class="anatomy-visual reveal reveal-delay-2">
+        <div class="anatomy-two-col">
+          <div class="anatomy-img-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="m21 15-5-5L5 21"/>
+            </svg>
+            Diagrama aparato reproductivo<br>hembra bovina
+          </div>
+          <div class="anatomy-text">
+            <h3>Aparato reproductor femenino</h3>
+            <p>Comprende los ovarios, oviductos, útero bicornual, cérvix y vagina. La vaca posee un útero con dos cuernos bien desarrollados donde implanta el embrión.</p>
+            <ul class="anatomy-parts">
+              <li>
+                <div class="part-dot lavender"></div>
+                <div><span class="part-name">Ovarios</span> — Producen ovocitos y secretan estrógenos y progesterona. Palpables por vía rectal.</div>
+              </li>
+              <li>
+                <div class="part-dot lavender"></div>
+                <div><span class="part-name">Oviductos (trompas de Falopio)</span> — Captura del ovocito tras la ovulación. Sitio de fertilización en el tercio distal (ampolla).</div>
+              </li>
+              <li>
+                <div class="part-dot mint"></div>
+                <div><span class="part-name">Útero bicornual</span> — El embrión se implanta en el cuerno ipsilateral al cuerpo lúteo. Cotiledones en la placenta bovina.</div>
+              </li>
+              <li>
+                <div class="part-dot mint"></div>
+                <div><span class="part-name">Cérvix</span> — Barrera anatómica y funcional. Sus anillos anulares dificultan la inseminación cervical; se requiere técnica transcervical.</div>
+              </li>
+              <li>
+                <div class="part-dot gold"></div>
+                <div><span class="part-name">Vagina y vulva</span> — Cambios físicos durante el estro: edema, hiperemia, moco transparente filante.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-grid reveal reveal-delay-3">
+        <div class="info-card accent-lavender">
+          <div class="info-card-label">Estructura clave</div>
+          <h3>Cuerpo Lúteo (CL)</h3>
+          <p>Glándula endocrina temporal formada tras la ovulación. Secreta progesterona para mantener la gestación. Si no hay concepción, la PGF2α uterina lo luteoliza en el día 17–18.</p>
+        </div>
+        <div class="info-card accent-mint">
+          <div class="info-card-label">Estructura clave</div>
+          <h3>Folículo de De Graaf</h3>
+          <p>Folículo maduro preovulatorio. Alcanza 12–20 mm en bovinos. El pico de LH desencadena su ruptura y la ovulación, generalmente 12–24 h después del inicio del estro.</p>
+        </div>
+        <div class="info-card span-full">
+          <div class="info-card-label">Aparato reproductor masculino</div>
+          <h3>Toro — estructura y función</h3>
+          <ul>
+            <li><strong>Testículos:</strong> Producción de espermatozoides (espermatogénesis) y testosterona. Temperatura escrotal 4–6°C menor que la corporal (termorregulación).</li>
+            <li><strong>Epidídimo:</strong> Maduración y almacenamiento de espermatozoides. El tránsito epidididimario dura 8–12 días.</li>
+            <li><strong>Glándulas accesorias:</strong> Vesículas seminales, próstata y glándulas bulbouretrales aportan el plasma seminal.</li>
+            <li><strong>Pene fibroelástico:</strong> Flexura sigmoide. La erección se logra principalmente por alisamiento de la flexura, no por ingurgitación.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 2. FISIOLOGÍA DE LA HEMBRA ─── -->
+    <section class="content-section" id="hembra">
+      <div class="section-label reveal">Sección 02</div>
+      <h2 class="section-title reveal reveal-delay-1">Fisiología de la hembra</h2>
+      <p class="section-intro reveal reveal-delay-2">Desde la activación ovárica en la pubertad hasta la recuperación reproductiva postparto, la hembra bovina atraviesa etapas fisiológicas determinantes para su eficiencia reproductiva.</p>
+
+      <!-- Pubertad -->
+      <div class="info-card span-full reveal reveal-delay-2" style="margin-bottom:16px;">
+        <div class="info-card-label">Etapa 01 — Pubertad</div>
+        <h3>Inicio de la actividad reproductiva</h3>
+        <p>La pubertad se define como el momento en que la vaquilla experimenta su primer ovulación acompañada de comportamiento estral. No coincide exactamente con la madurez sexual reproductiva óptima, que se alcanza 2–3 ciclos después. Los factores que modulan la edad a la pubertad son:</p>
+        <ul style="margin-top:12px; display:flex; flex-direction:column; gap:8px;">
+          <li style="font-size:14px; color:var(--ink-mid); padding-left:16px; position:relative;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--lavender-mid);display:block;"></span><strong>Raza:</strong> Bos taurus (10–14 meses) vs. Bos indicus (18–24 meses). Las razas cebuinas tienen pubertad más tardía pero mayor tolerancia al calor.</li>
+          <li style="font-size:14px; color:var(--ink-mid); padding-left:16px; position:relative;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--lavender-mid);display:block;"></span><strong>Peso corporal:</strong> La pubertad ocurre al alcanzar ~55–65% del peso adulto de la raza. El manejo nutricional es crítico.</li>
+          <li style="font-size:14px; color:var(--ink-mid); padding-left:16px; position:relative;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--lavender-mid);display:block;"></span><strong>Efecto macho:</strong> La presencia del toro o de feromonas masculinas acelera la pubertad en vaquillas prepúberes (efecto bio-estimulación).</li>
+          <li style="font-size:14px; color:var(--ink-mid); padding-left:16px; position:relative;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--lavender-mid);display:block;"></span><strong>Estación del año:</strong> Menor influencia en bovinos que en ovinos, pero el fotoperiodo puede afectar la edad a la pubertad en latitudes extremas.</li>
+        </ul>
+      </div>
+
+      <!-- Detección del celo -->
+      <div class="section-label reveal" style="margin-top:28px; margin-bottom:8px;">Detección del celo</div>
+      <h3 class="reveal reveal-delay-1" style="font-size:24px;font-weight:700;letter-spacing:-0.6px;margin-bottom:12px;">Signos clínicos del estro</h3>
+      <p class="reveal reveal-delay-2" style="font-size:16px;line-height:1.7;color:var(--ink-mid);margin-bottom:24px;">La detección precisa del celo es el factor individual más importante en la eficiencia de la IA. La vaca está en estro en promedio 12–18 h; la ventana ideal de inseminación es 6–18 h después del inicio del celo.</p>
+
+      <div class="info-grid reveal reveal-delay-2">
+        <div class="info-card accent-lavender">
+          <div class="info-card-label">Signo primario</div>
+          <h3>Reflejo de quietud (standing heat)</h3>
+          <p>La vaca acepta ser montada por otras vacas o el toro sin moverse. Es el único signo primario y patognomónico del estro. Duración promedio 6–12 h, más corta en temperaturas elevadas y en vacas de alta producción.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Signos secundarios</div>
+          <h3>Cambios físicos y de comportamiento</h3>
+          <ul>
+            <li>Moco cervical claro, filante y cristalizable (prueba del helecho)</li>
+            <li>Edema e hiperemia vulvar marcados</li>
+            <li>Inquietud, vocalización frecuente, disminución del consumo</li>
+            <li>Intenta montar a otras vacas (sin aceptar ser montada)</li>
+            <li>Descenso transitorio en producción de leche</li>
+            <li>Elevación de temperatura corporal 0.5–1°C</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Tecnologías de apoyo</div>
+          <h3>Detección asistida</h3>
+          <ul>
+            <li><strong>Podómetros y acelerómetros:</strong> Detectan el aumento de actividad motora 24–48 h previas al celo con alta sensibilidad.</li>
+            <li><strong>Sistemas de presión (KaMaR):</strong> Parches montados sobre la base de la cola que se activan con la presión de una monta.</li>
+            <li><strong>Termometría vaginal:</strong> Sensores de temperatura intravaginal detectan el pico térmico del estro.</li>
+            <li><strong>Dosificación de progesterona en leche:</strong> Confirma fase luteal vs. estral mediante ELISA o RIA.</li>
+          </ul>
+        </div>
+        <div class="info-card accent-mint">
+          <div class="info-card-label">Relación celo-ovulación</div>
+          <h3>Momento óptimo de inseminación</h3>
+          <p>La ovulación ocurre 28–32 h después del inicio del estro en la vaca. Los espermatozoides deben estar en el oviducto antes de la ovulación. La regla práctica: <strong>AM-PM rule</strong> — vaca vista en celo en la mañana, inseminar en la tarde; vista en la tarde, inseminar a la mañana siguiente.</p>
+        </div>
+      </div>
+
+      <!-- Anestro postparto -->
+      <div class="section-label reveal" style="margin-top:32px; margin-bottom:8px;">Anestro postparto</div>
+      <h3 class="reveal reveal-delay-1" style="font-size:24px;font-weight:700;letter-spacing:-0.6px;margin-bottom:12px;">El reto del período posparto</h3>
+      <p class="reveal reveal-delay-2" style="font-size:16px;line-height:1.7;color:var(--ink-mid);margin-bottom:24px;">Después del parto, la vaca entra en un período de anestro fisiológico. La reanudación de la ciclicidad ovárica es crítica para lograr el intervalo parto-concepción objetivo (&lt;85 días en lechería, &lt;100 días en carne).</p>
+
+      <div class="info-grid reveal reveal-delay-2">
+        <div class="info-card span-full">
+          <div class="info-card-label">Mecanismo del anestro postparto</div>
+          <h3>Supresión neuroendocrina del eje HHG</h3>
+          <p>El anestro postparto resulta de la inhibición de la pulsatilidad de GnRH por tres factores que actúan sinérgicamente:</p>
+          <ul style="margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <li style="font-size:14px;color:var(--ink-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--lavender-mid);display:block;"></span><strong>Balance energético negativo (BEN):</strong> La vaca de alta producción moviliza reservas corporales en las primeras semanas posparto. La hipoglucemia y bajas concentraciones de IGF-1 suprimen el pulso de GnRH.</li>
+            <li style="font-size:14px;color:var(--ink-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--lavender-mid);display:block;"></span><strong>Amamantamiento / succión:</strong> El estímulo de succión del ternero genera señales aferentes que inhiben el generador de pulsos de GnRH. El destete temprano o restringido acorta el anestro.</li>
+            <li style="font-size:14px;color:var(--ink-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--mint);display:block;"></span><strong>Involución uterina incompleta:</strong> El útero requiere 40–60 días para su plena recuperación morfológica y funcional postparto. Las endometritis retrasan la reanudación del ciclo.</li>
+            <li style="font-size:14px;color:var(--ink-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--mint);display:block;"></span><strong>Estrategias de manejo:</strong> Destete temporario (48–72 h), biostimulación con el toro, tratamiento con progesterona exógena (CIDR) + GnRH o eCG para inducir la primera ovulación posparto.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 3. CICLO ESTRAL ─── -->
+    <section class="content-section" id="ciclo">
+      <div class="section-label reveal">Sección 03</div>
+      <h2 class="section-title reveal reveal-delay-1">Ciclo estral bovino</h2>
+      <p class="section-intro reveal reveal-delay-2">El ciclo estral de la vaca dura en promedio 21 días (rango 18–24). Se divide en cuatro fases definidas por los cambios ováricos, hormonales y de comportamiento.</p>
+
+      <div class="timeline reveal reveal-delay-2">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-day">Días 0 — Estro (celo)</div>
+            <h4>Estro — Aceptación del macho</h4>
+            <p>La vaca acepta la monta (reflejo de inmovilidad). Duración: 12–18 h en vaca adulta, menor en vaquillas. Signos: inquietud, vocalización, moco cervical claro y filante (cristalización en helecho), edema vulvar.</p>
+            <div class="hormones">
+              <span class="hormone-pill">Estrógenos ↑</span>
+              <span class="hormone-pill">LH peak</span>
+              <span class="hormone-pill mint">Progesterona ↓</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-day">Días 1–4 — Metaestro</div>
+            <h4>Metaestro — Formación del Cuerpo Lúteo</h4>
+            <p>Período postovulatorio. Ocurre la ovulación (~30 h post-estro en bovinos). El folículo roto se luteiniza formando el cuerpo lúteo. Puede haber descarga sanguinolenta (metrorragia fisiológica) en algunos animales.</p>
+            <div class="hormones">
+              <span class="hormone-pill mint">Progesterona ↑ incipiente</span>
+              <span class="hormone-pill">FSH ↑ nueva ola</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-day">Días 5–16 — Diestro</div>
+            <h4>Diestro — Dominancia del Cuerpo Lúteo</h4>
+            <p>Fase más larga del ciclo. El CL maduro secreta progesterona que inhibe el eje hipotálamo-hipófisis. Se producen 2–3 ondas foliculares (FSH) sin que ningún folículo ovule. Fase luteal activa.</p>
+            <div class="hormones">
+              <span class="hormone-pill mint">Progesterona dominante</span>
+              <span class="hormone-pill">2–3 ondas FSH</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-day">Días 17–18 — Proestro</div>
+            <h4>Proestro — Luteólisis y crecimiento folicular</h4>
+            <p>El endometrio uterino libera PGF2α que causa la regresión del CL (luteólisis). Cae la progesterona; el folículo dominante de la última ola crece aceleradamente bajo FSH y LH. Los estrógenos comienzan a elevarse preparando el próximo estro.</p>
+            <div class="hormones">
+              <span class="hormone-pill">PGF2α ↑</span>
+              <span class="hormone-pill mint">Progesterona ↓</span>
+              <span class="hormone-pill">Estrógenos ↑</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ondas foliculares -->
+      <div class="info-card reveal reveal-delay-3" style="margin-top:0">
+        <div class="info-card-label">Concepto clave</div>
+        <h3>Ondas foliculares (Follicular Waves)</h3>
+        <p>Los bovinos presentan 2 o 3 ondas de reclutamiento folicular por ciclo. Cada onda comienza con el reclutamiento de varios folículos antrales bajo FSH; uno se vuelve dominante (suprime a los subordinados via IGF-1 e inhibinas) y crece hasta 10–20 mm. En los ciclos de 2 ondas: la 1ª ola ocurre en días 1–9 y la 2ª en días 11–19. En ciclos de 3 ondas: ondas en días 1–8, 9–15 y 16–21 aproximadamente. El folículo dominante de la última ola ovula en el siguiente estro.</p>
+      </div>
+    </section>
+
+    <!-- ─── 4. HORMONAS ─── -->
+    <section class="content-section" id="hormonas">
+      <div class="section-label reveal">Sección 04</div>
+      <h2 class="section-title reveal reveal-delay-1">Regulación hormonal</h2>
+      <p class="section-intro reveal reveal-delay-2">El eje hipotálamo-hipófisis-gónada coordina el ciclo reproductivo bovino a través de señales endocrinas precisas y retroalimentaciones positivas y negativas.</p>
+
+      <div class="hormones-band reveal reveal-delay-2">
+        <div class="hormone-card">
+          <div class="hormone-name">GnRH</div>
+          <div class="hormone-full">Gonadotropin-Releasing Hormone</div>
+          <div class="hormone-desc">Secretada en pulsos por el hipotálamo. Controla la liberación de FSH y LH. La frecuencia pulsátil determina el tipo de gonadotropina liberada preferentemente.</div>
+          <div class="hormone-peak">Origen: hipotálamo</div>
+        </div>
+        <div class="hormone-card">
+          <div class="hormone-name">FSH</div>
+          <div class="hormone-full">Follicle-Stimulating Hormone</div>
+          <div class="hormone-desc">Estimula el reclutamiento y crecimiento folicular. Pico al inicio de cada onda folicular. Suprimida por inhibinas de folículos subordinados.</div>
+          <div class="hormone-peak">Origen: adenohipófisis</div>
+        </div>
+        <div class="hormone-card">
+          <div class="hormone-name">LH</div>
+          <div class="hormone-full">Luteinizing Hormone</div>
+          <div class="hormone-desc">Pico preovulatorio inducido por estrógenos (retroalimentación positiva). Desencadena la ovulación 24–30 h después. También estimula la síntesis de testosterona en el macho.</div>
+          <div class="hormone-peak">Origen: adenohipófisis</div>
+        </div>
+        <div class="hormone-card">
+          <div class="hormone-name">P4</div>
+          <div class="hormone-full">Progesterona</div>
+          <div class="hormone-desc">Secretada por el CL. Mantiene la gestación, inhibe el eje HHG durante el diestro. Prepara el útero para la implantación del embrión.</div>
+          <div class="hormone-peak">Origen: cuerpo lúteo</div>
+        </div>
+      </div>
+
+      <div class="info-grid reveal reveal-delay-3">
+        <div class="info-card">
+          <div class="info-card-label">Hormona crítica</div>
+          <h3>PGF2α — Prostaglandina F2alfa</h3>
+          <p>Producida por el endometrio en el día 17–18 del ciclo. Causa la luteólisis mediante vasoconstricción ovárica y acción directa sobre las células luteales. Su liberación requiere oxitocina (circuito de retroalimentación positiva). Base del sincronización del estro.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Hormona crítica</div>
+          <h3>Estrógenos (E2)</h3>
+          <p>Producidos por el folículo dominante. A bajas concentraciones ejercen retroalimentación negativa sobre LH. Al superar un umbral crítico (pico preovulatorio), ejercen retroalimentación positiva generando el pico de LH que desencadena la ovulación.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 4. FERTILIZACIÓN ─── -->
+    <section class="content-section" id="fertilizacion">
+      <div class="section-label reveal">Sección 04</div>
+      <h2 class="section-title reveal reveal-delay-1">Fertilización y gestación</h2>
+      <p class="section-intro reveal reveal-delay-2">La fertilización ocurre en el oviducto. El período de reconocimiento materno-embrionario es crítico para el mantenimiento de la gestación.</p>
+
+      <div class="info-grid reveal reveal-delay-2">
+        <div class="info-card">
+          <div class="info-card-label">Fertilización</div>
+          <h3>Capacitación espermática</h3>
+          <p>Los espermatozoides requieren 4–6 h de capacitación en el tracto reproductivo femenino antes de poder fertilizar. Cambios en la membrana plasmática y el patrón de motilidad (hiperactivación) preceden a la reacción acrosomal.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Fertilización</div>
+          <h3>Unión al ovocito</h3>
+          <p>La reacción acrosomal permite al espermatozoide penetrar la zona pelúcida. Tras la penetración, se dispara el bloqueo de polispermia (reacción cortical). La fertilización ocurre 12–18 h post-ovulación.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Reconocimiento materno</div>
+          <h3>Señal antiluteolítica</h3>
+          <p>El trofoblasto embrionario bovino secreta interferón-tau (IFN-τ) entre los días 16–24 de gestación. Este inhibe la expresión de receptores de oxitocina en el endometrio, bloqueando la liberación pulsátil de PGF2α y previniendo la luteólisis.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Placentación</div>
+          <h3>Placenta sindesmocorial</h3>
+          <p>Bovinos poseen placenta cotiledonaria con 70–120 placentomas (unión carúncula materna + cotiledón fetal). Tipo sindesmocorial: el trofoblasto erosiona el epitelio uterino pero no alcanza los vasos maternos.</p>
+        </div>
+        <div class="info-card span-full accent-lavender">
+          <div class="info-card-label">Desarrollo embrionario — línea de tiempo</div>
+          <h3>Hitos del desarrollo temprano</h3>
+          <ul>
+            <li><strong>Día 1–2:</strong> Segmentación del zigoto en el oviducto (2–4 células)</li>
+            <li><strong>Día 3–4:</strong> Mórula — llega al útero</li>
+            <li><strong>Día 5–7:</strong> Blastocisto — hatching (eclosión de la zona pelúcida)</li>
+            <li><strong>Día 12–14:</strong> Elongación del conceptus (trofoblasto se extiende)</li>
+            <li><strong>Día 16–24:</strong> Reconocimiento materno — secreción de IFN-τ</li>
+            <li><strong>Día 30–35:</strong> Implantación placentaria completa</li>
+            <li><strong>Día 283:</strong> Parto (término)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 5. BIOTECNOLOGÍAS ─── -->
+    <section class="content-section" id="biotec">
+      <div class="section-label reveal">Sección 05</div>
+      <h2 class="section-title reveal reveal-delay-1">Biotecnologías reproductivas</h2>
+      <p class="section-intro reveal reveal-delay-2">Las biotecnologías reproductivas permiten acelerar el progreso genético y optimizar la eficiencia reproductiva en los hatos bovinos modernos.</p>
+
+      <div class="info-grid reveal reveal-delay-2">
+        <div class="info-card">
+          <div class="info-card-label">Biotecnología</div>
+          <h3>Inseminación Artificial (IA)</h3>
+          <p>Técnica base. Permite usar semen congelado de toros de alto valor genético. La IA a tiempo fijo (IATF) sincroniza el estro con protocolos hormonales (Ovsynch, CIDR) eliminando la necesidad de detección del celo.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Biotecnología</div>
+          <h3>Transferencia de Embriones (TE)</h3>
+          <p>Superovulación de donante con FSH → colecta de embriones día 7 → transferencia a receptoras sincronizadas. Permite obtener 5–10 embriones por donante. Acelera el progreso genético del lado materno.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Biotecnología avanzada</div>
+          <h3>Fertilización In Vitro (FIV)</h3>
+          <p>Aspiración folicular (OPU) → maduración in vitro (MIV) → fertilización in vitro → cultivo embrionario → transferencia o vitrificación. Permite usar ovocitos de donantes vivas de alto valor sin sacrificarlas.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Biotecnología avanzada</div>
+          <h3>Sexaje de semen y embriones</h3>
+          <p>Separación de espermatozoides X e Y por citometría de flujo (pureza &gt;90%). Permite controlar el sexo de la descendencia. También posible sexar embriones por PCR del gen SRY antes de la transferencia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 6. COMPARATIVA ─── -->
+    <section class="content-section" id="comparativa">
+      <div class="section-label reveal">Sección 06</div>
+      <h2 class="section-title reveal reveal-delay-1">Comparativa entre razas bovinas</h2>
+      <p class="section-intro reveal reveal-delay-2">Los parámetros reproductivos varían significativamente entre razas Bos taurus (europeas) y Bos indicus (cebuinas), con implicaciones importantes para el manejo.</p>
+
+      <table class="compare-table reveal reveal-delay-2">
+        <thead>
+          <tr>
+            <th>Parámetro</th>
+            <th>Holstein</th>
+            <th>Angus</th>
+            <th>Nelore (B. indicus)</th>
+            <th>Simmental</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ciclo estral</td>
+            <td><span class="cell-highlight">21 días</span></td>
+            <td>21 días</td>
+            <td>20–22 días</td>
+            <td>21 días</td>
+          </tr>
+          <tr>
+            <td>Duración del estro</td>
+            <td>8–12 h</td>
+            <td>12–18 h</td>
+            <td><strong>4–8 h</strong></td>
+            <td>12–16 h</td>
+          </tr>
+          <tr>
+            <td>Pubertad (hembra)</td>
+            <td>10–12 m</td>
+            <td><span class="cell-highlight alt">10–14 m</span></td>
+            <td>18–24 m</td>
+            <td>11–14 m</td>
+          </tr>
+          <tr>
+            <td>Gestación</td>
+            <td>279 días</td>
+            <td>281 días</td>
+            <td>290–295 días</td>
+            <td>283 días</td>
+          </tr>
+          <tr>
+            <td>Tasa ovulatoria</td>
+            <td>1 (raro 2)</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>Tolerancia al calor</td>
+            <td>Baja</td>
+            <td>Media</td>
+            <td><span class="cell-highlight alt">Alta</span></td>
+            <td>Media</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="reveal reveal-delay-3" style="font-size:13px; color:var(--ink-muted); margin-top:-12px;">
+        * Los datos representan promedios de referencia. Los valores individuales varían por condición corporal, nutrición y ambiente.
+      </p>
+    </section>
+
+    <!-- ─── 7. GLOSARIO ─── -->
+    <section class="content-section" id="glosario">
+      <div class="section-label reveal">Sección 07</div>
+      <h2 class="section-title reveal reveal-delay-1">Glosario bovino</h2>
+      <p class="section-intro reveal reveal-delay-2">Terminología esencial para el estudio de la reproducción bovina.</p>
+
+      <div class="glossary-grid reveal reveal-delay-2">
+        <div class="glossary-item">
+          <div class="glossary-term">Anestro<span class="glossary-sci">Anestrus</span></div>
+          <div class="glossary-def">Período de ausencia de actividad cíclica ovárica. En bovinos puede ser postparto, nutricional (balance energético negativo) o estacional (menos frecuente). Principal causa de ineficiencia reproductiva en rodeos lecheros de alta producción.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Luteólisis<span class="glossary-sci">Luteolysis</span></div>
+          <div class="glossary-def">Proceso de regresión estructural y funcional del cuerpo lúteo. En bovinos es inducida por la PGF2α endometrial mediante un mecanismo contracorriente entre la vena uterina y la arteria ovárica.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Superovulación<span class="glossary-sci">Superovulation</span></div>
+          <div class="glossary-def">Estimulación con FSH exógena para obtener múltiples ovulaciones en una donante de embriones. Objetivo: 8–15 embriones colectables. La respuesta es variable (CV ~60%).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Carúncula<span class="glossary-sci">Caruncle</span></div>
+          <div class="glossary-def">Estructura endometrial materna que forma la unidad placentomaria al unirse al cotiledón fetal. La vaca posee 70–120 carúnculas distribuidas en cuatro hileras en cada cuerno uterino.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">IFN-tau<span class="glossary-sci">Interferon tau</span></div>
+          <div class="glossary-def">Señal molecular del reconocimiento materno bovino. Secretado por el trofoblasto entre días 16–24. Bloquea la expresión del receptor de oxitocina endometrial, previniendo la luteólisis y manteniendo la gestación.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">OPU<span class="glossary-sci">Ovum Pick-Up</span></div>
+          <div class="glossary-def">Aspiración transvaginal ecoguiada de ovocitos directamente de los folículos ováricos de la vaca donante en vida. Permite colectar 2–3 veces por semana sin interrumpir la ciclicidad natural.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">CIDR<span class="glossary-sci">Controlled Internal Drug Release</span></div>
+          <div class="glossary-def">Dispositivo intravaginal con progesterona (1.38 g) usado en protocolos de sincronización del ciclo estral. Simula la fase luteal, regula el folículo dominante y permite la programación de la IA a tiempo fijo.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 8. RECURSOS ─── -->
+    <section class="content-section" id="recursos">
+      <div class="section-label reveal">Sección 08</div>
+      <h2 class="section-title reveal reveal-delay-1">Recursos de estudio</h2>
+      <p class="section-intro reveal reveal-delay-2">Videos, diagramas y artículos seleccionados para profundizar en la fisiología reproductiva bovina.</p>
+
+      <div class="recursos-grid reveal reveal-delay-2">
+        <div class="recurso-card">
+          <div class="recurso-thumb type-video">
+            <div class="recurso-type-badge">Video</div>
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="recurso-body">
+            <h4>Ciclo estral bovino — Fisiología</h4>
+            <p>Explicación completa de las fases del ciclo con animaciones de cambios hormonales.</p>
+            <div class="recurso-meta">
+              <span class="recurso-duration">18:42</span>
+              <span class="recurso-source">Cátedra Reproducción</span>
+            </div>
+          </div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-thumb type-diagram">
+            <div class="recurso-type-badge">Diagrama</div>
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm4 4v10h2V7H7zm4 3v7h2v-7h-2zm4-2v9h2V8h-2z"/></svg>
+            </div>
+          </div>
+          <div class="recurso-body">
+            <h4>Eje hipotálamo-hipofisario-ovárico</h4>
+            <p>Diagrama interactivo de los circuitos de retroalimentación hormonal.</p>
+            <div class="recurso-meta">
+              <span class="recurso-duration">Interactivo</span>
+              <span class="recurso-source">Material de curso</span>
+            </div>
+          </div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-thumb type-article">
+            <div class="recurso-type-badge">Artículo</div>
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            </div>
+          </div>
+          <div class="recurso-body">
+            <h4>Protocolos IATF en bovinos de carne</h4>
+            <p>Revisión de los principales protocolos Ovsynch, CIDR y variantes para IATF.</p>
+            <div class="recurso-meta">
+              <span class="recurso-duration">Lectura 15 min</span>
+              <span class="recurso-source">Biblioteca del curso</span>
+            </div>
+          </div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-thumb type-video">
+            <div class="recurso-type-badge">Video</div>
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="recurso-body">
+            <h4>Técnica de inseminación artificial bovina</h4>
+            <p>Demostración práctica de la técnica recto-vaginal para inseminación profunda.</p>
+            <div class="recurso-meta">
+              <span class="recurso-duration">24:10</span>
+              <span class="recurso-source">Laboratorio de reproducción</span>
+            </div>
+          </div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-thumb type-diagram">
+            <div class="recurso-type-badge">Diagrama</div>
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm4 4v10h2V7H7zm4 3v7h2v-7h-2zm4-2v9h2V8h-2z"/></svg>
+            </div>
+          </div>
+          <div class="recurso-body">
+            <h4>Ondas foliculares — visualización ecográfica</h4>
+            <p>Imágenes ultrasonográficas del desarrollo folicular en las tres ondas del ciclo.</p>
+            <div class="recurso-meta">
+              <span class="recurso-duration">Galería</span>
+              <span class="recurso-source">Material ecografía</span>
+            </div>
+          </div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-thumb type-article">
+            <div class="recurso-type-badge">Artículo</div>
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/></svg>
+            </div>
+          </div>
+          <div class="recurso-body">
+            <h4>Reconocimiento materno bovino — IFN-tau</h4>
+            <p>Mecanismos moleculares del reconocimiento materno-embrionario en bovinos.</p>
+            <div class="recurso-meta">
+              <span class="recurso-duration">Lectura 20 min</span>
+              <span class="recurso-source">Artículo revisado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 9. QUIZ ─── -->
+    <section id="quiz">
+      <div class="quiz-block reveal">
+        <div class="section-label">Evaluación</div>
+        <h2 class="section-title">Quiz — Bovinos</h2>
+        <div class="quiz-progress">
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill"></div>
+          </div>
+          <span class="progress-label">1 / 5 preguntas</span>
+        </div>
+        <div class="quiz-question">
+          ¿Cuál es la hormona responsable de la luteólisis del cuerpo lúteo bovino al final del diestro?
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-option">
+            <div class="opt-letter">A</div>
+            Progesterona (P4)
+          </div>
+          <div class="quiz-option correct">
+            <div class="opt-letter">B</div>
+            Prostaglandina F2alfa (PGF2α)
+          </div>
+          <div class="quiz-option">
+            <div class="opt-letter">C</div>
+            Hormona luteinizante (LH)
+          </div>
+          <div class="quiz-option">
+            <div class="opt-letter">D</div>
+            Estrógenos (E2)
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<!-- ─── NAVEGACIÓN ENTRE ESPECIES ─── -->
+<div class="species-nav">
+  <a href="#" class="species-nav-link prev">
+    <div class="snl-icon">P</div>
+    <div>
+      <div class="snl-label">Especie anterior</div>
+      <div class="snl-name">Porcinos</div>
+    </div>
+  </a>
+  <div style="font-family:var(--mono); font-size:11px; color:var(--ink-muted); letter-spacing:1px;">
+    1 DE 6 ESPECIES
+  </div>
+  <a href="#" class="species-nav-link next">
+    <div>
+      <div class="snl-label">Siguiente especie</div>
+      <div class="snl-name">Equinos</div>
+    </div>
+    <div class="snl-icon">E</div>
+  </a>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <span>Ovara — Plataforma educativa de reproducción animal</span>
+  <div style="display:flex; gap:24px;">
+    <a href="#">Especies</a>
+    <a href="#">Glosario</a>
+    <a href="#">Comparativas</a>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// TOC active link
+const sections = document.querySelectorAll('section[id], div[id]');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const tocObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => tocObs.observe(s));
+
+// Quiz interaction
+document.querySelectorAll('.quiz-option').forEach(opt => {
+  opt.addEventListener('click', function() {
+    document.querySelectorAll('.quiz-option').forEach(o => {
+      o.classList.remove('correct', 'wrong');
+    });
+    this.classList.add('correct');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+---
+import SpeciesLayout from '../../layouts/SpeciesLayout.astro';
+import { getEspecie } from '../../data/especies';
+
+const especie = getEspecie('porcinos')!;
+---
+
+<SpeciesLayout especie={especie}>
+
+<!-- 1. ANATOMÍA -->
+<section id="anatomia" class="content-section">
+  <div class="section-label">01</div>
+  <h2 class="section-title">Anatomía del aparato reproductivo</h2>
+  <p class="section-intro">El aparato reproductivo porcino está adaptado a una especie altamente prolífica, con útero bipartito de cuernos muy largos y sistema reproductivo masculino con gran volumen de eyaculado.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender">
+      <div class="info-card-label">Hembra — Cerda</div>
+      <h3>Aparato reproductor femenino</h3>
+      <ul>
+        <li><strong>Ovarios:</strong> lobulados por folículos prominentes; producen múltiples ovocitos por ciclo</li>
+        <li><strong>Útero bipartito:</strong> cuerpo corto y cuernos muy largos (1–1.5 m) para alojar numerosas crías</li>
+        <li><strong>Cérvix en sacacorchos:</strong> anillos interdigitados, sin apertura uterina definida; el semen se deposita directamente</li>
+        <li><strong>Vagina:</strong> relativamente corta, con vestíbulo y vulva prominente</li>
+        <li><strong>Mamas:</strong> 12–16 glándulas mamarias en dos filas; activas durante la lactancia (~3–4 semanas)</li>
+      </ul>
+    </div>
+    <div class="info-card accent-mint">
+      <div class="info-card-label">Macho — Verraco</div>
+      <h3>Aparato reproductor masculino</h3>
+      <ul>
+        <li><strong>Testículos:</strong> grandes, posicionados caudalmente; elevada producción espermática</li>
+        <li><strong>Epidídimo:</strong> almacén y maduración de espermatozoides; muy desarrollado</li>
+        <li><strong>Vesículas seminales:</strong> glándulas accesorias de gran tamaño que aportan el mayor volumen al eyaculado</li>
+        <li><strong>Pene fibro-elástico en sacacorchos:</strong> penetración cervical durante la cópula (20–30 min)</li>
+        <li><strong>Eyaculado:</strong> 150–500 ml; fracción rica en gel de vesículas seminales</li>
+      </ul>
+    </div>
+    <div class="info-card span-full reveal">
+      <div class="info-card-label">Placentación</div>
+      <h3>Placenta epiteliocorial difusa</h3>
+      <p>La cerda presenta placenta <strong>epiteliocorial difusa</strong>, el tipo menos invasivo. El trofoblasto se apoya sobre el epitelio uterino sin penetrarlo, estableciendo contacto a través de pliegues y microvellosidades en toda la superficie del corion. Esto explica por qué los anticuerpos maternos no pasan al feto en cerdas; los lechones nacen agammaglobulinémicos y dependen exclusivamente del calostro para adquirir inmunidad pasiva durante las primeras 24–36 horas de vida.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. FISIOLOGÍA -->
+<section id="fisiologia" class="content-section">
+  <div class="section-label">02</div>
+  <h2 class="section-title">Fisiología reproductiva de la cerda</h2>
+  <p class="section-intro">La cerda es <strong>poliéstrica continua</strong> con alta capacidad ovulatoria (10–25 ovocitos por ciclo). Su sistema reproductivo está especializado para la gestación múltiple y la lactancia intensiva.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card">
+      <div class="info-card-label">Pubertad</div>
+      <h3>5–8 meses de edad</h3>
+      <p>La pubertad en cerdas Landrace o Yorkshire ocurre entre los <strong>5–8 meses</strong>. La presencia del macho (efecto verraco) adelanta la pubertad por feromona androstenona hasta 3–4 semanas. Las cerdas de primer parto (primerizas) tienen menor tasa ovulatoria que las adultas.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Prolificidad</div>
+      <h3>Alta tasa ovulatoria</h3>
+      <p>La cerda ovula entre <strong>10 y 25 ovocitos</strong> por ciclo, aunque la capacidad uterina limita la supervivencia embrionaria a 10–14 lechones. La mortalidad embrionaria es del 30–40% en condiciones normales. Razas hiperprolíficas (Large White, Landrace) seleccionadas genéticamente superan los 14 lechones por parto.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Anestro de lactancia</div>
+      <h3>Supresión por amamantamiento</h3>
+      <p>Durante la lactancia, el amamantamiento frecuente inhibe los pulsos de LH. El destete induce el reinicio del ciclo en <strong>3–7 días</strong>. El intervalo destete–celo es el parámetro reproductivo más importante en la producción porcina intensiva.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Efecto verraco</div>
+      <h3>Feromonas y estimulación</h3>
+      <p>La exposición directa al verraco (contacto físico, olfación) estimula la secreción pulsátil de LH y puede adelantar el celo. La <strong>androstenona</strong> (feromona en saliva del verraco) es el principal estimulante. Fundamental en detección de celo y en el manejo de cerdas destetadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CICLO ESTRAL -->
+<section id="ciclo-estral" class="content-section">
+  <div class="section-label">03</div>
+  <h2 class="section-title">Ciclo estral porcino</h2>
+  <p class="section-intro">El ciclo estral de la cerda dura <strong>21 días</strong> (rango 18–24 días), con una fase de celo prolongada de 2–3 días. La <strong>regla de las 3</strong> en gestación (3 meses, 3 semanas, 3 días = 114 días) es una herramienta práctica para el manejo reproductivo.</p>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 17–21 — Proestro (2–3 días)</div>
+        <h4>Desarrollo folicular final</h4>
+        <p>Luteólisis por PGF2α → caída de P4 → incremento de FSH y pulsatilidad de LH → crecimiento acelerado de múltiples folículos preovulatorios → aumento de estrógenos → cambios de comportamiento.</p>
+        <div class="hormones"><span class="hormone-pill">↑ FSH</span><span class="hormone-pill">↑ E₂</span><span class="hormone-pill">↓ P4</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 0–2 — Estro (2–3 días)</div>
+        <h4>Celo prolongado — Reflejo de inmovilización</h4>
+        <p>La cerda adopta postura de inmovilización al presionar el dorso (<em>standing reflex</em>). Vulva edematosa y enrojecida. Moco vulvar. Pico de LH → ovulación 38–42 h después del inicio del celo. En cerdas en celo, el <strong>reflejo de inmovilización</strong> es positivo incluso sin verraco.</p>
+        <div class="hormones"><span class="hormone-pill">Pico LH</span><span class="hormone-pill">↑↑ E₂</span><span class="hormone-pill">Inmovilización</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 2–7 — Metaestro</div>
+        <h4>Ovulación múltiple y formación de CL</h4>
+        <p>Ovulación de múltiples folículos a lo largo de varias horas. Formación de múltiples cuerpos lúteos (10–15 CL). Inicio de producción de progesterona. Descenso del comportamiento de celo.</p>
+        <div class="hormones"><span class="hormone-pill">Ovulación múltiple</span><span class="hormone-pill">↑ P4</span><span class="hormone-pill">Múltiples CL</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 7–16 — Diestro</div>
+        <h4>Dominio luteínico</h4>
+        <p>P4 elevada mantiene el endometrio secretor. Si no hay gestación, el útero produce PGF2α entre los días 14–16, causando luteólisis de todos los CL simultáneamente. La cerda regresa al celo 5–7 días después.</p>
+        <div class="hormones"><span class="hormone-pill">↑↑ P4</span><span class="hormone-pill">CL activos</span><span class="hormone-pill">PGF2α día 14–16</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HORMONAS -->
+<section id="hormonas" class="content-section">
+  <div class="section-label">04</div>
+  <h2 class="section-title">Regulación hormonal</h2>
+  <p class="section-intro">La reproducción porcina se regula por el mismo eje HHG que en otras especies, con particularidades en la alta tasa ovulatoria y la importancia del factor uterino en la luteólisis.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card"><div class="info-card-label">GnRH</div><h3>Pulsos hipotalámicos</h3><p>Regula la secreción diferencial de FSH y LH. En el pico preovulatorio, la alta concentración de E₂ genera el pico de LH. En cerdas lecheras, la succión de los lechones inhibe la secreción pulsátil de GnRH → anestro de lactancia.</p></div>
+    <div class="info-card"><div class="info-card-label">FSH</div><h3>Reclutamiento múltiple</h3><p>Estimula el reclutamiento de la gran cohorte de folículos que caracteriza a la cerda. La inhibina folicular regula la FSH en feedback negativo, pero la respuesta ovulatoria es marcadamente superior a otras especies monoparas.</p></div>
+    <div class="info-card accent-lavender"><div class="info-card-label">Estrógenos</div><h3>Señal de reconocimiento fetal</h3><p>Además de inducir el celo, los estrógenos embrionarios (días 11–12) actúan como señal de reconocimiento materno en la cerda. Redirigen la secreción de PGF2α desde el sistema endocrino (hacia el ovario) al exocrino (hacia el lumen uterino), evitando la luteólisis.</p></div>
+    <div class="info-card accent-mint"><div class="info-card-label">Progesterona</div><h3>Mantenimiento de gestación</h3><p>Los múltiples CL producen altas concentraciones de P4 necesarias para mantener los numerosos embriones. La ovariectomía antes del día 12 provoca pérdida de gestación; después del día 12 la placenta comienza a complementar la producción de P4.</p></div>
+  </div>
+</section>
+
+<!-- 5. FERTILIZACIÓN -->
+<section id="fertilizacion" class="content-section">
+  <div class="section-label">05</div>
+  <h2 class="section-title">Fertilización y gestación</h2>
+  <p class="section-intro">La gestación porcina dura <strong>114 días</strong> (3 meses, 3 semanas y 3 días). La fertilización múltiple ocurre en el oviducto y la implantación es una de las más complejas entre los mamíferos domésticos.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card"><div class="info-card-label">Fertilización</div><h3>Oviducto y capacitación</h3><p>Los espermatozoides se capacitan en el tracto reproductor femenino (2–3 h). La fertilización ocurre en la unión útero-tubárica. El semen porcino no requiere de la zona pelúcida para la unión inicial; la <strong>zona pelúcida</strong> (ZP3) es el principal receptor de espermatozoides.</p></div>
+    <div class="info-card"><div class="info-card-label">Implantación</div><h3>Alargamiento trofoblástico explosivo</h3><p>El blastocisto porcino experimenta un <strong>alargamiento dramático</strong> del día 11 al 16: de 1 mm esférico a un filamento de 100–200 cm de longitud. Este alargamiento es necesario para ocupar todo el cuerno uterino y garantizar espacio para cada embrión.</p></div>
+    <div class="info-card"><div class="info-card-label">Reconocimiento materno</div><h3>Estrógenos embrionarios (día 11–12)</h3><p>La cerda es única: el reconocimiento materno de gestación se realiza mediante <strong>estrógenos</strong> (estradiol-17β y estrona) secretados por el trofoblasto, que redireccionan la PGF2α uterina al lumen uterino, bloqueando el acceso al ovario.</p></div>
+    <div class="info-card"><div class="info-card-label">Parto</div><h3>Parturición y orden de nacimiento</h3><p>El parto dura entre 1 y 6 horas. El feto activa el eje HPA → cortisol → caída de P4 → PGF2α → oxitocina → contracciones. Los lechones nacen en posición alternada desde ambos cuernos. Los últimos en nacer tienen mayor riesgo de hipoxia por compresión del cordón.</p></div>
+  </div>
+</section>
+
+<!-- 6. BIOTECNOLOGÍAS -->
+<section id="biotecnologias" class="content-section">
+  <div class="section-label">06</div>
+  <h2 class="section-title">Biotecnologías reproductivas</h2>
+  <p class="section-intro">La producción porcina intensiva depende en gran medida de la inseminación artificial. Más del <strong>90% de las cerdas</strong> en sistemas intensivos se inseminan artificialmente en países desarrollados.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender"><div class="info-card-label">IA Porcina</div><h3>Inseminación intrauterina</h3><p>La IA convencional deposita el semen en el cérvix (100–150 ml). La IA post-cervical o intrauterina deposita el semen directamente en el cuerpo uterino con catéteres especiales (20–50 ml), permitiendo usar <strong>dosis reducidas</strong> de semen sexado o de alta genética.</p></div>
+    <div class="info-card accent-mint"><div class="info-card-label">Sincronización</div><h3>Regu-Mate y manejo de lotes</h3><p>La <strong>altrenogest</strong> (progestágeno sintético oral, Regu-Mate) se administra 18 días para bloquear el ciclo y sincronizar el celo en lotes de cerdas. Tras la retirada, el celo aparece 4–6 días después en el 90% de los animales.</p></div>
+    <div class="info-card"><div class="info-card-label">Inducción del parto</div><h3>PGF2α y oxitocina</h3><p>La inducción del parto con <strong>cloprostenol</strong> (análogo PGF2α) permite programar los partos durante el horario laboral, reduciendo la mortalidad perinatal. Se aplica el día 113 de gestación; el parto ocurre 24–30 h después.</p></div>
+    <div class="info-card"><div class="info-card-label">Transferencia embrionaria</div><h3>TE y clonación</h3><p>La TE porcina es de uso limitado por la dificultad de recuperar embriones (técnica quirúrgica necesaria). La investigación en <strong>clonación</strong> y edición genómica (CRISPR) es activa en porcinos como modelo biomédico y para producción de órganos xenotrasplante.</p></div>
+  </div>
+</section>
+
+<!-- 7. COMPARATIVA -->
+<section id="comparativa" class="content-section">
+  <div class="section-label">07</div>
+  <h2 class="section-title">Porcinos vs otras especies</h2>
+
+  <div class="reveal">
+    <table class="compare-table">
+      <thead><tr><th>Parámetro</th><th>Porcinos</th><th>Bovinos</th><th>Ovinos</th><th>Caninos</th></tr></thead>
+      <tbody>
+        <tr><td>Gestación</td><td class="highlight">114 días</td><td>280 días</td><td>148 días</td><td>63 días</td></tr>
+        <tr><td>Ciclo estral</td><td class="highlight">21 días</td><td>21 días</td><td>17 días</td><td>Monoéstrico</td></tr>
+        <tr><td>Duración del celo</td><td class="highlight">2–3 días</td><td>12–18 h</td><td>24–36 h</td><td>9–21 días</td></tr>
+        <tr><td>Tasa ovulatoria</td><td class="highlight">10–25 ovocitos</td><td>1 ovocito</td><td>1–4 ovocitos</td><td>4–12 ovocitos</td></tr>
+        <tr><td>Tipo de placenta</td><td class="highlight">Epiteliocorial difusa</td><td>Siepiteliocorial</td><td>Siepiteliocorial</td><td>Endoteliocorial</td></tr>
+        <tr><td>Reconocimiento materno</td><td class="highlight">Estrógenos embrionarios</td><td>IFN-τ</td><td>IFN-τ</td><td>No definido</td></tr>
+        <tr><td>Prolificidad</td><td class="highlight">10–14 lechones</td><td>1 cría</td><td>1–3 crías</td><td>4–8 cachorros</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align:center;margin-top:24px"><a href="/comparativas?a=porcinos" class="btn-outline">Ver comparativa interactiva</a></div>
+</section>
+
+<!-- 8. GLOSARIO -->
+<section id="glosario-local" class="content-section">
+  <div class="section-label">08</div>
+  <h2 class="section-title">Glosario — Porcinos</h2>
+  <div class="glosario-list reveal">
+    <div class="glosario-item"><div class="glosario-term">Cérvix en sacacorchos</div><p class="glosario-def">Morfología cervical porcina con anillos interdigitados que permiten la retención del eyaculado. Determina la técnica de IA intracervical o post-cervical.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Reflejo de inmovilización</div><p class="glosario-def">Respuesta conductual de la cerda en celo que consiste en adoptar una postura rígida al presionar el dorso. Signo primario de celo utilizado para determinar el momento de la IA.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Androstenona</div><p class="glosario-def">Feromona esteroide presente en la saliva del verraco que estimula el reflejo de inmovilización y acelera la pubertad en hembras jóvenes (efecto verraco).</p></div>
+    <div class="glosario-item"><div class="glosario-term">Altrenogest (Regu-Mate)</div><p class="glosario-def">Progestágeno sintético oral usado para sincronizar el celo en cerdas. Suprime el ciclo durante 18 días; el celo ocurre 4–6 días tras la retirada.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Intervalo destete–celo</div><p class="glosario-def">Parámetro reproductivo clave en producción porcina. Tiempo entre el destete de los lechones y el inicio del siguiente celo. Normal: 3–7 días en cerdas adultas bien nutridas.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Trofoblasto elongado</div><p class="glosario-def">Transformación dramática del blastocisto porcino entre días 11–16, de 1 mm a 100–200 cm. Necesario para el reconocimiento materno y la implantación distribuida en los cuernos uterinos.</p></div>
+  </div>
+</section>
+
+<!-- 9. RECURSOS -->
+<section id="recursos" class="content-section">
+  <div class="section-label">09</div>
+  <h2 class="section-title">Recursos de aprendizaje</h2>
+  <div class="recursos-grid">
+    <div class="recurso-card reveal d1">
+      <div class="recurso-icon lav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <div class="recurso-body"><div class="recurso-type">Libro de texto</div><div class="recurso-title">Reproducción en cerdas: fisiología y manejo</div><p class="recurso-desc">Colenbrander & Kemp. Capítulos sobre ciclo estral, gestación y biotecnologías en porcinos.</p><div class="recurso-meta"><span>Lectura 40 min</span><span>Referencia</span></div></div>
+    </div>
+    <div class="recurso-card reveal d2">
+      <div class="recurso-icon mnt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+      <div class="recurso-body"><div class="recurso-type">Video educativo</div><div class="recurso-title">Inseminación artificial porcina — Técnica intracervical y post-cervical</div><p class="recurso-desc">Demostración práctica de las dos técnicas de IA con evaluación del semen y deposición.</p><div class="recurso-meta"><span>22 min</span><span>Técnica práctica</span></div></div>
+    </div>
+    <div class="recurso-card reveal d3">
+      <div class="recurso-icon lav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="recurso-body"><div class="recurso-type">Artículo científico</div><div class="recurso-title">Reconocimiento materno de gestación en la cerda</div><p class="recurso-desc">Mecanismo de señalización por estrógenos embrionarios y reorientación de PGF2α. Revisión molecular.</p><div class="recurso-meta"><span>Lectura 25 min</span><span>Artículo revisado</span></div></div>
+    </div>
+    <div class="recurso-card reveal d4">
+      <div class="recurso-icon mnt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <div class="recurso-body"><div class="recurso-type">Guía práctica</div><div class="recurso-title">Manejo del intervalo destete–celo en granjas intensivas</div><p class="recurso-desc">Factores nutricionales, condición corporal y manejo que afectan el IDC. Estrategias de mejora.</p><div class="recurso-meta"><span>Lectura 15 min</span><span>Producción</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. QUIZ -->
+<section id="quiz" class="content-section">
+  <div class="section-label">10</div>
+  <h2 class="section-title">Evalúa tu aprendizaje</h2>
+  <div class="quiz-block reveal">
+    <div class="quiz-progress"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:20%"></div></div><span class="progress-label">1 / 5 preguntas</span></div>
+    <div class="quiz-question">¿Cuál es la señal molecular de reconocimiento materno de gestación en la cerda?</div>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">A</div>Interferón tau (IFN-τ)</div>
+      <div class="quiz-option" data-correct="true"><div class="opt-letter">B</div>Estrógenos embrionarios (estradiol-17β)</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">C</div>Progesterona placentaria</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">D</div>Gonadotropina coriónica (eCG)</div>
+    </div>
+  </div>
+</section>
+
+</SpeciesLayout>
+
+<style>
+.content-section { margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--oat-light); }
+.content-section:last-child { border-bottom: none; }
+.glosario-list { display: flex; flex-direction: column; }
+.glosario-item { padding: 20px 0; border-bottom: 1px solid var(--oat-light); display: flex; gap: 32px; align-items: baseline; }
+.glosario-item:last-child { border-bottom: none; }
+.glosario-term { font-size: 17px; font-weight: 700; color: var(--lavender); min-width: 200px; flex-shrink: 0; }
+.glosario-def  { font-size: 14px; line-height: 1.7; color: var(--ink-mid); }
+@media (max-width: 768px) { .glosario-item { flex-direction: column; gap: 8px; } .glosario-term { min-width: unset; } }
+</style>
+
+<script>
+document.querySelectorAll('.quiz-option').forEach(opt => {
+  opt.addEventListener('click', function(this: HTMLElement) {
+    document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'wrong'));
+    const isCorrect = this.dataset.correct === 'true';
+    this.classList.add(isCorrect ? 'correct' : 'wrong');
+    if (!isCorrect) { const c = document.querySelector('.quiz-option[data-correct="true"]'); if (c) c.classList.add('correct'); }
+  });
+});
+</script>

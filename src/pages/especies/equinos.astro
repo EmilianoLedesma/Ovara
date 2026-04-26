@@ -1,0 +1,251 @@
+---
+import SpeciesLayout from '../../layouts/SpeciesLayout.astro';
+import { getEspecie } from '../../data/especies';
+
+const especie = getEspecie('equinos')!;
+---
+
+<SpeciesLayout especie={especie}>
+
+<!-- 1. ANATOMÍA -->
+<section id="anatomia" class="content-section">
+  <div class="section-label">01</div>
+  <h2 class="section-title">Anatomía del aparato reproductivo</h2>
+  <p class="section-intro">El aparato reproductivo equino presenta características únicas como el útero con cuernos relativamente cortos, la duración prolongada del celo y un sistema de reproducción adaptado a la estacionalidad.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender">
+      <div class="info-card-label">Yegua</div>
+      <h3>Aparato reproductor femenino</h3>
+      <ul>
+        <li><strong>Ovarios:</strong> grandes (6–8 cm), con fosa de ovulación; solo ovulan en la fosa ovárica</li>
+        <li><strong>Oviductos:</strong> 20–30 cm; la unión útero-tubárica es selectiva para espermatozoides</li>
+        <li><strong>Útero bicornual:</strong> cuernos de 25 cm, cuerpo de 18–20 cm; forma de T en sección</li>
+        <li><strong>Cérvix:</strong> 5–7 cm; edematoso y relajado durante el celo; cerrado en diestro y gestación</li>
+        <li><strong>Vagina:</strong> 15–20 cm; vulva con sello perineal importante contra aerovaginitis</li>
+      </ul>
+    </div>
+    <div class="info-card accent-mint">
+      <div class="info-card-label">Semental</div>
+      <h3>Aparato reproductor masculino</h3>
+      <ul>
+        <li><strong>Testículos:</strong> ovoides horizontales en escroto; producción de 6–10 mil mill. espermatozoides/día</li>
+        <li><strong>Epidídimo:</strong> reserva espermática; tránsito de 8–11 días</li>
+        <li><strong>Vesículas seminales:</strong> grandes; producen fructosa como sustrato energético</li>
+        <li><strong>Pene musculocavernoso:</strong> erección por engurgitamiento vascular; prepucio con esmegma</li>
+        <li><strong>Eyaculado:</strong> 50–150 ml con fracción gelatinosa de vesículas seminales</li>
+      </ul>
+    </div>
+    <div class="info-card span-full reveal">
+      <div class="info-card-label">Placentación</div>
+      <h3>Placenta epiteliocorial difusa microcotiledónea</h3>
+      <p>La yegua presenta una placenta <strong>epiteliocorial difusa</strong> (sin placentomas), con microvilli distribuidos en casi toda la superficie del corion-alantoides. Las estructuras especializadas denominadas <strong>copas endometriales</strong> (días 35–150) producen eCG (Gonadotropina Coriónica Equina), que estimula los ovarios maternos para producir progesterona suplementaria. Esta es una característica exclusiva de los équidos y es fundamental en el mantenimiento temprano de la gestación.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. FISIOLOGÍA -->
+<section id="fisiologia" class="content-section">
+  <div class="section-label">02</div>
+  <h2 class="section-title">Fisiología reproductiva de la yegua</h2>
+  <p class="section-intro">La yegua es <strong>poliéstrica estacional de días largos</strong>. Su actividad reproductiva se concentra en primavera-verano (hemisferio norte: marzo–octubre), regulada principalmente por el fotoperiodo a través de la glándula pineal y la melatonina.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card">
+      <div class="info-card-label">Estacionalidad</div>
+      <h3>Días largos → actividad reproductiva</h3>
+      <p>El incremento de horas luz estimula la reducción de melatonina pineal → activación del eje HHG. En invierno (días cortos), la yegua entra en anestro estacional profundo. La transición primaveral se caracteriza por ciclos irregulares de duración variable.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Ovulación</div>
+      <h3>Fosa ovárica exclusiva</h3>
+      <p>A diferencia de otras especies, los ovarios equinos solo liberan ovocitos por la <strong>fosa de ovulación</strong> (depresión en el borde libre del ovario). La ovulación ocurre al final del celo (24–48 h antes del fin). La palpación rectal y la ecografía son herramientas esenciales para predecir la ovulación.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Celo de potro</div>
+      <h3>Primer celo posparto</h3>
+      <p>La yegua puede presentar el <strong>celo del potro</strong> (foal heat) entre los días 5–12 posparto. Aunque es fértil, la tasa de gestación es menor por involución uterina incompleta. En cría de caballos de carrera, se utiliza para acortar el intervalo entre partos.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Gestación prolongada</div>
+      <h3>340 días de gestación</h3>
+      <p>La yegua tiene una de las gestaciones más largas entre los animales domésticos (~11 meses). La duración varía según raza (ponis más cortos), sexo del potro (machos ~2 días más), época del año y condición corporal. El potro nace altamente desarrollado (precocial).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CICLO ESTRAL -->
+<section id="ciclo-estral" class="content-section">
+  <div class="section-label">03</div>
+  <h2 class="section-title">Ciclo estral equino</h2>
+  <p class="section-intro">El ciclo estral de la yegua dura <strong>21 días</strong>, con una fase de celo excepcionalmente larga de <strong>5–7 días</strong>. La ovulación ocurre al final del celo, lo que requiere un manejo preciso del momento de la IA.</p>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 15–21 — Proestro (2–3 días)</div>
+        <h4>Crecimiento folicular y regresión del CL</h4>
+        <p>PGF2α luteolítica → caída de P4 → crecimiento del folículo preovulatorio → incremento de E₂. Cérvix comienza a relajarse. Inicio de cambios conductuales.</p>
+        <div class="hormones"><span class="hormone-pill">↑ E₂</span><span class="hormone-pill">↓ P4</span><span class="hormone-pill">PGF2α</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 0–6 — Estro (5–7 días)</div>
+        <h4>Celo prolongado — Ovulación al final</h4>
+        <p>La yegua acepta al semental. Edema uterino visible por ecografía (imagen en "rodajas de naranja"). Folículo preovulatorio ≥35 mm. Pico de LH → ovulación <strong>24–48 h antes del fin del celo</strong>. El hCG o deslorelina se usan para inducir ovulación a las 36–48 h.</p>
+        <div class="hormones"><span class="hormone-pill">Pico LH</span><span class="hormone-pill">↑↑ E₂</span><span class="hormone-pill">Edema uterino</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 6–8 — Metaestro</div>
+        <h4>Ovulación y luteinización</h4>
+        <p>Formación del CL primario. La yegua puede tener doble ovulación (yeguas >10 años: hasta 25% de ciclos), aumentando el riesgo de gestación gemelar. El CL produce P4 desde las 24–48 h post-ovulación.</p>
+        <div class="hormones"><span class="hormone-pill">Formación CL</span><span class="hormone-pill">↑ P4</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 8–15 — Diestro</div>
+        <h4>Fase luteínica</h4>
+        <p>P4 inhibe el celo y prepara el endometrio. El CL equino es sensible a PGF2α desde el día 6. La luteólisis endógena ocurre días 14–15. En gestación, el embrión suprime la PGF2α por movilización en el útero (días 6–16).</p>
+        <div class="hormones"><span class="hormone-pill">↑↑ P4</span><span class="hormone-pill">CL activo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HORMONAS -->
+<section id="hormonas" class="content-section">
+  <div class="section-label">04</div>
+  <h2 class="section-title">Regulación hormonal</h2>
+  <p class="section-intro">La equina tiene particularidades hormonales únicas: la producción de eCG por las copas endometriales y la importancia de la progestina uterina (dihidroprogesterona) en la gestación avanzada.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card"><div class="info-card-label">Melatonina</div><h3>Regulador estacional</h3><p>La glándula pineal secreta melatonina durante la oscuridad. Días cortos → melatonina alta → supresión del eje HHG → anestro. Días largos → melatonina baja → activación reproductiva. El <strong>fotoestimulación artificial</strong> (16 h luz desde diciembre) adelanta la temporada reproductiva.</p></div>
+    <div class="info-card"><div class="info-card-label">eCG (PMSG)</div><h3>Gonadotropina coriónica equina</h3><p>Producida por las <strong>copas endometriales</strong> (días 35–150 de gestación). Actúa como LH/FSH en otras especies. Tiene larga vida media. Persiste en circulación materna incluso tras muerte embrionaria. Se usa experimentalmente en otras especies para superovulación.</p></div>
+    <div class="info-card accent-lavender"><div class="info-card-label">hCG / Deslorelina</div><h3>Inductores de ovulación</h3><p>La <strong>hCG</strong> (gonadotropina coriónica humana) y la <strong>deslorelina</strong> (análogo GnRH de larga acción) se usan para inducir la ovulación 36–48 h post-tratamiento cuando el folículo ≥35 mm. Permiten programar la IA en semen refrigerado de corta viabilidad.</p></div>
+    <div class="info-card accent-mint"><div class="info-card-label">Progestinas placentarias</div><h3>Gestación avanzada</h3><p>Después del día 70–90, la placenta equina produce <strong>progestinas</strong> (5α-pregnanos) que complementan y luego reemplazan la progesterona ovárica. Estas progestinas no son detectadas por los métodos de radioinmunoanálisis convencionales para P4, generando lecturas bajas en suero que no reflejan el estado gestacional real.</p></div>
+  </div>
+</section>
+
+<!-- 5. FERTILIZACIÓN -->
+<section id="fertilizacion" class="content-section">
+  <div class="section-label">05</div>
+  <h2 class="section-title">Fertilización y gestación</h2>
+  <p class="section-intro">La gestación equina dura <strong>340 días</strong> (~11 meses). El reconocimiento materno es único: depende de la movilidad embrionaria para suprimir la luteólisis.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card"><div class="info-card-label">Reconocimiento materno</div><h3>Movilización embrionaria (días 6–16)</h3><p>El embrión equino se moviliza activamente por el útero, recorriendo entre 8 y 12 cm/min. Este movimiento suprime mecánicamente la producción de PGF2α por el endometrio. Es el único mecanismo documentado de reconocimiento materno por movilidad física en mamíferos domésticos.</p></div>
+    <div class="info-card"><div class="info-card-label">Fijación</div><h3>Día 16–17</h3><p>El embrión se fija en la unión cuerno-cuerpo uterino. La cápsula embrionaria (glicoproteína) rodea al blastocisto hasta el día 22. Tras la fijación, las copas endometriales comienzan a desarrollarse (día 25–35) a partir de células del trofoblasto que invaden el endometrio.</p></div>
+    <div class="info-card"><div class="info-card-label">Gemelos</div><h3>Problema clínico importante</h3><p>La gestación gemelar en yeguas presenta alta mortalidad fetal y materna. El diagnóstico ecográfico temprano (día 14–16) permite la reducción manual de uno de los embriones. Yeguas con tendencia a doble ovulación deben monitorearse de cerca durante el celo.</p></div>
+    <div class="info-card"><div class="info-card-label">Parto</div><h3>Parturición rápida y alerta</h3><p>El parto equino es muy rápido (20–30 min en fase de expulsión). El potro debe nacer en <strong>posición anterior, dorsal y extendida</strong>. La expulsión de placenta ocurre en máximo 3 horas; la retención es urgencia médica. El potro debe mamar calostro dentro de las primeras 2 horas.</p></div>
+  </div>
+</section>
+
+<!-- 6. BIOTECNOLOGÍAS -->
+<section id="biotecnologias" class="content-section">
+  <div class="section-label">06</div>
+  <h2 class="section-title">Biotecnologías reproductivas</h2>
+  <p class="section-intro">La transferencia embrionaria es la biotecnología más usada en equinos de alto valor genético. La IA es estándar, aunque muchas razas de registro solo permiten monta natural.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender"><div class="info-card-label">IA Equina</div><h3>Semen refrigerado e inseminación</h3><p>La IA con semen <strong>refrigerado</strong> (24–48 h de viabilidad, 4–5°C) es ampliamente usada. El semen <strong>congelado</strong> tiene menor fertilidad (30–50%) por sensibilidad al crioprotector. La IA debe realizarse cerca del momento de ovulación (semen congelado: post-ovulación; refrigerado: pre-ovulación).</p></div>
+    <div class="info-card accent-mint"><div class="info-card-label">TE Equina</div><h3>Transferencia no quirúrgica</h3><p>La TE equina se realiza al día 7–8 post-ovulación. La donante recibe monta/IA; el embrión se recolecta con lavado uterino y se transfiere a la receptora (no quirúrgica, por vía transcervical). Una yegua donante puede producir 4–6 embriones/año manteniendo su actividad deportiva.</p></div>
+    <div class="info-card"><div class="info-card-label">OPU + ICSI</div><h3>Inyección intracitoplásmica de espermatozoide</h3><p>La OPU (aspiración folicular transvaginal) permite recolectar ovocitos de yeguas valiosas varias veces por semana. La ICSI (inyección de un espermatozoide en el ovocito) permite usar semen de sementales fallecidos o con baja motilidad. La producción de blastocistos es del 30–40%.</p></div>
+    <div class="info-card"><div class="info-card-label">Fotoestimulación</div><h3>Adelantar la temporada reproductiva</h3><p>Exposición a <strong>16 horas de luz artificial</strong> desde diciembre–enero reduce la melatonina, activando el eje HHG 60–90 días antes que el fotoperiodo natural. Permite tener yeguas ciclando en temporada oficial de registro (1 enero) en el hemisferio norte.</p></div>
+  </div>
+</section>
+
+<!-- 7. COMPARATIVA -->
+<section id="comparativa" class="content-section">
+  <div class="section-label">07</div>
+  <h2 class="section-title">Equinos vs otras especies</h2>
+
+  <div class="reveal">
+    <table class="compare-table">
+      <thead><tr><th>Parámetro</th><th>Equinos</th><th>Bovinos</th><th>Ovinos</th><th>Caninos</th></tr></thead>
+      <tbody>
+        <tr><td>Gestación</td><td class="highlight">340 días</td><td>280 días</td><td>148 días</td><td>63 días</td></tr>
+        <tr><td>Ciclo estral</td><td class="highlight">21 días</td><td>21 días</td><td>17 días</td><td>Monoéstrico</td></tr>
+        <tr><td>Duración del celo</td><td class="highlight">5–7 días</td><td>12–18 h</td><td>24–36 h</td><td>9–21 días</td></tr>
+        <tr><td>Estacionalidad</td><td class="highlight">Días largos</td><td>Continua</td><td>Días cortos</td><td>Días largos</td></tr>
+        <tr><td>Reconocimiento materno</td><td class="highlight">Movilidad embrionaria</td><td>IFN-τ</td><td>IFN-τ</td><td>No definido</td></tr>
+        <tr><td>Tipo de placenta</td><td class="highlight">Epiteliocorial difusa</td><td>Siepiteliocorial</td><td>Siepiteliocorial</td><td>Endoteliocorial</td></tr>
+        <tr><td>Producción de eCG</td><td class="highlight">Sí (copas endometriales)</td><td>No</td><td>No</td><td>No</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align:center;margin-top:24px"><a href="/comparativas?a=equinos" class="btn-outline">Ver comparativa interactiva</a></div>
+</section>
+
+<!-- 8. GLOSARIO -->
+<section id="glosario-local" class="content-section">
+  <div class="section-label">08</div>
+  <h2 class="section-title">Glosario — Equinos</h2>
+  <div class="glosario-list reveal">
+    <div class="glosario-item"><div class="glosario-term">Copas endometriales</div><p class="glosario-def">Estructuras transitorias (días 35–150) formadas por células del trofoblasto que invaden el endometrio equino. Producen eCG (PMSG) para sostener la gestación temprana.</p></div>
+    <div class="glosario-item"><div class="glosario-term">eCG (PMSG)</div><p class="glosario-def">Gonadotropina coriónica equina. Producida por copas endometriales. Actúa como LH/FSH en otras especies. Base de la superovulación en pequeños rumiantes y bovinos.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Fosa de ovulación</div><p class="glosario-def">Depresión en el borde libre del ovario equino. Único sitio donde ocurre la ovulación en yeguas, a diferencia de otras especies donde puede ocurrir en cualquier parte del ovario.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Edema uterino</div><p class="glosario-def">Patrón ecográfico característico del útero de la yegua en celo. Aparece como imagen en "rodajas de naranja" por acumulación de fluido intersticial. Indica actividad estrogénica alta.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Deslorelina</div><p class="glosario-def">Análogo de GnRH de acción prolongada (implante subcutáneo) usado para inducir la ovulación en yeguas. Actúa 36–42 h post-implante cuando el folículo ≥35 mm.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Anestro estacional</div><p class="glosario-def">Período de inactividad ovárica durante los meses de días cortos. El eje HHG está suprimido por la alta melatonina pineal. Puede interrumpirse con fotoestimulación artificial.</p></div>
+  </div>
+</section>
+
+<!-- 9. RECURSOS -->
+<section id="recursos" class="content-section">
+  <div class="section-label">09</div>
+  <h2 class="section-title">Recursos de aprendizaje</h2>
+  <div class="recursos-grid">
+    <div class="recurso-card reveal d1"><div class="recurso-icon lav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="recurso-body"><div class="recurso-type">Libro de texto</div><div class="recurso-title">Equine Reproduction — McKinnon & Voss</div><p class="recurso-desc">Referencia estándar en reproducción equina. Capítulos sobre ciclo estral, TE, ICSI y manejo de la yegua gestante.</p><div class="recurso-meta"><span>Lectura 60 min</span><span>Referencia avanzada</span></div></div></div>
+    <div class="recurso-card reveal d2"><div class="recurso-icon mnt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div><div class="recurso-body"><div class="recurso-type">Video educativo</div><div class="recurso-title">Ecografía reproductiva en yeguas — Monitoreo folicular</div><p class="recurso-desc">Técnica de ultrasonografía transrectal para seguimiento folicular, detección de edema uterino y diagnóstico de gestación temprana.</p><div class="recurso-meta"><span>25 min</span><span>Práctica diagnóstica</span></div></div></div>
+    <div class="recurso-card reveal d3"><div class="recurso-icon lav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="recurso-body"><div class="recurso-type">Artículo científico</div><div class="recurso-title">Reconocimiento materno de gestación en équidos</div><p class="recurso-desc">Mecanismo de movilización embrionaria y supresión de PGF2α. Comparación con bovinos y ovinos.</p><div class="recurso-meta"><span>Lectura 20 min</span><span>Artículo revisado</span></div></div></div>
+    <div class="recurso-card reveal d4"><div class="recurso-icon mnt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="recurso-body"><div class="recurso-type">Guía práctica</div><div class="recurso-title">Protocolo de TE no quirúrgica en equinos</div><p class="recurso-desc">Paso a paso del lavado uterino, evaluación y transferencia de embriones equinos en campo.</p><div class="recurso-meta"><span>Lectura 18 min</span><span>Procedimiento clínico</span></div></div></div>
+  </div>
+</section>
+
+<!-- 10. QUIZ -->
+<section id="quiz" class="content-section">
+  <div class="section-label">10</div>
+  <h2 class="section-title">Evalúa tu aprendizaje</h2>
+  <div class="quiz-block reveal">
+    <div class="quiz-progress"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:20%"></div></div><span class="progress-label">1 / 5 preguntas</span></div>
+    <div class="quiz-question">¿Cuál es el mecanismo de reconocimiento materno de gestación en la yegua?</div>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">A</div>Interferón tau (IFN-τ) embrionario</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">B</div>Estrógenos producidos por el trofoblasto</div>
+      <div class="quiz-option" data-correct="true"><div class="opt-letter">C</div>Movilización activa del embrión por el útero</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">D</div>Producción de eCG por las copas endometriales</div>
+    </div>
+  </div>
+</section>
+
+</SpeciesLayout>
+
+<style>
+.content-section { margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--oat-light); }
+.content-section:last-child { border-bottom: none; }
+.glosario-list { display: flex; flex-direction: column; }
+.glosario-item { padding: 20px 0; border-bottom: 1px solid var(--oat-light); display: flex; gap: 32px; align-items: baseline; }
+.glosario-item:last-child { border-bottom: none; }
+.glosario-term { font-size: 17px; font-weight: 700; color: var(--lavender); min-width: 200px; flex-shrink: 0; }
+.glosario-def  { font-size: 14px; line-height: 1.7; color: var(--ink-mid); }
+@media (max-width: 768px) { .glosario-item { flex-direction: column; gap: 8px; } .glosario-term { min-width: unset; } }
+</style>
+
+<script>
+document.querySelectorAll('.quiz-option').forEach(opt => {
+  opt.addEventListener('click', function(this: HTMLElement) {
+    document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'wrong'));
+    const isCorrect = this.dataset.correct === 'true';
+    this.classList.add(isCorrect ? 'correct' : 'wrong');
+    if (!isCorrect) { const c = document.querySelector('.quiz-option[data-correct="true"]'); if (c) c.classList.add('correct'); }
+  });
+});
+</script>

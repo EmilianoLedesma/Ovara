@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ovara — Mockup Home</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, -apple-system, sans-serif; background: #fdf9ff; color: #2d1b4e; }
+
+  /* NAV */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 48px; background: #fff;
+    border-bottom: 1px solid rgba(155,114,208,0.15);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, #9b72d0, #56c596);
+    border-radius: 9px;
+  }
+  .logo-text { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; color: #2d1b4e; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: #6b3fa0;
+    text-decoration: none; opacity: 0.8;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    padding: 7px 18px; background: #56c596; color: #fff;
+    border-radius: 9999px; font-size: 13px; font-weight: 700;
+    text-decoration: none; letter-spacing: 0.1px;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center; padding: 80px 48px 60px;
+    background: linear-gradient(180deg, #fdf9ff 0%, #f4eeff 60%, #edfbf4 100%);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #f0e8ff; color: #9b72d0;
+    padding: 5px 14px; border-radius: 9999px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+    margin-bottom: 24px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: #9b72d0; border-radius: 50%; }
+  h1 {
+    font-size: 56px; font-weight: 800; line-height: 1.05;
+    letter-spacing: -2px; color: #2d1b4e; margin-bottom: 18px;
+  }
+  h1 em { font-style: normal; color: #56c596; }
+  .hero-sub {
+    font-size: 18px; color: #6b3fa0; opacity: 0.8;
+    max-width: 520px; margin: 0 auto 36px; line-height: 1.6;
+  }
+  .hero-actions { display: flex; gap: 12px; justify-content: center; }
+  .btn-primary {
+    padding: 12px 28px; background: linear-gradient(135deg, #9b72d0, #c8a8f0);
+    color: #fff; border-radius: 10px; font-size: 15px; font-weight: 700;
+    text-decoration: none; box-shadow: 0 4px 20px rgba(155,114,208,0.3);
+  }
+  .btn-secondary {
+    padding: 12px 28px; background: #fff;
+    color: #2d1b4e; border-radius: 10px; font-size: 15px; font-weight: 600;
+    text-decoration: none; border: 1px solid rgba(155,114,208,0.25);
+  }
+
+  /* SPECIES SECTION */
+  .species-section { padding: 64px 48px; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+    color: #56c596; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 32px; font-weight: 800; letter-spacing: -0.8px;
+    color: #2d1b4e; margin-bottom: 36px;
+  }
+  .species-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .species-card {
+    background: #fff; border-radius: 16px;
+    border: 1px solid rgba(155,114,208,0.15);
+    box-shadow: 0 2px 12px rgba(155,114,208,0.07), 0 1px 3px rgba(155,114,208,0.05);
+    overflow: hidden; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .species-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(155,114,208,0.15);
+  }
+  .card-img {
+    height: 140px; display: flex; align-items: center; justify-content: center;
+    font-size: 52px; position: relative; overflow: hidden;
+  }
+  .card-img.bovino  { background: linear-gradient(135deg, #f0e8ff, #e8fff4); }
+  .card-img.porcino { background: linear-gradient(135deg, #fce8ff, #f0e8ff); }
+  .card-img.equino  { background: linear-gradient(135deg, #e8fff4, #f0e8ff); }
+  .card-img.canino  { background: linear-gradient(135deg, #e8f4ff, #e8fff4); }
+  .card-img.felino  { background: linear-gradient(135deg, #fff4e8, #f0e8ff); }
+  .card-img.ovino   { background: linear-gradient(135deg, #e8fff4, #fce8ff); }
+  .card-body { padding: 18px 20px 20px; }
+  .card-body h3 { font-size: 17px; font-weight: 700; color: #2d1b4e; margin-bottom: 5px; }
+  .card-body p  { font-size: 13px; color: #8a6bb0; line-height: 1.5; margin-bottom: 12px; }
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px; font-weight: 600; padding: 3px 9px;
+    border-radius: 9999px; background: #f0e8ff; color: #9b72d0;
+  }
+  .tag.mint { background: #e8fff4; color: #2d6a4f; }
+
+  /* FEATURES STRIP */
+  .features {
+    background: linear-gradient(135deg, #f4eeff, #edfbf4);
+    padding: 48px; display: flex; gap: 0; border-top: 1px solid rgba(155,114,208,0.1);
+    border-bottom: 1px solid rgba(155,114,208,0.1);
+  }
+  .feature { flex: 1; text-align: center; padding: 16px 24px; }
+  .feature + .feature { border-left: 1px solid rgba(155,114,208,0.15); }
+  .feature-icon {
+    width: 44px; height: 44px; margin: 0 auto 12px;
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .feature-icon.purple { background: #f0e8ff; }
+  .feature-icon.mint   { background: #e8fff4; }
+  .feature h4 { font-size: 14px; font-weight: 700; color: #2d1b4e; margin-bottom: 4px; }
+  .feature p  { font-size: 12px; color: #8a6bb0; line-height: 1.5; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 32px 48px;
+    background: #2d1b4e; color: rgba(255,255,255,0.5);
+    font-size: 13px;
+  }
+  footer strong { color: #c8a8f0; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-mark"></div>
+    <span class="logo-text">Ovara</span>
+  </div>
+  <div class="nav-links">
+    <a href="#">Especies</a>
+    <a href="#">Comparar</a>
+    <a href="#">Glosario</a>
+    <a href="#">Acerca de</a>
+    <a href="#" class="nav-cta">Explorar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span></span> Material didáctico universitario</div>
+  <h1>Reproducción animal,<br>explicada con <em>claridad</em></h1>
+  <p class="hero-sub">Plataforma educativa sobre reproducción en animales domésticos. Imágenes, videos, líneas de tiempo y evaluaciones interactivas.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn-primary">Explorar especies</a>
+    <a href="#" class="btn-secondary">Ver glosario</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="features">
+  <div class="feature">
+    <div class="feature-icon purple">🔬</div>
+    <h4>6 especies</h4>
+    <p>Bovinos, porcinos, equinos, caninos, felinos y ovinos</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon mint">⚖️</div>
+    <h4>Comparativas</h4>
+    <p>Compara sistemas reproductores entre especies</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon purple">📋</div>
+    <h4>Evaluaciones</h4>
+    <p>Quizzes interactivos con retroalimentación inmediata</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon mint">🕐</div>
+    <h4>Líneas de tiempo</h4>
+    <p>Ciclos reproductivos animados e interactivos</p>
+  </div>
+</div>
+
+<!-- SPECIES GRID -->
+<section class="species-section">
+  <p class="section-label">Elige una especie</p>
+  <h2 class="section-title">¿Por dónde quieres empezar?</h2>
+  <div class="species-grid">
+
+    <div class="species-card">
+      <div class="card-img bovino">🐄</div>
+      <div class="card-body">
+        <h3>Bovinos</h3>
+        <p>Ciclo estral, anatomía reproductiva, gestación y parto en ganado bovino.</p>
+        <div class="card-tags">
+          <span class="tag">Quiz</span>
+          <span class="tag mint">Línea de tiempo</span>
+          <span class="tag">Galería</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="species-card">
+      <div class="card-img porcino">🐖</div>
+      <div class="card-body">
+        <h3>Porcinos</h3>
+        <p>Reproducción porcina, manejo reproductivo e inseminación artificial.</p>
+        <div class="card-tags">
+          <span class="tag">Quiz</span>
+          <span class="tag mint">Línea de tiempo</span>
+          <span class="tag">Videos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="species-card">
+      <div class="card-img equino">🐴</div>
+      <div class="card-body">
+        <h3>Equinos</h3>
+        <p>Fisiología reproductiva equina, estacionalidad y técnicas de reproducción.</p>
+        <div class="card-tags">
+          <span class="tag">Quiz</span>
+          <span class="tag mint">Comparar</span>
+          <span class="tag">Galería</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="species-card">
+      <div class="card-img canino">🐕</div>
+      <div class="card-body">
+        <h3>Caninos</h3>
+        <p>Ciclo reproductivo canino, gestación, lactancia y neonatología.</p>
+        <div class="card-tags">
+          <span class="tag">Quiz</span>
+          <span class="tag mint">Línea de tiempo</span>
+          <span class="tag">Videos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="species-card">
+      <div class="card-img felino">🐈</div>
+      <div class="card-body">
+        <h3>Felinos</h3>
+        <p>Ovulación inducida, comportamiento reproductivo y gestación felina.</p>
+        <div class="card-tags">
+          <span class="tag">Quiz</span>
+          <span class="tag mint">Comparar</span>
+          <span class="tag">Galería</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="species-card">
+      <div class="card-img ovino">🐑</div>
+      <div class="card-body">
+        <h3>Ovinos</h3>
+        <p>Estacionalidad reproductiva, ciclo estral y manejo de rebaños ovinos.</p>
+        <div class="card-tags">
+          <span class="tag">Quiz</span>
+          <span class="tag mint">Línea de tiempo</span>
+          <span class="tag">Videos</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Ovara</strong> — Plataforma educativa de reproducción animal · Material generado en curso universitario
+</footer>
+
+</body>
+</html>

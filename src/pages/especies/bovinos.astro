@@ -1,0 +1,391 @@
+---
+import SpeciesLayout from '../../layouts/SpeciesLayout.astro';
+import { getEspecie } from '../../data/especies';
+
+const especie = getEspecie('bovinos')!;
+---
+
+<SpeciesLayout especie={especie}>
+
+<!-- 1. ANATOMÍA -->
+<section id="anatomia" class="content-section">
+  <div class="section-label">01</div>
+  <h2 class="section-title">Anatomía del aparato reproductivo</h2>
+  <p class="section-intro">El aparato reproductivo bovino presenta estructuras altamente especializadas tanto en la hembra como en el macho, adaptadas a la fisiología de una especie con ovulación espontánea y gestación prolongada.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender">
+      <div class="info-card-label">Hembra</div>
+      <h3>Aparato reproductor femenino</h3>
+      <ul>
+        <li><strong>Ovarios:</strong> 2–4 cm, productores de ovocitos y hormonas esteroideas</li>
+        <li><strong>Oviducto:</strong> transporta el ovocito; lugar de fertilización en la ampolla</li>
+        <li><strong>Útero bicornual:</strong> cuerpo corto con dos cuernos largos (30–40 cm)</li>
+        <li><strong>Cérvix:</strong> 8–10 cm, barrera contra patógenos; anillos cervicales prominentes</li>
+        <li><strong>Vagina:</strong> 25–30 cm; vestíbulo y vulva como estructuras externas</li>
+      </ul>
+    </div>
+    <div class="info-card accent-mint">
+      <div class="info-card-label">Macho</div>
+      <h3>Aparato reproductor masculino</h3>
+      <ul>
+        <li><strong>Testículos:</strong> producción de espermatozoides y testosterona; escroto pendulante</li>
+        <li><strong>Epidídimo:</strong> maduración y almacenamiento de espermatozoides (7–10 días)</li>
+        <li><strong>Conducto deferente:</strong> transporte del semen durante la eyaculación</li>
+        <li><strong>Glándulas accesorias:</strong> vesículas seminales, próstata, glándulas bulbouretrales</li>
+        <li><strong>Pene fibro-elástico:</strong> con flexura sigmoide en reposo; prepucio amplio</li>
+      </ul>
+    </div>
+    <div class="info-card span-full reveal">
+      <div class="info-card-label">Placentación</div>
+      <h3>Placenta sinepiteliocorial y cotiledones</h3>
+      <p>La vaca presenta placenta <strong>siepiteliocorial</strong>, con unión a través de estructuras especializadas denominadas <strong>placentomas</strong>. Cada placentoma está formado por una carúncula uterina (materna) y un cotiledón fetal. Los bovinos tienen entre 70 y 120 placentomas distribuidos en cuatro filas longitudinales. Esta estructura determina la <strong>retención de placenta</strong> como una complicación frecuente post-parto cuando la separación entre carúncula y cotiledón no ocurre correctamente en las primeras 12 horas.</p>
+    </div>
+  </div>
+
+  <div class="diagram-block reveal">
+    <div class="diagram-area">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Diagrama — Útero bovino bicornual
+    </div>
+    <p class="diagram-caption">Estructura del útero bicornual con cuernos uterinos, cuerpo y cérvix</p>
+  </div>
+</section>
+
+<!-- 2. FISIOLOGÍA -->
+<section id="fisiologia" class="content-section">
+  <div class="section-label">02</div>
+  <h2 class="section-title">Fisiología reproductiva de la hembra</h2>
+  <p class="section-intro">La vaca es una especie <strong>poliéstrica continua</strong>, con ciclos estrales que se repiten a lo largo del año sin influencia marcada del fotoperiodo, a diferencia de especies estacionales como los ovinos o equinos.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card">
+      <div class="info-card-label">Pubertad</div>
+      <h3>Inicio de la vida reproductiva</h3>
+      <p>La pubertad en bovinos ocurre entre los <strong>6 y 18 meses</strong> de edad, con variaciones importantes según la raza (razas cebuínas más tardías que las europeas), el nivel nutricional y el peso corporal. El peso al primer celo es aproximadamente el <strong>60–65% del peso adulto</strong>.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Onda folicular</div>
+      <h3>Dinámica folicular</h3>
+      <p>El ciclo bovino se caracteriza por presentar <strong>2 o 3 ondas foliculares</strong> por ciclo. Cada onda comienza con el reclutamiento de un grupo de folículos, seguido de la selección de un folículo dominante que puede ovular (ciclos de 2 ondas) o experimentar atresia (ciclos de 3 ondas, más largos).</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Cuerpo lúteo</div>
+      <h3>Función luteínica</h3>
+      <p>Tras la ovulación, el folículo se transforma en <strong>cuerpo lúteo (CL)</strong>, que produce progesterona (P4) durante el diestro. La <strong>PGF2α</strong> uterina desencadena la luteólisis en los días 16–17 si no hay gestación. En gestación, el reconocimiento materno (IFN-τ) bloquea esta señal.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Anestro posparto</div>
+      <h3>Reinicio del ciclo</h3>
+      <p>Después del parto, la vaca experimenta un <strong>anestro posparto</strong> de 30–60 días en vacas de carne y 30–45 días en vacas lecheras bien nutridas. El amamantamiento prolonga el anestro por la supresión pulsátil de LH mediada por opioides endógenos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CICLO ESTRAL -->
+<section id="ciclo-estral" class="content-section">
+  <div class="section-label">03</div>
+  <h2 class="section-title">Ciclo estral bovino</h2>
+  <p class="section-intro">El ciclo estral bovino dura en promedio <strong>21 días</strong> (rango 18–24 días) y se divide en cuatro fases: proestro, estro, metaestro y diestro. El reconocimiento y la detección del celo son fundamentales para el éxito reproductivo.</p>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 0 — Proestro (3–5 días)</div>
+        <h4>Desarrollo folicular y regresión del CL</h4>
+        <p>Luteólisis por PGF2α → caída de P4 → incremento de FSH y LH pulsátil → crecimiento del folículo preovulatorio → aumento de estrógenos.</p>
+        <div class="hormones">
+          <span class="hormone-pill">↑ FSH</span>
+          <span class="hormone-pill">↑ E₂</span>
+          <span class="hormone-pill">↓ P4</span>
+          <span class="hormone-pill">PGF2α</span>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Día 0 — Estro (12–18 horas)</div>
+        <h4>Celo: receptividad sexual y pico de LH</h4>
+        <p>Pico preovulatorio de LH inducido por el feedback positivo de E₂. Signos: inquietud, mugidos, moco cervical cristalino, reflejo de monta. La vaca acepta ser montada (<em>standing heat</em>).</p>
+        <div class="hormones">
+          <span class="hormone-pill">Pico LH</span>
+          <span class="hormone-pill">↑↑ E₂</span>
+          <span class="hormone-pill">Moco claro</span>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 1–5 — Metaestro</div>
+        <h4>Ovulación y formación del cuerpo lúteo</h4>
+        <p>Ovulación 10–12 h post-pico de LH. Formación del CL a partir de las células de la granulosa y teca del folículo ovulado. Inicio de producción de progesterona. Posible metrorragia (sangrado post-celo) en algunos animales.</p>
+        <div class="hormones">
+          <span class="hormone-pill">Ovulación</span>
+          <span class="hormone-pill">↑ P4</span>
+          <span class="hormone-pill">Formación CL</span>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Días 5–17 — Diestro</div>
+        <h4>Dominio del cuerpo lúteo</h4>
+        <p>Fase más larga del ciclo. P4 elevada inhibe la secreción pulsátil de LH, mantiene el endometrio en estado secretor y suprime la expresión de celo. El útero produce PGF2α a partir del día 16–17 → nueva luteólisis.</p>
+        <div class="hormones">
+          <span class="hormone-pill">↑↑ P4</span>
+          <span class="hormone-pill">↓ LH pulsátil</span>
+          <span class="hormone-pill">CL activo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HORMONAS -->
+<section id="hormonas" class="content-section">
+  <div class="section-label">04</div>
+  <h2 class="section-title">Regulación hormonal</h2>
+  <p class="section-intro">El eje hipotálamo-hipófisis-gónada (HHG) regula la reproducción bovina mediante una compleja interacción de hormonas que actúan en cascada con mecanismos de retroalimentación positiva y negativa.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card">
+      <div class="info-card-label">Hipotálamo</div>
+      <h3>GnRH</h3>
+      <p>La hormona liberadora de gonadotropinas se secreta de forma pulsátil. La frecuencia e intensidad de los pulsos determinan la secreción diferencial de FSH y LH. En el pico preovulatorio, el estímulo estrogénico genera un pulso masivo de GnRH.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Hipófisis anterior</div>
+      <h3>FSH y LH</h3>
+      <p><strong>FSH:</strong> estimula el reclutamiento y crecimiento folicular, la producción de estrógenos por las células de la granulosa. <strong>LH:</strong> necesaria para la maduración del folículo dominante, el pico preovulatorio desencadena la ovulación y luego la luteinización.</p>
+    </div>
+    <div class="info-card accent-lavender">
+      <div class="info-card-label">Ovario — Estrógenos</div>
+      <h3>17β-Estradiol (E₂)</h3>
+      <p>Producido por el folículo dominante (células de la granulosa vía aromatasa). Responsable de los signos de celo, del pico de LH (feedback positivo), de la preparación uterina para la gestación y del desarrollo de glándulas mamarias.</p>
+    </div>
+    <div class="info-card accent-mint">
+      <div class="info-card-label">Ovario — Progesterona</div>
+      <h3>Progesterona (P4)</h3>
+      <p>Producida por el cuerpo lúteo. Prepara y mantiene el endometrio para la gestación (feedback negativo sobre LH pulsátil). En gestación, el CL permanece activo hasta que la placenta asume la producción hormonal.</p>
+    </div>
+    <div class="info-card span-full reveal">
+      <div class="info-card-label">Útero</div>
+      <h3>PGF2α (Prostaglandina F2 alfa) — Luteolisina</h3>
+      <p>Producida por el endometrio uterino bajo estimulación de oxitocina ovárica. Es la luteolisina natural en bovinos: causa vasoconstricción de la arteria ovárica → isquemia del CL → caída de P4. En protocolos de sincronización se usa análogos de PGF2α (cloprostenol, dinoprost) para inducir la luteólisis artificialmente y sincronizar el celo en grupos de animales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FERTILIZACIÓN Y GESTACIÓN -->
+<section id="fertilizacion" class="content-section">
+  <div class="section-label">05</div>
+  <h2 class="section-title">Fertilización y gestación</h2>
+  <p class="section-intro">La gestación bovina dura en promedio <strong>280 días</strong> (9 meses) con variaciones de ±10 días según raza (menor en razas cebuínas). La fertilización ocurre en la porción ampular del oviducto dentro de las primeras horas post-ovulación.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card">
+      <div class="info-card-label">Fertilización</div>
+      <h3>Oviducto ampular</h3>
+      <p>Los espermatozoides capacitados alcanzan la ampolla del oviducto, donde penetran la zona pelúcida mediante reacción acrosómica. Un solo espermatozoide fecunda el ovocito (polispermia prevenida por reacción zonal). El cigoto resultante inicia su división.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Reconocimiento materno</div>
+      <h3>Interferón tau (IFN-τ)</h3>
+      <p>El embrión bovino produce IFN-τ entre los días 16–17, que bloquea la secreción uterina de PGF2α previniendo la luteólisis. Este mecanismo mantiene el CL activo, asegurando la producción de P4 necesaria para continuar la gestación.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Implantación</div>
+      <h3>Placentación siepiteliocorial</h3>
+      <p>La implantación bovina es no invasiva. El trofoblasto no penetra el epitelio uterino. Los placentomas se forman entre días 20–45 de gestación. El número final de placentomas funcionales determina la capacidad de intercambio nutricional y gaseoso.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Parto</div>
+      <h3>Mecanismo del parto (eutócico)</h3>
+      <p>El feto inicia el proceso mediante la activación del eje HPA fetal → cortisol → cambio en la relación P4/E₂ → síntesis de PGF2α y oxitocina → contracciones uterinas. Las tres fases: dilatación cervical (2–6 h), expulsión fetal (30 min–2 h) y eliminación de placenta (hasta 12 h).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. BIOTECNOLOGÍAS -->
+<section id="biotecnologias" class="content-section">
+  <div class="section-label">06</div>
+  <h2 class="section-title">Biotecnologías reproductivas</h2>
+  <p class="section-intro">La ganadería bovina es la especie en la que más biotecnologías reproductivas se aplican a escala comercial. Estas tecnologías permiten maximizar la difusión genética y mejorar la eficiencia reproductiva del hato.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender">
+      <div class="info-card-label">IA — Inseminación Artificial</div>
+      <h3>Técnica más difundida globalmente</h3>
+      <p>Permite la difusión genética de toros élite a nivel mundial. El semen se colecta, evalúa, congela en pajillas (0.5 ml) y almacena en N₂ líquido (-196°C). La IA a tiempo fijo (IATF) elimina la necesidad de detección de celo mediante protocolos hormonales.</p>
+    </div>
+    <div class="info-card accent-mint">
+      <div class="info-card-label">TE — Transferencia Embrionaria</div>
+      <h3>Multiplicación de hembras superiores</h3>
+      <p>La donante recibe superovulación (FSH + LH), se sincroniza con un toro o IA, y los embriones se recolectan no quirúrgicamente al día 7. Se transfieren a receptoras sincronizadas o se congelan en pajillas con glicerol o etilenglicol.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">IATF — IA a Tiempo Fijo</div>
+      <h3>Sincronización del ciclo reproductivo</h3>
+      <p>Protocolos Ovsynch, CIDR-Synch, CO-Synch permiten programar la ovulación y la inseminación sin detección de celo. Tasas de concepción del 50–60%. Facilita el trabajo en lotes y reduce el intervalo entre partos en hatos de carne.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Tecnologías emergentes</div>
+      <h3>FIV, OPU, sexado de semen</h3>
+      <p><strong>FIV:</strong> fertilización in vitro a partir de ovocitos recuperados por punción folicular transvaginal (OPU). <strong>Sexado:</strong> separación de espermatozoides X/Y por citometría de flujo. <strong>Criopreservación embrionaria:</strong> vitrificación para mayor supervivencia post-descongelación.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. COMPARATIVA -->
+<section id="comparativa" class="content-section">
+  <div class="section-label">07</div>
+  <h2 class="section-title">Bovinos vs otras especies</h2>
+  <p class="section-intro">Comparación de los parámetros reproductivos más relevantes entre bovinos y las principales especies domésticas.</p>
+
+  <div class="reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Parámetro</th>
+          <th>Bovinos</th>
+          <th>Porcinos</th>
+          <th>Equinos</th>
+          <th>Ovinos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Gestación</td><td class="highlight">280 días</td><td>114 días</td><td>340 días</td><td>148 días</td></tr>
+        <tr><td>Ciclo estral</td><td class="highlight">21 días</td><td>21 días</td><td>21 días</td><td>17 días</td></tr>
+        <tr><td>Duración del celo</td><td class="highlight">12–18 h</td><td>2–3 días</td><td>5–7 días</td><td>24–36 h</td></tr>
+        <tr><td>Ovulación</td><td class="highlight">Espontánea</td><td>Espontánea</td><td>Espontánea</td><td>Espontánea</td></tr>
+        <tr><td>Estacionalidad</td><td class="highlight">Poliéstrica continua</td><td>Continua</td><td>Estacional (días largos)</td><td>Estacional (días cortos)</td></tr>
+        <tr><td>Tipo de placenta</td><td class="highlight">Siepiteliocorial</td><td>Epiteliocorial difusa</td><td>Epiteliocorial difusa</td><td>Siepiteliocorial</td></tr>
+        <tr><td>Prolificidad</td><td class="highlight">1 cría (gemelar raro)</td><td>10–14 crías</td><td>1 cría</td><td>1–3 crías</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align:center; margin-top:24px;">
+    <a href="/comparativas?a=bovinos" class="btn-outline">Ver comparativa interactiva</a>
+  </div>
+</section>
+
+<!-- 8. GLOSARIO -->
+<section id="glosario-local" class="content-section">
+  <div class="section-label">08</div>
+  <h2 class="section-title">Glosario — Bovinos</h2>
+  <div class="glosario-list reveal">
+    <div class="glosario-item"><div class="glosario-term">Carúncula</div><p class="glosario-def">Protuberancia endometrial de origen materno que forma parte del placentoma junto con el cotiledón fetal. Los bovinos poseen 70–120 carúnculas.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Cotiledón</div><p class="glosario-def">Porción fetal del placentoma bovino. Junto con la carúncula forma la unidad funcional de intercambio materno-fetal.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Luteólisis</div><p class="glosario-def">Proceso de regresión del cuerpo lúteo mediado por PGF2α uterina. Resulta en caída brusca de progesterona e inicio del proestro.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Onda folicular</div><p class="glosario-def">Episodio de reclutamiento, selección y dominancia folicular. Los bovinos presentan 2–3 ondas por ciclo estral.</p></div>
+    <div class="glosario-item"><div class="glosario-term">IFN-τ (Interferón tau)</div><p class="glosario-def">Proteína secretada por el embrión bovino entre los días 14–21 que bloquea la luteólisis y señaliza el reconocimiento materno de la gestación.</p></div>
+    <div class="glosario-item"><div class="glosario-term">IATF</div><p class="glosario-def">Inseminación artificial a tiempo fijo. Protocolo hormonal que sincroniza la ovulación para inseminar sin detección de celo.</p></div>
+  </div>
+</section>
+
+<!-- 9. RECURSOS -->
+<section id="recursos" class="content-section">
+  <div class="section-label">09</div>
+  <h2 class="section-title">Recursos de aprendizaje</h2>
+  <div class="recursos-grid">
+    <div class="recurso-card reveal d1">
+      <div class="recurso-icon lav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div class="recurso-body">
+        <div class="recurso-type">Libro de texto</div>
+        <div class="recurso-title">Reproducción e inseminación artificial en animales</div>
+        <p class="recurso-desc">Hafez & Hafez, 8ª edición. Capítulos 5–8 sobre bovinos: fisiología, ciclo estral y biotecnologías.</p>
+        <div class="recurso-meta"><span>Lectura 45 min</span><span>Referencia principal</span></div>
+      </div>
+    </div>
+    <div class="recurso-card reveal d2">
+      <div class="recurso-icon mnt">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
+      <div class="recurso-body">
+        <div class="recurso-type">Video educativo</div>
+        <div class="recurso-title">Ciclo estral bovino — Animación hormonal</div>
+        <p class="recurso-desc">Animación del eje HHG durante el ciclo estral bovino, con representación gráfica de las ondas hormonales.</p>
+        <div class="recurso-meta"><span>18 min</span><span>Recomendado</span></div>
+      </div>
+    </div>
+    <div class="recurso-card reveal d3">
+      <div class="recurso-icon lav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="recurso-body">
+        <div class="recurso-type">Artículo científico</div>
+        <div class="recurso-title">Protocolos de IATF en bovinos de carne: revisión</div>
+        <p class="recurso-desc">Revisión de los protocolos Ovsynch, CO-Synch y variantes. Tasas de concepción comparadas en condiciones tropicales.</p>
+        <div class="recurso-meta"><span>Lectura 20 min</span><span>Artículo revisado</span></div>
+      </div>
+    </div>
+    <div class="recurso-card reveal d4">
+      <div class="recurso-icon mnt">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <div class="recurso-body">
+        <div class="recurso-type">Guía práctica</div>
+        <div class="recurso-title">Manual de detección de celo y momento de inseminación</div>
+        <p class="recurso-desc">Guía ilustrada sobre signos primarios y secundarios de celo, sistemas de detección y timing óptimo de IA.</p>
+        <div class="recurso-meta"><span>Lectura 15 min</span><span>Aplicación práctica</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. QUIZ -->
+<section id="quiz" class="content-section">
+  <div class="section-label">10</div>
+  <h2 class="section-title">Evalúa tu aprendizaje</h2>
+  <div class="quiz-block reveal">
+    <div class="quiz-progress">
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:20%"></div></div>
+      <span class="progress-label">1 / 5 preguntas</span>
+    </div>
+    <div class="quiz-question" id="quiz-q">
+      ¿Cuál es la hormona responsable de la luteólisis del cuerpo lúteo bovino al final del diestro?
+    </div>
+    <div class="quiz-options" id="quiz-opts">
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">A</div>Progesterona (P4)</div>
+      <div class="quiz-option" data-correct="true"><div class="opt-letter">B</div>Prostaglandina F2α (PGF2α)</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">C</div>Hormona luteinizante (LH)</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">D</div>Estrógenos (E₂)</div>
+    </div>
+  </div>
+</section>
+
+</SpeciesLayout>
+
+<style>
+.content-section { margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--oat-light); }
+.content-section:last-child { border-bottom: none; }
+.glosario-list { display: flex; flex-direction: column; }
+.glosario-item { padding: 20px 0; border-bottom: 1px solid var(--oat-light); display: flex; gap: 32px; align-items: baseline; }
+.glosario-item:last-child { border-bottom: none; }
+.glosario-term { font-size: 17px; font-weight: 700; color: var(--lavender); min-width: 200px; flex-shrink: 0; }
+.glosario-def  { font-size: 14px; line-height: 1.7; color: var(--ink-mid); }
+@media (max-width: 768px) {
+  .glosario-item { flex-direction: column; gap: 8px; }
+  .glosario-term { min-width: unset; }
+}
+</style>
+
+<script>
+document.querySelectorAll('.quiz-option').forEach(opt => {
+  opt.addEventListener('click', function(this: HTMLElement) {
+    document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'wrong'));
+    const isCorrect = this.dataset.correct === 'true';
+    this.classList.add(isCorrect ? 'correct' : 'wrong');
+    if (!isCorrect) {
+      const correct = document.querySelector('.quiz-option[data-correct="true"]');
+      if (correct) correct.classList.add('correct');
+    }
+  });
+});
+</script>

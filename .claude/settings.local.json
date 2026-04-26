@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(rm -f __TRACKED_VAR__/.claude/cache/gsd-update-check.json)",
+      "Bash(rm -f ./__TRACKED_VAR__/cache/gsd-update-check.json)",
+      "Bash(rm -f __TRACKED_VAR__/__TRACKED_VAR__/cache/gsd-update-check.json)",
+      "Bash(bash *)",
+      "Bash(cat \"C:/Users/Emiliano/Documents/Natalia/.superpowers/brainstorm/\"*/state/server-info)",
+      "Bash(gh api *)",
+      "Bash(python -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f['name'], f['type']\\) for f in data]\")",
+      "Bash(python -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f['name']\\) for f in data]\")",
+      "WebFetch(domain:getdesign.md)",
+      "Bash(npx --yes getdesign@latest add linear.app --output-dir \"C:/Users/Emiliano/Documents/Natalia/.design-refs\")",
+      "Bash(npx getdesign@latest add notion --output-dir \"C:/Users/Emiliano/Documents/Natalia/.design-refs\")",
+      "Bash(npx getdesign@latest add mintlify --output-dir \"C:/Users/Emiliano/Documents/Natalia/.design-refs\")",
+      "Bash(npx --yes getdesign@latest add notion)",
+      "Bash(mv DESIGN.md DESIGN-notion.md)",
+      "Bash(npx --yes getdesign@latest add clay)",
+      "Bash(curl -s http://localhost:53224/)",
+      "Bash(curl -s --max-time 4 http://localhost:53224/)",
+      "Bash(curl -s --max-time 5 \"http://localhost:53224/mockup-especie-bovinos.html\")",
+      "Bash(curl -s --max-time 5 \"http://localhost:54461/\")",
+      "Bash(npx skills *)",
+      "Bash(dir \"C:\\\\Users\\\\Emiliano\\\\Documents\\\\Natalia\")",
+      "Bash(npm --version)",
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(npx astro *)",
+      "Bash(npm i *)"
+    ]
+  }
+}

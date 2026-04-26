@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ovara</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Palette — Clay structure, Ovara colors */
+  --cream:        #faf8fc;          /* lavender-tinted cream */
+  --cream-alt:    #f3eefa;          /* slightly deeper, section alt */
+  --lavender:     #7c5cbf;          /* primary — replaces Ube 800 */
+  --lavender-mid: #b89fe0;          /* Ube 300 equivalent */
+  --lavender-deep:#4a2d8a;          /* deep accent */
+  --mint:         #3aab7b;          /* Matcha equivalent */
+  --mint-light:   #84e7b5;          /* Matcha 300 equivalent */
+  --mint-deep:    #02633a;          /* Matcha 800 equivalent */
+  --ink:          #000000;
+  --ink-muted:    #9f9b93;
+  --ink-mid:      #55534e;
+  --oat:          #dad4c8;
+  --white:        #ffffff;
+
+  /* Clay shadow */
+  --shadow: rgba(0,0,0,0.1) 0px 1px 1px,
+            rgba(0,0,0,0.04) 0px -1px 1px inset,
+            rgba(0,0,0,0.05) 0px -0.5px 1px;
+
+  --font: 'Space Grotesk', Arial, sans-serif;
+  --mono: 'Space Mono', monospace;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss03", "ss10";
+}
+
+/* ────────────────────────────────
+   NAV
+──────────────────────────────── */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px; height: 60px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--oat);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: linear-gradient(140deg, var(--lavender) 0%, var(--mint) 100%);
+  box-shadow: var(--shadow);
+}
+.logo-name { font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -0.5px; }
+
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+  font-size: 15px; font-weight: 500; color: var(--ink-mid);
+  text-decoration: none; letter-spacing: -0.1px;
+}
+.nav-links a:hover { color: var(--ink); }
+
+.nav-cta {
+  padding: 8px 20px; border-radius: 1584px;
+  background: var(--ink); color: var(--white);
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  letter-spacing: -0.2px;
+  transition: background 0.15s;
+}
+.nav-cta:hover { background: var(--lavender); }
+
+/* ────────────────────────────────
+   HERO — Clay-style, high visual weight
+──────────────────────────────── */
+.hero {
+  padding: 100px 52px 80px;
+  background: var(--lavender-deep);
+  position: relative; overflow: hidden;
+}
+/* Decorative blobs */
+.hero::before {
+  content: '';
+  position: absolute; top: -60px; right: -80px;
+  width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle, var(--lavender) 0%, transparent 70%);
+  opacity: 0.35;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -80px; left: 10%;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, var(--mint) 0%, transparent 70%);
+  opacity: 0.25;
+}
+
+.hero-inner { position: relative; z-index: 1; max-width: 1100px; }
+
+.hero-label {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--mint-light);
+  margin-bottom: 28px; display: block;
+}
+.hero h1 {
+  font-size: 80px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -3.2px; color: var(--white);
+  max-width: 860px; margin-bottom: 28px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--mint-light);
+}
+.hero-sub {
+  font-size: 20px; font-weight: 400; line-height: 1.55;
+  color: rgba(255,255,255,0.65);
+  max-width: 500px; margin-bottom: 48px; letter-spacing: -0.1px;
+}
+.hero-buttons { display: flex; gap: 14px; align-items: center; }
+
+.btn-hero-main {
+  padding: 14px 32px; border-radius: 1584px;
+  background: var(--white); color: var(--ink);
+  font-size: 16px; font-weight: 600; letter-spacing: -0.3px;
+  text-decoration: none; box-shadow: var(--shadow);
+  transition: background 0.2s, color 0.2s, transform 0.15s, box-shadow 0.15s;
+}
+.btn-hero-main:hover {
+  background: var(--mint-light);
+  transform: rotateZ(-2deg) translateY(-2px);
+  box-shadow: rgb(0,0,0) -5px 5px;
+}
+.btn-hero-ghost {
+  padding: 14px 28px; border-radius: 4px;
+  background: transparent; color: rgba(255,255,255,0.8);
+  font-size: 16px; font-weight: 500; letter-spacing: -0.2px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-hero-ghost:hover { border-color: var(--mint-light); color: var(--mint-light); }
+
+/* ────────────────────────────────
+   ESPECIES — Clay card style
+──────────────────────────────── */
+.especies {
+  padding: 80px 52px;
+  background: var(--cream);
+  max-width: 1260px; margin: 0 auto;
+}
+.section-label {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--mint);
+  margin-bottom: 12px; display: block;
+}
+.section-heading {
+  font-size: 44px; font-weight: 700; letter-spacing: -1.5px;
+  color: var(--ink); margin-bottom: 48px; line-height: 1.08;
+}
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+.especie-card {
+  display: block; text-decoration: none; color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--oat);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.especie-card:hover {
+  transform: rotateZ(-1deg) translateY(-3px);
+  box-shadow: rgb(0,0,0) -6px 6px;
+}
+
+.card-visual {
+  height: 152px; position: relative;
+  display: flex; align-items: flex-start;
+  justify-content: flex-end;
+  padding: 18px;
+}
+.bovino  { background: linear-gradient(140deg, #e8dcf8, #cde8db); }
+.porcino { background: linear-gradient(140deg, #f0dcf8, #e8dcf8); }
+.equino  { background: linear-gradient(140deg, #cde8db, #dce8f8); }
+.canino  { background: linear-gradient(140deg, #dce8f8, #e8dcf8); }
+.felino  { background: linear-gradient(140deg, #f8e8dc, #f0dcf8); }
+.ovino   { background: linear-gradient(140deg, #cde8db, #f0dcf8); }
+
+.card-tag {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 4px 12px; border-radius: 1584px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: var(--lavender-deep);
+  backdrop-filter: blur(6px);
+}
+
+/* Large abstract shape inside card visual */
+.card-shape {
+  position: absolute; left: -20px; bottom: -20px;
+  width: 110px; height: 110px; border-radius: 50%;
+  opacity: 0.18;
+}
+.bovino  .card-shape { background: var(--lavender); }
+.porcino .card-shape { background: var(--lavender-deep); }
+.equino  .card-shape { background: var(--mint); }
+.canino  .card-shape { background: var(--lavender-mid); }
+.felino  .card-shape { background: var(--lavender); }
+.ovino   .card-shape { background: var(--mint); }
+
+.card-divider { height: 1px; background: var(--oat); margin: 0; }
+.card-body { padding: 20px 22px 22px; }
+.card-body h3 {
+  font-size: 20px; font-weight: 700; letter-spacing: -0.5px;
+  color: var(--ink); margin-bottom: 6px;
+}
+.card-body p {
+  font-size: 14px; font-weight: 400; line-height: 1.6;
+  color: var(--ink-mid); margin-bottom: 16px;
+}
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 400;
+  padding: 3px 10px; border-radius: 1584px;
+  border: 1px solid var(--oat);
+  color: var(--ink-mid); background: var(--cream);
+}
+.chip.accent { border-color: var(--lavender-mid); color: var(--lavender); background: #f5f0fc; }
+.chip.mint   { border-color: var(--mint-light); color: var(--mint-deep); background: #edf8f3; }
+
+/* ────────────────────────────────
+   FEATURES — Clay swatch section (mint)
+──────────────────────────────── */
+.features-band {
+  background: var(--mint-deep);
+  padding: 80px 52px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.features-inner { max-width: 1260px; margin: 0 auto; }
+.features-band .section-label { color: var(--mint-light); }
+.features-band .section-heading { color: var(--white); margin-bottom: 48px; }
+
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.feature-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px dashed rgba(255,255,255,0.2);
+  border-radius: 24px;
+  padding: 32px 28px;
+  transition: background 0.15s;
+}
+.feature-card:hover { background: rgba(255,255,255,0.12); }
+.feature-num {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--mint-light);
+  margin-bottom: 16px; display: block;
+}
+.feature-card h4 {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.5px;
+  color: var(--white); margin-bottom: 10px; line-height: 1.2;
+}
+.feature-card p {
+  font-size: 15px; font-weight: 400; line-height: 1.65;
+  color: rgba(255,255,255,0.6); letter-spacing: -0.1px;
+}
+
+/* ────────────────────────────────
+   FOOTER
+──────────────────────────────── */
+footer {
+  padding: 40px 52px;
+  background: var(--cream);
+  border-top: 1px solid var(--oat);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.footer-logo-mark {
+  width: 22px; height: 22px; border-radius: 6px;
+  background: linear-gradient(140deg, var(--lavender), var(--mint));
+}
+.footer-logo span { font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -0.4px; }
+footer p { font-size: 13px; color: var(--ink-muted); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-mark"></div>
+    <span class="logo-name">Ovara</span>
+  </a>
+  <div class="nav-links">
+    <a href="#">Especies</a>
+    <a href="#">Comparar</a>
+    <a href="#">Glosario</a>
+    <a href="#">Acerca de</a>
+  </div>
+  <a href="#" class="nav-cta">Explorar</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-label">Reproducción animal — Material universitario</span>
+    <h1>El origen de<br>cada <em>especie,</em><br>explicado.</h1>
+    <p class="hero-sub">Plataforma educativa sobre reproducción en animales domésticos. Contenido interactivo, imágenes y evaluaciones para medicina veterinaria.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-hero-main">Explorar especies</a>
+      <a href="#" class="btn-hero-ghost">Ver glosario</a>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIES -->
+<section style="background:var(--cream); padding-top: 80px;">
+  <div class="especies">
+    <span class="section-label">Contenido por especie</span>
+    <h2 class="section-heading">¿Por dónde<br>quieres comenzar?</h2>
+    <div class="grid">
+
+      <a class="especie-card" href="#">
+        <div class="card-visual bovino">
+          <div class="card-shape"></div>
+          <span class="card-tag">Bovinos</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <h3>Bovinos</h3>
+          <p>Ciclo estral, anatomía reproductiva, gestación y manejo del parto en ganado bovino.</p>
+          <div class="chips">
+            <span class="chip accent">Evaluación</span>
+            <span class="chip mint">Línea de tiempo</span>
+            <span class="chip">Galería</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="especie-card" href="#">
+        <div class="card-visual porcino">
+          <div class="card-shape"></div>
+          <span class="card-tag">Porcinos</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <h3>Porcinos</h3>
+          <p>Reproducción porcina, manejo reproductivo e inseminación artificial en granjas.</p>
+          <div class="chips">
+            <span class="chip accent">Evaluación</span>
+            <span class="chip mint">Línea de tiempo</span>
+            <span class="chip">Videos</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="especie-card" href="#">
+        <div class="card-visual equino">
+          <div class="card-shape"></div>
+          <span class="card-tag">Equinos</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <h3>Equinos</h3>
+          <p>Fisiología reproductiva equina, estacionalidad y técnicas modernas de reproducción.</p>
+          <div class="chips">
+            <span class="chip accent">Evaluación</span>
+            <span class="chip mint">Comparar</span>
+            <span class="chip">Galería</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="especie-card" href="#">
+        <div class="card-visual canino">
+          <div class="card-shape"></div>
+          <span class="card-tag">Caninos</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <h3>Caninos</h3>
+          <p>Ciclo reproductivo canino, gestación, lactancia y atención neonatal.</p>
+          <div class="chips">
+            <span class="chip accent">Evaluación</span>
+            <span class="chip mint">Línea de tiempo</span>
+            <span class="chip">Videos</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="especie-card" href="#">
+        <div class="card-visual felino">
+          <div class="card-shape"></div>
+          <span class="card-tag">Felinos</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <h3>Felinos</h3>
+          <p>Ovulación inducida, comportamiento reproductivo y gestación en felinos domésticos.</p>
+          <div class="chips">
+            <span class="chip accent">Evaluación</span>
+            <span class="chip mint">Comparar</span>
+            <span class="chip">Galería</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="especie-card" href="#">
+        <div class="card-visual ovino">
+          <div class="card-shape"></div>
+          <span class="card-tag">Ovinos</span>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <h3>Ovinos</h3>
+          <p>Estacionalidad reproductiva, ciclo estral y manejo integral de rebaños ovinos.</p>
+          <div class="chips">
+            <span class="chip accent">Evaluación</span>
+            <span class="chip mint">Línea de tiempo</span>
+            <span class="chip">Videos</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES BAND -->
+<section class="features-band">
+  <div class="features-inner">
+    <span class="section-label">Herramientas educativas</span>
+    <h2 class="section-heading">Más que consulta,<br>una experiencia de aprendizaje</h2>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <span class="feature-num">01</span>
+        <h4>Líneas de tiempo</h4>
+        <p>Navega el ciclo reproductivo de cada especie paso a paso con información expandible en cada etapa.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-num">02</span>
+        <h4>Evaluaciones interactivas</h4>
+        <p>Quizzes con retroalimentación inmediata al final de cada sección para reforzar los conceptos clave.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-num">03</span>
+        <h4>Comparativas entre especies</h4>
+        <p>Elige dos animales y compara sus sistemas reproductores lado a lado. Ideal para identificar diferencias anatómicas.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="#">
+    <div class="footer-logo-mark"></div>
+    <span>Ovara</span>
+  </a>
+  <p>Material generado durante curso universitario · Reproducción animal</p>
+</footer>
+
+</body>
+</html>
