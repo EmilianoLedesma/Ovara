@@ -1,0 +1,249 @@
+---
+import SpeciesLayout from '../../layouts/SpeciesLayout.astro';
+import { getEspecie } from '../../data/especies';
+
+const especie = getEspecie('felinos')!;
+---
+
+<SpeciesLayout especie={especie}>
+
+<!-- 1. ANATOMÍA -->
+<section id="anatomia" class="content-section">
+  <div class="section-label">01</div>
+  <h2 class="section-title">Anatomía del aparato reproductivo</h2>
+  <p class="section-intro">El aparato reproductivo felino comparte similitudes con el canino, pero con diferencias fundamentales: la gata es de <strong>ovulación inducida</strong> y el macho presenta pene con espículas retrorsas que estimulan el reflejo ovulatorio.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender">
+      <div class="info-card-label">Gata</div>
+      <h3>Aparato reproductor femenino</h3>
+      <ul>
+        <li><strong>Ovarios:</strong> pequeños (1 cm); folículos crecen durante el celo pero no ovulan sin estimulación</li>
+        <li><strong>Útero bicornual:</strong> cuernos de 10 cm; cuerpo muy corto; adapatado a gestaciones de 2–6 crías</li>
+        <li><strong>Cérvix:</strong> estrecho; cierre hermético en anestro y gestación</li>
+        <li><strong>Vagina:</strong> corta (4–5 cm); vulva pequeña con labios prominentes</li>
+        <li><strong>Mamas:</strong> 4 pares; glándulas mamarias activas durante lactancia (~6–8 semanas)</li>
+      </ul>
+    </div>
+    <div class="info-card accent-mint">
+      <div class="info-card-label">Gato</div>
+      <h3>Aparato reproductor masculino</h3>
+      <ul>
+        <li><strong>Testículos:</strong> escrotales; producción espermática continua en adultos activos</li>
+        <li><strong>Pene con espículas (pápulas córneas):</strong> bajo influencia de andrógenos; estimulan el cérvix durante la cópula desencadenando el reflejo ovulatorio</li>
+        <li><strong>Prepucio:</strong> orientado caudalmente (a diferencia de otras especies)</li>
+        <li><strong>Próstata y glándulas bulbouretrales:</strong> glándulas accesorias pequeñas</li>
+        <li><strong>Eyaculado:</strong> pequeño volumen (0.03–0.3 ml); alta concentración espermática</li>
+      </ul>
+    </div>
+    <div class="info-card span-full reveal">
+      <div class="info-card-label">Placentación</div>
+      <h3>Placenta endoteliocorial zonaria — similar a caninos</h3>
+      <p>La gata presenta placenta <strong>endoteliocorial zonaria</strong>, igual que la perra: el trofoblasto llega hasta el endotelio vascular materno. La transferencia de inmunoglobulinas es parcialmente transplacentaria (IgG) y complementada por el calostro. Los gatitos nacen con inmunidad parcial, adquiriendo protección completa con el calostro en las primeras 16–24 horas. Los <strong>hematomas marginales</strong> son evidentes al parto como bandas verdosas por biliverdina (a diferencia del verde-oscuro de la uteroverdina en perras).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. FISIOLOGÍA -->
+<section id="fisiologia" class="content-section">
+  <div class="section-label">02</div>
+  <h2 class="section-title">Fisiología reproductiva de la gata</h2>
+  <p class="section-intro">La gata es <strong>poliéstrica estacional de días largos</strong> con <strong>ovulación inducida</strong>. Sin la cópula, los folículos crecen, producen estrógenos y se atresian cíclicamente sin ovular. Este sistema maximiza la probabilidad de fertilización.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card">
+      <div class="info-card-label">Ovulación inducida</div>
+      <h3>Reflejo neuroendocrino</h3>
+      <p>Las espículas peneanas del gato irritan el cérvix durante la cópula → impulsos aferentes → hipotálamo → pulso masivo de GnRH → pico de LH → ovulación 24–50 h post-cópula. El estímulo mecánico puede reemplazarse por un hisopo vaginal para ovulación artificial.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Estacionalidad</div>
+      <h3>Días largos — Primavera/verano</h3>
+      <p>En el hemisferio norte, la gata está en celo de <strong>enero–septiembre</strong> con fotoperiodo creciente. En invierno (días cortos + melatonina alta), entra en anestro. Las gatas de interior expuestas a luz artificial constante pueden ciclar todo el año. La estacionalidad es menos pronunciada que en la yegua.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Ciclos sin cópula</div>
+      <h3>Intervalo intercelo: 2–3 semanas</h3>
+      <p>Sin cópula, los folículos crecen durante 5–10 días (celo), producen E₂, luego se atresian sin ovular. La gata retorna al celo en 2–3 semanas. En colonias sin machos, la gata puede estar en celo casi continuo, con desgaste físico progresivo.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Pubertad</div>
+      <h3>5–9 meses — Influencia del fotoperiodo</h3>
+      <p>La pubertad felina ocurre generalmente durante la primera temporada reproductiva después de los 5 meses de edad. Las gatas nacidas en otoño pueden no ciclar hasta la primavera siguiente. El peso corporal (~2.3–2.5 kg) también influye en el inicio de la pubertad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CICLO ESTRAL -->
+<section id="ciclo-estral" class="content-section">
+  <div class="section-label">03</div>
+  <h2 class="section-title">Ciclo estral felino</h2>
+  <p class="section-intro">El ciclo felino es único: sin ovulación, hay ciclos de <strong>celo cada 2–3 semanas</strong>. Con cópula, puede haber gestación o pseudogestación (si no hay fertilización). La gata puede tener varias cópulas con distintos machos en el mismo celo (superfecundación).</p>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Proestro (1–2 días)</div>
+        <h4>Inicio del comportamiento vocal y afiliativo</h4>
+        <p>Crecimiento folicular → ↑ E₂. La gata se vuelve más afectuosa, se frota, vocaliza suavemente. No acepta aún la monta. Macho puede mostrar interés.</p>
+        <div class="hormones"><span class="hormone-pill">↑ E₂</span><span class="hormone-pill">Crecimiento folicular</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Estro (4–7 días si no hay cópula)</div>
+        <h4>Lordosis, vocalización intensa — Conducta de celo</h4>
+        <p>E₂ máximo → lordosis (postura receptiva), vocalización fuerte, rotación de cola, frotamiento. Acepta la monta. SIN cópula: folículos se atresian → celo termina → nuevo ciclo en 2–3 semanas. CON cópula: ovulación 24–50 h después → gestación o pseudogestación.</p>
+        <div class="hormones"><span class="hormone-pill">↑↑ E₂</span><span class="hormone-pill">Lordosis</span><span class="hormone-pill">Sin ovulación espontánea</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Post-cópula — Ovulación inducida</div>
+        <h4>Pico de LH → Ovulación 24–50 h</h4>
+        <p>El estímulo cervical desencadena el pico de LH. 1–2 cópulas: 50% de ovulación; 3–4 cópulas: &gt;90% de ovulación. Se forman los CL. Si no hay fertilización → pseudogestación (35–45 días de diestro). Si hay fertilización → gestación 64 días.</p>
+        <div class="hormones"><span class="hormone-pill">Pico LH</span><span class="hormone-pill">Ovulación</span><span class="hormone-pill">↑ P4</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Anestro estacional (octubre–enero aprox.)</div>
+        <h4>Inhibición por fotoperiodo corto</h4>
+        <p>Melatonina alta → supresión del eje HHG. Ausencia de celos. La gata puede reanudar ciclos con fotoestimulación artificial (16 h luz). Las gatas de interior con iluminación constante pueden no tener anestro estacional.</p>
+        <div class="hormones"><span class="hormone-pill">↑ Melatonina</span><span class="hormone-pill">Eje HHG suprimido</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HORMONAS -->
+<section id="hormonas" class="content-section">
+  <div class="section-label">04</div>
+  <h2 class="section-title">Regulación hormonal</h2>
+
+  <div class="info-grid reveal">
+    <div class="info-card"><div class="info-card-label">Reflejo LH</div><h3>Respuesta al estímulo cervical</h3><p>El pico de LH en la gata es un <strong>reflejo neuroendocrino</strong>: estímulo cervical → fibras sensoriales → médula espinal → hipotálamo → GnRH pulsátil intenso → hipófisis → pico masivo de LH. La magnitud del pico determina la tasa de ovulación (2–8 ovocitos).</p></div>
+    <div class="info-card"><div class="info-card-label">Pseudogestación</div><h3>CL activo sin gestación</h3><p>Cuando la cópula ocurre pero no hay fertilización, los CL producen P4 durante <strong>35–45 días</strong> (pseudogestación felina). A diferencia de la perra, los signos clínicos son poco evidentes. La gata vuelve al celo aproximadamente 7–10 días después de la regresión del CL.</p></div>
+    <div class="info-card accent-lavender"><div class="info-card-label">Estrógenos y conducta</div><h3>E₂ y lordosis</h3><p>El E₂ producido por los folículos en crecimiento actúa sobre receptores en el hipotálamo ventromedial, desencadenando la <strong>conducta de celo</strong>: lordosis, elevación del perineo, vocalización y rodamiento. Sin E₂ folicular suficiente (anestro), estos comportamientos no se manifiestan.</p></div>
+    <div class="info-card accent-mint"><div class="info-card-label">Progesterona en gestación</div><h3>CL y placenta</h3><p>Los CL son la única fuente de P4 durante toda la gestación felina (la placenta no produce P4 en cantidad significativa). La ovariectomía en cualquier momento de la gestación provoca aborto. La <strong>P4 exógena</strong> (altrenogest) puede mantener gestación en gatas ovariectomizadas accidentalmente.</p></div>
+  </div>
+</section>
+
+<!-- 5. FERTILIZACIÓN -->
+<section id="fertilizacion" class="content-section">
+  <div class="section-label">05</div>
+  <h2 class="section-title">Fertilización y gestación</h2>
+  <p class="section-intro">La gestación felina dura <strong>63–65 días</strong> desde la ovulación. La superfecundación (fertilización de ovocitos del mismo celo por distintos machos) es frecuente en gatas que se aparean con varios machos.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card"><div class="info-card-label">Superfecundación</div><h3>Camadas de distintos padres</h3><p>La gata puede ovular múltiples ovocitos y aparearse con varios machos en el mismo celo. Cada ovocito puede ser fertilizado por espermatozoides de distintos machos. El resultado es una camada con cachorros de diferentes padres, lo que puede evidenciarse por diferencias en color y patrón de pelaje.</p></div>
+    <div class="info-card"><div class="info-card-label">Implantación</div><h3>Día 12–14 post-ovulación</h3><p>Los blastocistos migran por los cuernos uterinos y se fijan a espacios regulares. La distribución es equitativa entre ambos cuernos. Los embriones se implantan superficialmente; la placenta zonaria se desarrolla completamente hacia el día 21–25.</p></div>
+    <div class="info-card"><div class="info-card-label">Parto</div><h3>Parturición y atención neonatal</h3><p>El parto dura 2–6 horas. La gata limpia activamente a cada gatito, estimulando la respiración y el reflejo de succión. El intervalo entre nacimientos es de 10–60 min. Las placentas se consumen habitualmente (comportamiento instintivo para eliminar olores). El calostro es vital en las primeras 16 horas.</p></div>
+    <div class="info-card"><div class="info-card-label">Lactancia</div><h3>Estimulación y producción</h3><p>La lactancia es inducida por la succión, que estimula la liberación de oxitocina (eyección de leche) y prolactina (producción). El amamantamiento suprime el retorno al celo (anestro de lactancia), especialmente en gatas en condición corporal óptima. El destete natural ocurre hacia las 6–8 semanas.</p></div>
+  </div>
+</section>
+
+<!-- 6. BIOTECNOLOGÍAS -->
+<section id="biotecnologias" class="content-section">
+  <div class="section-label">06</div>
+  <h2 class="section-title">Biotecnologías reproductivas</h2>
+  <p class="section-intro">Las biotecnologías felinas son relevantes tanto para la reproducción de felinos domésticos como para la conservación de felinos silvestres en peligro de extinción.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender"><div class="info-card-label">Inducción de ovulación</div><h3>hCG y GnRH</h3><p>La <strong>hCG</strong> (gonadotropina coriónica humana, 250 UI IV) o análogos de GnRH (buserelina, leuprolide) inducen un pico de LH y ovulación en gatas en celo sin necesidad de cópula. Usada para diagnóstico, control reproductivo y preparación para IA.</p></div>
+    <div class="info-card accent-mint"><div class="info-card-label">IA Felina</div><h3>Intravaginal e intrauterina</h3><p>La IA intravaginal tiene tasas de éxito variables (30–50%). La IA intrauterina laparoscópica es más efectiva (60–70%) pero requiere anestesia general. Se usa principalmente en programas de conservación de felinos silvestres con semen criopreservado de individuos no disponibles físicamente.</p></div>
+    <div class="info-card"><div class="info-card-label">Control de la reproducción</div><h3>Implante de deslorelina</h3><p>El <strong>implante de deslorelina</strong> (Suprelorin® 4.7 mg) suprime el ciclo en gatas durante 6–18 meses. Es una alternativa a la esterilización quirúrgica, reversible en la mayoría de los casos. También se usa en gatos machos para suprimir el comportamiento sexual.</p></div>
+    <div class="info-card"><div class="info-card-label">Conservación de felinos silvestres</div><h3>Banco de germoplasma</h3><p>La criopreservación de semen, ovocitos y embriones de especies como el leopardo de las nieves o el ocelote permite mantener bancos de germoplasma para programas de cría en cautiverio. La IA inter-especie (transferencia de embriones de félido silvestre a gata doméstica) ha producido crías de varias especies.</p></div>
+  </div>
+</section>
+
+<!-- 7. COMPARATIVA -->
+<section id="comparativa" class="content-section">
+  <div class="section-label">07</div>
+  <h2 class="section-title">Felinos vs otras especies</h2>
+
+  <div class="reveal">
+    <table class="compare-table">
+      <thead><tr><th>Parámetro</th><th>Felinos</th><th>Caninos</th><th>Bovinos</th><th>Equinos</th></tr></thead>
+      <tbody>
+        <tr><td>Gestación</td><td class="highlight">64 días</td><td>63 días</td><td>280 días</td><td>340 días</td></tr>
+        <tr><td>Tipo de ovulación</td><td class="highlight">Inducida (cópula)</td><td>Espontánea</td><td>Espontánea</td><td>Espontánea</td></tr>
+        <tr><td>Estacionalidad</td><td class="highlight">Días largos</td><td>No marcada</td><td>Continua</td><td>Días largos</td></tr>
+        <tr><td>Ciclo sin cópula</td><td class="highlight">Repetición cada 2–3 sem.</td><td>Diestro luteínico</td><td>Diestro normal</td><td>Diestro normal</td></tr>
+        <tr><td>Fuente de P4 en gestación</td><td class="highlight">Solo CL ovárico</td><td>CL ovárico</td><td>CL + placenta</td><td>CL + placenta</td></tr>
+        <tr><td>Tipo de placenta</td><td class="highlight">Endoteliocorial zonaria</td><td>Endoteliocorial zonaria</td><td>Siepiteliocorial</td><td>Epiteliocorial difusa</td></tr>
+        <tr><td>Superfecundación</td><td class="highlight">Frecuente</td><td>Posible</td><td>Rara</td><td>Rara</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align:center;margin-top:24px"><a href="/comparativas?a=felinos" class="btn-outline">Ver comparativa interactiva</a></div>
+</section>
+
+<!-- 8. GLOSARIO -->
+<section id="glosario-local" class="content-section">
+  <div class="section-label">08</div>
+  <h2 class="section-title">Glosario — Felinos</h2>
+  <div class="glosario-list reveal">
+    <div class="glosario-item"><div class="glosario-term">Ovulación inducida</div><p class="glosario-def">Mecanismo en el que la ovulación es desencadenada por el estímulo de la cópula (espículas peneanas sobre el cérvix), no de forma espontánea. Característica de felinos, conejos y camélidos.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Lordosis</div><p class="glosario-def">Postura de receptividad sexual felina: arqueamiento dorsal, elevación del perineo, desviación de cola y separación de miembros posteriores. Respuesta estrogénica sobre el hipotálamo ventromedial.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Superfecundación</div><p class="glosario-def">Fertilización de varios ovocitos del mismo ciclo por espermatozoides de distintos machos. Posible en gatas que se aparean con varios machos en el mismo estro, resultando en camadas de paternidad múltiple.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Espículas peneanas</div><p class="glosario-def">Pápulas córneas en el pene del gato bajo control androgénico. Estimulan el cérvix durante la cópula, desencadenando el reflejo neuroendocrino que produce el pico de LH y la ovulación. Desaparecen tras la castración.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Pseudogestación felina</div><p class="glosario-def">Estado post-cópula sin fertilización donde los CL producen P4 durante 35–45 días. Menos evidente clínicamente que en la perra. La gata regresa al celo 7–10 días después de la regresión luteínica.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Deslorelina (Suprelorin®)</div><p class="glosario-def">Implante subcutáneo de análogo de GnRH de acción prolongada. Suprime la función gonadal en gatos y gatas durante 6–18 meses. Alternativa reversible a la gonadectomía quirúrgica.</p></div>
+  </div>
+</section>
+
+<!-- 9. RECURSOS -->
+<section id="recursos" class="content-section">
+  <div class="section-label">09</div>
+  <h2 class="section-title">Recursos de aprendizaje</h2>
+  <div class="recursos-grid">
+    <div class="recurso-card reveal d1"><div class="recurso-icon lav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="recurso-body"><div class="recurso-type">Libro de texto</div><div class="recurso-title">Reproducción en perros y gatos — Johnston, Root, Olson</div><p class="recurso-desc">Capítulos específicos sobre la fisiología felina: ovulación inducida, ciclo estral y manejo reproductivo.</p><div class="recurso-meta"><span>Lectura 40 min</span><span>Referencia clínica</span></div></div></div>
+    <div class="recurso-card reveal d2"><div class="recurso-icon mnt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div><div class="recurso-body"><div class="recurso-type">Video educativo</div><div class="recurso-title">Ciclo reproductivo felino — Inducción de ovulación</div><p class="recurso-desc">Explicación del mecanismo neuroendocrino de la ovulación inducida, con comparación entre felinos domésticos y silvestres.</p><div class="recurso-meta"><span>15 min</span><span>Mecanismo hormonal</span></div></div></div>
+    <div class="recurso-card reveal d3"><div class="recurso-icon lav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="recurso-body"><div class="recurso-type">Artículo científico</div><div class="recurso-title">Biotecnologías reproductivas en felinos silvestres</div><p class="recurso-desc">IA, FIV y transferencia embrionaria aplicadas a conservación de especies: leopardo, guepardo y tigre.</p><div class="recurso-meta"><span>Lectura 30 min</span><span>Artículo revisado</span></div></div></div>
+    <div class="recurso-card reveal d4"><div class="recurso-icon mnt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="recurso-body"><div class="recurso-type">Guía práctica</div><div class="recurso-title">Control reproductivo no quirúrgico en gatos con deslorelina</div><p class="recurso-desc">Protocolo de aplicación del implante, duración de efecto, reversibilidad y comparación con castración quirúrgica.</p><div class="recurso-meta"><span>Lectura 12 min</span><span>Aplicación clínica</span></div></div></div>
+  </div>
+</section>
+
+<!-- 10. QUIZ -->
+<section id="quiz" class="content-section">
+  <div class="section-label">10</div>
+  <h2 class="section-title">Evalúa tu aprendizaje</h2>
+  <div class="quiz-block reveal">
+    <div class="quiz-progress"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:20%"></div></div><span class="progress-label">1 / 5 preguntas</span></div>
+    <div class="quiz-question">¿Qué estructura anatómica del gato macho desencadena el reflejo ovulatorio en la gata?</div>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">A</div>El bulbo del glande (similar al canino)</div>
+      <div class="quiz-option" data-correct="true"><div class="opt-letter">B</div>Las espículas peneanas (pápulas córneas)</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">C</div>El os penis (hueso peneano)</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">D</div>La secreción prostática durante la eyaculación</div>
+    </div>
+  </div>
+</section>
+
+</SpeciesLayout>
+
+<style>
+.content-section { margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--oat-light); }
+.content-section:last-child { border-bottom: none; }
+.glosario-list { display: flex; flex-direction: column; }
+.glosario-item { padding: 20px 0; border-bottom: 1px solid var(--oat-light); display: flex; gap: 32px; align-items: baseline; }
+.glosario-item:last-child { border-bottom: none; }
+.glosario-term { font-size: 17px; font-weight: 700; color: var(--lavender); min-width: 200px; flex-shrink: 0; }
+.glosario-def  { font-size: 14px; line-height: 1.7; color: var(--ink-mid); }
+@media (max-width: 768px) { .glosario-item { flex-direction: column; gap: 8px; } .glosario-term { min-width: unset; } }
+</style>
+<script>
+document.querySelectorAll('.quiz-option').forEach(opt => {
+  opt.addEventListener('click', function(this: HTMLElement) {
+    document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'wrong'));
+    const isCorrect = this.dataset.correct === 'true';
+    this.classList.add(isCorrect ? 'correct' : 'wrong');
+    if (!isCorrect) { const c = document.querySelector('.quiz-option[data-correct="true"]'); if (c) c.classList.add('correct'); }
+  });
+});
+</script>

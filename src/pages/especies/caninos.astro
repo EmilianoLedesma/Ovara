@@ -1,0 +1,250 @@
+---
+import SpeciesLayout from '../../layouts/SpeciesLayout.astro';
+import { getEspecie } from '../../data/especies';
+
+const especie = getEspecie('caninos')!;
+---
+
+<SpeciesLayout especie={especie}>
+
+<!-- 1. ANATOMÍA -->
+<section id="anatomia" class="content-section">
+  <div class="section-label">01</div>
+  <h2 class="section-title">Anatomía del aparato reproductivo</h2>
+  <p class="section-intro">El aparato reproductivo canino tiene características únicas entre los domésticos: la perra es <strong>monoéstrica</strong> con fases bien diferenciadas, y el macho presenta un hueso peneano (os penis) y glándulas bulbouretrales que generan la "unión" durante la cópula.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender">
+      <div class="info-card-label">Perra</div>
+      <h3>Aparato reproductor femenino</h3>
+      <ul>
+        <li><strong>Ovarios:</strong> pequeños (1–2 cm), cubiertos por la bursa ovárica; ovulación de ovocitos primarios</li>
+        <li><strong>Útero bicornual:</strong> cuernos largos y delgados; cuerpo muy corto</li>
+        <li><strong>Cérvix:</strong> cierre firme excepto en estro y parto; acceso difícil por catéter</li>
+        <li><strong>Vagina:</strong> larga (hasta 15 cm en razas grandes); vestíbulo corto</li>
+        <li><strong>Mamas:</strong> 4–5 pares desde pectorales hasta inguinales</li>
+      </ul>
+    </div>
+    <div class="info-card accent-mint">
+      <div class="info-card-label">Macho — Perro</div>
+      <h3>Aparato reproductor masculino</h3>
+      <ul>
+        <li><strong>Testículos escrotales:</strong> descienden a las 6–8 semanas; criptorquidia frecuente</li>
+        <li><strong>Os penis (hueso peneano):</strong> estructura ósea que facilita la penetración</li>
+        <li><strong>Bulbo del glande:</strong> se engrosa post-penetración creando la "unión" (tie) de 15–30 min</li>
+        <li><strong>Próstata:</strong> única glándula accesoria; rodea la uretra; sujeta a hiperplasia en machos enteros</li>
+        <li><strong>Eyaculado en 3 fracciones:</strong> uretral (pre-espermática), espermática, prostática</li>
+      </ul>
+    </div>
+    <div class="info-card span-full reveal">
+      <div class="info-card-label">Placentación</div>
+      <h3>Placenta endoteliocorial zonaria</h3>
+      <p>La perra presenta una placenta <strong>endoteliocorial zonaria</strong>: el trofoblasto penetra hasta el endotelio de los vasos maternos (sin llegar a la sangre). La disposición es en zona (banda alrededor del feto). Las <strong>zonas marginales (hematomas marginales)</strong> son acumulaciones de sangre materna en los bordes de la zona placentaria, visibles como bandas verdes (por uteroverdina) en el parto normal. La transferencia de inmunoglobulinas ocurre en parte vía placenta y en parte por calostro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. FISIOLOGÍA -->
+<section id="fisiologia" class="content-section">
+  <div class="section-label">02</div>
+  <h2 class="section-title">Fisiología reproductiva de la perra</h2>
+  <p class="section-intro">La perra es <strong>monoéstrica</strong>: presenta 1–2 ciclos por año, con un anestro profundo entre ciclos. A diferencia de las demás especies domésticas, ovula <strong>ovocitos primarios inmaduros</strong> que completan su maduración en el oviducto.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card">
+      <div class="info-card-label">Ciclo monoéstrico</div>
+      <h3>1–2 ciclos anuales</h3>
+      <p>El intervalo interciclo es de <strong>5–12 meses</strong> según la raza (Basenji: 1 ciclo/año; Rottweiler: 2–3 ciclos/año). El anestro entre ciclos no es inhibición activa del eje HHG, sino un estado de "reposo" cuya duración está genéticamente determinada.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Ovulación de ovocitos primarios</div>
+      <h3>Maduración post-ovulación</h3>
+      <p>La perra ovula <strong>ovocitos en estadio I de meiosis</strong> (ovocitos primarios). Estos requieren 48–72 horas adicionales en el oviducto para completar la maduración y ser fertilizables. Los espermatozoides, a su vez, necesitan capacitación de 6–7 horas en el tracto reproductivo femenino.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Diestro largo</div>
+      <h3>CL activo con o sin gestación</h3>
+      <p>El CL de la perra permanece activo durante 60–90 días <strong>independientemente de si hay gestación</strong>. Esto explica la <strong>pseudogestación</strong> fisiológica, que ocurre en prácticamente todas las perras no gestantes y puede manifestarse con signos clínicos como producción de leche, anidación y conducta maternal.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Pubertad</div>
+      <h3>6–12 meses según raza</h3>
+      <p>Las razas pequeñas maduran antes (6–8 meses) que las razas gigantes (18–24 meses). Se recomienda esperar al <strong>segundo o tercer ciclo</strong> para la primera gestación, asegurando madurez física y reproductiva óptimas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CICLO ESTRAL -->
+<section id="ciclo-estral" class="content-section">
+  <div class="section-label">03</div>
+  <h2 class="section-title">Ciclo estral canino</h2>
+  <p class="section-intro">El ciclo canino se divide en <strong>4 fases bien definidas</strong>: proestro, estro, diestro y anestro. El diagnóstico preciso del momento de ovulación (progesterona sérica + citología vaginal) es fundamental para el éxito reproductivo.</p>
+
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Proestro (7–10 días)</div>
+        <h4>Atracción sin aceptación — Descarga serosanguinolenta</h4>
+        <p>Crecimiento folicular y aumento de E₂. La perra atrae al macho pero no acepta la monta (gruñe, se sienta o huye). Vulva edematosa. Descarga vulvar serosanguinolenta por diapédesis de eritrocitos. Citología: células epiteliales cornificadas con eritrocitos.</p>
+        <div class="hormones"><span class="hormone-pill">↑ E₂</span><span class="hormone-pill">↑ LH (inicio)</span><span class="hormone-pill">Vulva edematosa</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Estro (5–14 días, media 9 días)</div>
+        <h4>Aceptación — Pico de LH → Ovulación</h4>
+        <p>La perra acepta la monta (flagging: desviación de cola). Pico de LH → ovulación de ovocitos primarios 48–72 h después → maduración 48–72 h adicionales. <strong>Progesterona: 4–10 ng/ml en momento óptimo de inseminación</strong>. Citología: >80% células cornificadas, sin neutrófilos.</p>
+        <div class="hormones"><span class="hormone-pill">Pico LH</span><span class="hormone-pill">P4 4–10 ng/ml</span><span class="hormone-pill">Ovulación</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Diestro (60–90 días)</div>
+        <h4>CL activo — Gestante o pseudogestante</h4>
+        <p>La perra rechaza al macho (metaestro = inicio del diestro). P4 elevada sostenida por CL activo durante ~2 meses. Si no hay gestación: pseudogestación fisiológica. Si hay gestación: mantenimiento de la gestación (63–65 días). Citología: neutrófilos abundantes (día 1–3 diestro, "día del cambio").</p>
+        <div class="hormones"><span class="hormone-pill">↑↑ P4</span><span class="hormone-pill">CL activo</span><span class="hormone-pill">Pseudogestación posible</span></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-day">Anestro (2–10 meses)</div>
+        <h4>Reposo reproductivo</h4>
+        <p>Regresión del CL, P4 basal. El eje HHG está activo a bajo nivel (pulsos de LH presentes). La duración es genéticamente determinada por raza. Preparación endometrial para el siguiente ciclo. No es anestro "verdadero" como en la yegua; es un estado de baja actividad gonadal.</p>
+        <div class="hormones"><span class="hormone-pill">P4 basal</span><span class="hormone-pill">E₂ basal</span><span class="hormone-pill">LH pulsos bajos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HORMONAS -->
+<section id="hormonas" class="content-section">
+  <div class="section-label">04</div>
+  <h2 class="section-title">Regulación hormonal</h2>
+  <p class="section-intro">La perra presenta particularidades hormonales únicas: la P4 sube antes del pico de LH (en otras especies sube después), y la prolactina luteotrófica mantiene el CL durante el diestro.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card"><div class="info-card-label">Progesterona pre-pico LH</div><h3>Diagnóstico del momento de ovulación</h3><p>En la perra, la P4 inicia su ascenso <strong>antes</strong> del pico de LH (otras especies: post-LH). Esto permite usar la P4 sérica para predecir la ovulación: P4 &gt;2 ng/ml indica inicio del pico de LH; P4 4–8 ng/ml indica ovulación; P4 &gt;10 ng/ml: diestro establecido.</p></div>
+    <div class="info-card"><div class="info-card-label">Prolactina</div><h3>Luteotrofina canina</h3><p>La <strong>prolactina</strong> (no LH) es la principal hormona luteotrófica en la perra. Mantiene el CL activo durante el diestro tardío. La cabergolina (agonista dopaminérgico) inhibe la prolactina → luteólisis → interrupción de gestación o pseudogestación.</p></div>
+    <div class="info-card accent-lavender"><div class="info-card-label">Relaxina</div><h3>Marcador específico de gestación</h3><p>La <strong>relaxina</strong> es producida exclusivamente por la placenta canina (no por el CL). Es el único marcador bioquímico específico de gestación en la perra. Los test de relaxina (Witness Relaxin®) detectan gestación desde el día 25–28. P4 elevada no confirma gestación.</p></div>
+    <div class="info-card accent-mint"><div class="info-card-label">Hormona tiroidea</div><h3>Hipotiroidismo y fertilidad</h3><p>El hipotiroidismo es una de las causas más frecuentes de infertilidad canina. La T4 insuficiente afecta la ciclicidad, la implantación y la supervivencia embrionaria. La medición de T4 total y libre es parte del protocolo de evaluación de perras con anestro prolongado o pérdida fetal recurrente.</p></div>
+  </div>
+</section>
+
+<!-- 5. FERTILIZACIÓN -->
+<section id="fertilizacion" class="content-section">
+  <div class="section-label">05</div>
+  <h2 class="section-title">Fertilización y gestación</h2>
+  <p class="section-intro">La gestación canina dura <strong>63–65 días</strong> desde la ovulación (58–68 días desde el apareamiento). La variabilidad aparente en la duración es consecuencia directa de la fertilización en distintos momentos del estro.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card"><div class="info-card-label">Ventana fértil</div><h3>3–7 días de fertilidad</h3><p>Gracias a la longevidad de los espermatozoides (hasta 7 días en el tracto) y la ventana de maduración ovocitaria, la perra tiene una <strong>ventana fértil de hasta 6–7 días</strong>. Sin embargo, para IA con semen congelado, el timing preciso (P4 sérica) es esencial ya que la viabilidad espermática es de 12–24 h.</p></div>
+    <div class="info-card"><div class="info-card-label">Implantación</div><h3>Día 18–20 post-ovulación</h3><p>Los blastocistos se distribuyen por los cuernos uterinos y se fijan en espacios regulares. La implantación canina es <strong>superficial (endoteliocorial)</strong>; los embriones quedan separados entre sí por pliegues endometriales. La reabsorción embrionaria individual es posible sin afectar al resto de la camada.</p></div>
+    <div class="info-card"><div class="info-card-label">Parto</div><h3>Señal fetal — Cortisol</h3><p>El inicio del parto es activado por el cortisol fetal (HPA fetal). Caída brusca de P4 (&lt;2 ng/ml) 24–36 h antes del parto. Temperatura rectal materna cae 1–1.5°C (~37°C). El parto dura 3–12 h; intervalo entre cachorros de 15–60 min. Placentas se expulsan después de cada cachorro.</p></div>
+    <div class="info-card"><div class="info-card-label">Neonatos</div><h3>Termorregulación y calostro</h3><p>Los cachorros nacen con termorregulación inmadura; dependen de la madre y los hermanos para mantener temperatura. El calostro proporciona inmunoglobulinas (IgG, IgA) por absorción intestinal hasta las <strong>24 horas de vida</strong>. Después, el intestino cierra la absorción macromolecular.</p></div>
+  </div>
+</section>
+
+<!-- 6. BIOTECNOLOGÍAS -->
+<section id="biotecnologias" class="content-section">
+  <div class="section-label">06</div>
+  <h2 class="section-title">Biotecnologías reproductivas</h2>
+  <p class="section-intro">La reproducción asistida canina ha avanzado significativamente. El timing preciso de la IA es la clave del éxito dado el ciclo monoéstrico y la especificidad de la ventana fértil.</p>
+
+  <div class="info-grid reveal">
+    <div class="info-card accent-lavender"><div class="info-card-label">IA Canina</div><h3>Intravaginal, transcervical e intrauterina</h3><p>La IA intravaginal (semen fresco) tiene tasas similares a la monta natural. La <strong>IA transcervical</strong> (sonda rígida con endoscopio) o <strong>intrauterina quirúrgica</strong> son necesarias para semen congelado. El diagnóstico del momento óptimo usa <strong>P4 sérica + citología vaginal</strong>.</p></div>
+    <div class="info-card accent-mint"><div class="info-card-label">Criopreservación</div><h3>Semen congelado y refrigerado</h3><p>El semen canino se congela en pajillas (0.5 ml) con glicerol como crioprotector. La viabilidad post-descongelación es de 12–24 h, requiriendo IA intrauterina. El semen refrigerado (5°C) mantiene fertilidad hasta 4–5 días, útil para envíos nacionales.</p></div>
+    <div class="info-card"><div class="info-card-label">Control del ciclo</div><h3>Inducción y sincronización</h3><p>La <strong>cabergolina</strong> (0.1 mg/kg/día) acorta el anestro induciendo el siguiente celo en 30–40 días. Los agonistas de GnRH pueden usarse para inducir celo en perras en anestro. La <strong>implantación de deslorelina</strong> (Suprelorin®) suprime el ciclo durante 6–12 meses para control de la reproducción.</p></div>
+    <div class="info-card"><div class="info-card-label">Diagnóstico de gestación</div><h3>Ecografía y relaxina</h3><p>La <strong>ecografía</strong> detecta sáculos embrionarios desde el día 21–25 y latido fetal desde el día 25–28. El test de <strong>relaxina</strong> (ELISA) confirma gestación activa desde el día 25–28. La radiografía detecta mineralización esquelética fetal desde el día 42–45 (conteo de fetos).</p></div>
+  </div>
+</section>
+
+<!-- 7. COMPARATIVA -->
+<section id="comparativa" class="content-section">
+  <div class="section-label">07</div>
+  <h2 class="section-title">Caninos vs otras especies</h2>
+
+  <div class="reveal">
+    <table class="compare-table">
+      <thead><tr><th>Parámetro</th><th>Caninos</th><th>Felinos</th><th>Bovinos</th><th>Porcinos</th></tr></thead>
+      <tbody>
+        <tr><td>Gestación</td><td class="highlight">63 días</td><td>64 días</td><td>280 días</td><td>114 días</td></tr>
+        <tr><td>Tipo de ciclo</td><td class="highlight">Monoéstrico</td><td>Poliéstrico estacional</td><td>Poliéstrico continuo</td><td>Poliéstrico continuo</td></tr>
+        <tr><td>Ovulación</td><td class="highlight">Espontánea (ovocito primario)</td><td>Inducida</td><td>Espontánea</td><td>Espontánea</td></tr>
+        <tr><td>Luteotrofina</td><td class="highlight">Prolactina</td><td>LH</td><td>LH</td><td>LH</td></tr>
+        <tr><td>Tipo de placenta</td><td class="highlight">Endoteliocorial zonaria</td><td>Endoteliocorial zonaria</td><td>Siepiteliocorial</td><td>Epiteliocorial difusa</td></tr>
+        <tr><td>Pseudogestación</td><td class="highlight">Fisiológica (todas)</td><td>Posible</td><td>No común</td><td>No común</td></tr>
+        <tr><td>Marcador gestación</td><td class="highlight">Relaxina</td><td>Relaxina</td><td>PAG</td><td>PAG</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align:center;margin-top:24px"><a href="/comparativas?a=caninos" class="btn-outline">Ver comparativa interactiva</a></div>
+</section>
+
+<!-- 8. GLOSARIO -->
+<section id="glosario-local" class="content-section">
+  <div class="section-label">08</div>
+  <h2 class="section-title">Glosario — Caninos</h2>
+  <div class="glosario-list reveal">
+    <div class="glosario-item"><div class="glosario-term">Monoéstrico</div><p class="glosario-def">Tipo de ciclo estral con uno o dos ciclos por año separados por un anestro profundo. Característico de la perra y la loba. El ciclo no depende del fotoperiodo sino de un reloj endógeno.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Día del cambio</div><p class="glosario-def">Primer día del diestro en la perra, caracterizado por la aparición brusca de neutrófilos en la citología vaginal (>10% neutrófilos). Marca el inicio de la fase luteínica.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Pseudogestación</div><p class="glosario-def">Estado fisiológico post-diestro en perras no gestantes, caracterizado por producción de leche, anidación y conducta maternal. Causada por el CL activo (P4) seguido de prolactina elevada.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Flagging</div><p class="glosario-def">Comportamiento de la perra en estro consistente en desviar la cola lateralmente al contacto perineal del macho. Signo conductual de aceptación sexual y fertilidad.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Tie (unión)</div><p class="glosario-def">Unión copulatoria canina de 15–30 min causada por el engurgitamiento del bulbo del glande dentro de la vagina. No es imprescindible para la fertilización pero favorece la deposición espermática.</p></div>
+    <div class="glosario-item"><div class="glosario-term">Cabergolina</div><p class="glosario-def">Agonista dopaminérgico que inhibe la secreción de prolactina. Usado para inducir el celo en anestro, tratar la pseudogestación y como abortivo en gestación temprana.</p></div>
+  </div>
+</section>
+
+<!-- 9. RECURSOS -->
+<section id="recursos" class="content-section">
+  <div class="section-label">09</div>
+  <h2 class="section-title">Recursos de aprendizaje</h2>
+  <div class="recursos-grid">
+    <div class="recurso-card reveal d1"><div class="recurso-icon lav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="recurso-body"><div class="recurso-type">Libro de texto</div><div class="recurso-title">Reproducción en perros y gatos — Johnston, Root, Olson</div><p class="recurso-desc">Referencia completa sobre reproducción canina y felina. Diagnóstico, manejo y biotecnologías.</p><div class="recurso-meta"><span>Lectura 50 min</span><span>Referencia clínica</span></div></div></div>
+    <div class="recurso-card reveal d2"><div class="recurso-icon mnt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div><div class="recurso-body"><div class="recurso-type">Video educativo</div><div class="recurso-title">Citología vaginal canina — Interpretación de frotis</div><p class="recurso-desc">Identificación de células parabasales, intermedias, superficiales y cornificadas. Determinación de la fase del ciclo.</p><div class="recurso-meta"><span>20 min</span><span>Diagnóstico práctico</span></div></div></div>
+    <div class="recurso-card reveal d3"><div class="recurso-icon lav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="recurso-body"><div class="recurso-type">Artículo científico</div><div class="recurso-title">Progesterona sérica y timing de IA en la perra</div><p class="recurso-desc">Correlación entre concentraciones de P4, pico de LH y momento óptimo de inseminación según tipo de semen.</p><div class="recurso-meta"><span>Lectura 22 min</span><span>Artículo revisado</span></div></div></div>
+    <div class="recurso-card reveal d4"><div class="recurso-icon mnt"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="recurso-body"><div class="recurso-type">Guía práctica</div><div class="recurso-title">Protocolo de IA transcervical con semen congelado</div><p class="recurso-desc">Técnica endoscópica de IA, evaluación post-descongelación del semen y manejo de la perra receptora.</p><div class="recurso-meta"><span>Lectura 16 min</span><span>Procedimiento clínico</span></div></div></div>
+  </div>
+</section>
+
+<!-- 10. QUIZ -->
+<section id="quiz" class="content-section">
+  <div class="section-label">10</div>
+  <h2 class="section-title">Evalúa tu aprendizaje</h2>
+  <div class="quiz-block reveal">
+    <div class="quiz-progress"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:20%"></div></div><span class="progress-label">1 / 5 preguntas</span></div>
+    <div class="quiz-question">¿Cuál es la concentración de progesterona sérica que indica el momento óptimo para la inseminación artificial en la perra?</div>
+    <div class="quiz-options">
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">A</div>Menor de 1 ng/ml (anestro/proestro)</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">B</div>1–2 ng/ml (inicio del pico de LH)</div>
+      <div class="quiz-option" data-correct="true"><div class="opt-letter">C</div>4–10 ng/ml (ovulación y maduración ovocitaria)</div>
+      <div class="quiz-option" data-correct="false"><div class="opt-letter">D</div>Mayor de 20 ng/ml (diestro establecido)</div>
+    </div>
+  </div>
+</section>
+
+</SpeciesLayout>
+
+<style>
+.content-section { margin-bottom: 72px; padding-bottom: 72px; border-bottom: 1px solid var(--oat-light); }
+.content-section:last-child { border-bottom: none; }
+.glosario-list { display: flex; flex-direction: column; }
+.glosario-item { padding: 20px 0; border-bottom: 1px solid var(--oat-light); display: flex; gap: 32px; align-items: baseline; }
+.glosario-item:last-child { border-bottom: none; }
+.glosario-term { font-size: 17px; font-weight: 700; color: var(--lavender); min-width: 200px; flex-shrink: 0; }
+.glosario-def  { font-size: 14px; line-height: 1.7; color: var(--ink-mid); }
+@media (max-width: 768px) { .glosario-item { flex-direction: column; gap: 8px; } .glosario-term { min-width: unset; } }
+</style>
+<script>
+document.querySelectorAll('.quiz-option').forEach(opt => {
+  opt.addEventListener('click', function(this: HTMLElement) {
+    document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('correct', 'wrong'));
+    const isCorrect = this.dataset.correct === 'true';
+    this.classList.add(isCorrect ? 'correct' : 'wrong');
+    if (!isCorrect) { const c = document.querySelector('.quiz-option[data-correct="true"]'); if (c) c.classList.add('correct'); }
+  });
+});
+</script>
